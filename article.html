@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">Article — India Daily</title>
+
+  <!-- Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- site main css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- article-specific css -->
+  <link rel="stylesheet" href="css/article.css" />
+  <meta name="description" id="metaDescription" content="India Daily" />
+</head>
+<body>
+
+ <!-- ======= START: SHARED HEADER ======= -->
+
+<!-- top bar -->
+<div class="top-bar">
+  <div class="top-left"><span id="topDate">Loading date...</span></div>
+   <!-- RIGHT: Social Icons -->
+    <div class="top-right social-icons">
+      <a href="#" class="social">FB</a>
+      <a href="#" class="social">X</a>
+      <a href="#" class="social">YT</a>
+      <a href="#" class="social">IG</a>
+    </div>
+  </div>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html">
+      <img src="images/india-daily-logo.jpg" alt="India Daily" class="logo">
+    </a>
+  </div>
+</header>
+
+<nav class="main-nav">
+  SAME NAV LINKS LIKE INDEX.HTML
+</nav>
+
+<!-- ======= END HEADER ======= -->
+
+
+ 
+  <!-- ======= SHARED NAV (one copy only) ======= -->
+  <nav class="main-nav" style="background:#000;color:#fff;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 6px;">
+      <a href="index.html" style="color:#fff;margin-right:12px;text-decoration:none;">होम</a>
+      <a href="category.html?cat=trend" style="color:#fff;margin-right:12px;text-decoration:none;">ट्रेंडिंग और वायरल</a>
+      <a href="category.html?cat=राजनीति" style="color:#fff;margin-right:12px;text-decoration:none;">राजनीति</a>
+      <a href="category.html?cat=व्यापार" style="color:#fff;margin-right:12px;text-decoration:none;">व्यापार</a>
+      <a href="category.html?cat=खेल" style="color:#fff;margin-right:12px;text-decoration:none;">खेल</a>
+      <a href="category.html?cat=मनोरंजन" style="color:#fff;margin-right:12px;text-decoration:none;">मनोरंजन</a>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="article-container">
+
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs" style="max-width:900px;margin:20px auto 8px;">
+      <a href="index.html">Home</a> › <a id="bcCategory" href="#">Category</a> › <span id="bcTitle">Article</span>
+    </div>
+
+    <article class="article-card" id="articleCard" style="max-width:900px;margin:0 auto;">
+      <!-- featured image -->
+      <div class="featured-img" id="featuredImgWrap">
+        <!-- image injected by JS -->
+      </div>
+
+      <div class="article-meta">
+        <div class="kicker" id="articleCategory">Category</div>
+        <h1 id="articleTitle">Title</h1>
+        <div class="meta-row">
+          <span id="articleAuthor">Author</span> • <span id="articleDate">Date</span> • <span id="readTime">0 min read</span>
+        </div>
+      </div>
+
+      <div class="article-body" id="articleBody">
+        <!-- article HTML injected by JS -->
+      </div>
+
+      <!-- author box -->
+      <div class="author-box" id="authorBox">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- share buttons -->
+      <div class="share-row" style="max-width:900px;margin:12px auto;display:flex;gap:8px;">
+        <button id="shareFb">Share on Facebook</button>
+        <button id="shareX">Share on X</button>
+        <button id="shareWa">Share on WhatsApp</button>
+      </div>
+
+      <!-- related posts -->
+      <section class="related" id="relatedList" style="max-width:900px;margin:18px auto;">
+        <h3>Related Articles</h3>
+        <div class="related-grid"></div>
+      </section>
+
+      <!-- comments placeholder -->
+      <section class="comments" style="max-width:900px;margin:18px auto 40px;">
+        <h3>Comments</h3>
+        <div class="comments-note">Comments integration (Disqus / custom) can be added later.</div>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- ====== SITE FOOTER (replace existing footer) ====== -->
+<footer class="site-footer">
+  <div class="footer-top footer-container">
+
+    <!-- LEFT: logo + description + social -->
+    <div class="f-col footer-left">
+      <img src="images/india-daily-logo.jpg" alt="India Daily" class="footer-logo-left">
+      <p class="brand-desc">India Daily — taza aur bharosemand khabar.<br>Latest updates, analysis aur features.</p>
+      <div class="social-row">
+        <a class="social-icon" href="#">f</a>
+        <a class="social-icon" href="#">x</a>
+        <a class="social-icon" href="#">yt</a>
+        <a class="social-icon" href="#">ig</a>
+      </div>
+    </div>
+
+    <!-- CENTER: Quick Links -->
+    <div class="f-col footer-center">
+      <h4>Quick Links</h4>
+      <ul class="quick-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
+        <li><a href="category.html?cat=खेल">खेल</a></li>
+        <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: About + Newsletter -->
+    <div class="f-col footer-right">
+      <h4>About</h4>
+      <p>Hamara mission: sahi samay par sahi khabar.<br>Contact: <a href="mailto:info@indiadaily.test">info@indiadaily.test</a></p>
+
+      <h4>Newsletter</h4>
+      <form id="newsletterForm" class="newsletter">
+        <input id="newsletterEmail" type="email" placeholder="Enter Your Email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT ROW -->
+  <div class="footer-bottom">
+    <div class="copyright">© <span id="copyYear"></span> India Daily. All rights reserved.</div>
+    <div class="back-top"><a id="backToTop" href="#">Back to top ↑</a></div>
+  </div>
+</footer>
+<!-- ====== END FOOTER ====== -->
+
+
+  <!-- ===== SCRIPTS: main first, article second ===== -->
+  <script src="js/main.js"></script>
+  <script src="js/article.js"></script>
+
+</body>
+</html>
