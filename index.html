@@ -4,26 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>India Daily</title>
-  <!-- add Roboto font (paste into <head> of index.html and article.html) -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- CSS LOAD -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-  <!-- *******************************
-       🔴 TOP BAR (DATE + SOCIAL ICONS)
-       ******************************* -->
+  <!-- TOP BAR -->
   <div class="top-bar">
-
-    <!-- LEFT: Today Date (JS se auto-update hoti hai) -->
-    <div class="top-left">
-      <span id="topDate">Loading date...</span>
-    </div>
-
-    <!-- RIGHT: Social Icons -->
+    <div class="top-left"><span id="topDate">Loading date...</span></div>
     <div class="top-right social-icons">
       <a href="#" class="social">FB</a>
       <a href="#" class="social">X</a>
@@ -32,26 +25,17 @@
     </div>
   </div>
 
-  <!-- ********************
-        🔴 MAIN HEADER LOGO
-        ******************** -->
+  <!-- HEADER -->
   <header class="header">
     <img src="images/india-daily-logo.jpg" alt="India Daily" class="logo" />
   </header>
 
-    <!-- test change -->
-
-  <!-- ***********************************
-       🔴 NAVIGATION BAR (HOME + MENU)
-       *********************************** -->
+  <!-- NAVBAR -->
   <nav class="main-nav">
     <ul id="navLinks" class="nav-links">
 
-
-      <!-- ACTIVE HOME ICON -->
       <li class="active">
         <a href="index.html">
-          <!-- Home Icon (SVG) -->
           <svg class="home-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path fill="white" d="M12 3l9 8h-3v10H6V11H3l9-8z"/>
           </svg>
@@ -59,200 +43,201 @@
         </a>
       </li>
 
-      <!-- EXAMPLE DROPDOWN MENU -->
       <li class="has-dropdown">
-        <a href="#">ट्रेंडिंग और वायरल</a>
+        <a href="category.html?cat=ट्रेंडिंग और वायरल">ट्रेंडिंग और वायरल</a>
         <ul class="dropdown">
-          <li><a href="#">राजनीति</a></li>
-          <li><a href="#">टॉप स्टोरीज</a></li>
+          <li><a href="category.html?cat=ट्रेंडिंग और वायरल&sub=टॉप स्टोरीज">टॉप स्टोरीज</a></li>
+          <li><a href="category.html?cat=ट्रेंडिंग और वायरल&sub=लोकल">लोकल</a></li>
         </ul>
       </li>
 
-      <!-- Other menu items -->
-      <li><a href="#">राजनीति</a></li>
+      <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
 
       <li class="has-dropdown">
-        <a href="#">खेल</a>
+        <a href="category.html?cat=खेल">खेल</a>
         <ul class="dropdown">
-          <li><a href="#">क्रिकेट</a></li>
-          <li><a href="#">फुटबॉल</a></li>
+          <li><a href="category.html?cat=खेल&sub=अन्य खेल प्रतियोगिताएँ">अन्य खेल प्रतियोगिताएँ</a></li>
+          <li><a href="category.html?cat=खेल&sub=ओलंपिक्स">ओलंपिक्स</a></li>
+          <li><a href="category.html?cat=खेल&sub=क्रिकेट">क्रिकेट</a></li>
+          <li><a href="category.html?cat=खेल&sub=खिलाड़ियों के इंटरव्यू">खिलाड़ियों के इंटरव्यू</a></li>
+          <li><a href="category.html?cat=खेल&sub=टेनिस">टेनिस</a></li>
+          <li><a href="category.html?cat=खेल&sub=फुटबॉल">फुटबॉल</a></li>
         </ul>
       </li>
 
-      <li><a href="#">व्यापार और अर्थव्यवस्था</a></li>
-      <li><a href="#">मनोरंजन</a></li>
-      <li><a href="#">अपराध</a></li>
-      <li><a href="#">विश्व समाचार</a></li>
+      <li><a href="category.html?cat=व्यापार और अर्थव्यवस्था">व्यापार और अर्थव्यवस्था</a></li>
+
+      <li class="has-dropdown">
+        <a href="category.html?cat=मनोरंजन">मनोरंजन</a>
+        <ul class="dropdown">
+          <li><a href="category.html?cat=मनोरंजन&sub=OTT अपडेट">OTT अपडेट</a></li>
+          <li><a href="category.html?cat=मनोरंजन&sub=Hollywood">Hollywood</a></li>
+          <li><a href="category.html?cat=मनोरंजन&sub=Bollywood">Bollywood</a></li>
+          <li><a href="category.html?cat=मनोरंजन&sub=Tollywood">Tollywood</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="category.html?cat=तकनीक">तकनीक</a>
+        <ul class="dropdown">
+          <li><a href="category.html?cat=तकनीक&sub=इंटरनेट और सोशल मीडिया अपडेट">इंटरनेट और सोशल मीडिया अपडेट</a></li>
+          <li><a href="category.html?cat=तकनीक&sub=AI और Machine Learning">AI और Machine Learning</a></li>
+          <li><a href="category.html?cat=तकनीक&sub=Apps और Software">Apps और Software</a></li>
+          <li><a href="category.html?cat=तकनीक&sub=Gadgets">Gadgets</a></li>
+          <li><a href="category.html?cat=तकनीक&sub=Cyber सुरक्षा">Cyber सुरक्षा</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="category.html?cat=अपराध">अपराध</a>
+        <ul class="dropdown">
+          <li><a href="category.html?cat=अपराध&sub=अपराध रिपोर्ट">अपराध रिपोर्ट</a></li>
+          <li><a href="category.html?cat=अपराध&sub=कानूनी अपडेट">कानूनी अपडेट</a></li>
+          <li><a href="category.html?cat=अपराध&sub=जांच और विवेचना">जांच और विवेचना</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="category.html?cat=विश्व समाचार">विश्व समाचार</a>
+        <ul class="dropdown">
+          <li><a href="category.html?cat=विश्व समाचार&sub=आंतरराष्ट्रीय संबंध">आंतरराष्ट्रीय संबंध</a></li>
+          <li><a href="category.html?cat=विश्व समाचार&sub=विदेशी नीतिया">विदेशी नीतिया</a></li>
+          <li><a href="category.html?cat=विश्व समाचार&sub=वैश्विक घटनाएँ">वैश्विक घटनाएँ</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="category.html?cat=तथ्य जाँच">तथ्य जाँच</a>
+        <ul class="dropdown">
+          <li><a href="category.html?cat=तथ्य जाँच&sub=गलत सूचनाओं का पर्दाफाश">गलत सूचनाओं का पर्दाफाश</a></li>
+          <li><a href="category.html?cat=तथ्य जाँच&sub=फर्जी खबरों की पड़ताल">फर्जी खबरों की पड़ताल</a></li>
+          <li><a href="category.html?cat=तथ्य जाँच&sub=वायरल दावों की सच्चाई">वायरल दावों की सच्चाई</a></li>
+        </ul>
+      </li>
+
     </ul>
 
-    <!-- RIGHT SIDE (SEARCH + LIVE BUTTON) -->
+    <!-- RIGHT ACTIONS (SEARCH ICON + LIVE) -->
     <div class="nav-right">
-      <div class="search-box">
-        <input id="searchInput" type="text" placeholder="Search..." />
-      </div>
+      <!-- only icon (no input) -->
+      <button class="search-btn" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+          <path fill="#fff" d="M21 20l-5.7-5.7a7 7 0 10-1.4 1.4L20 21l1-1zM4 10a6 6 0 1112 0A6 6 0 014 10z"/>
+        </svg>
+      </button>
 
-      <!-- LIVE BUTTON (Blink + YouTube Link) -->
-      <button class="live-btn">LIVE</button>
+      <button class="live-btn blink" id="liveBtn">LIVE</button>
     </div>
   </nav>
 
-  <!-- **************************************************
-       🔴 3 COLUMN SECTION (TRENDING | LATEST | EDITORIALS)
-       ************************************************** -->
+  <!-- 3 COLUMNS -->
   <section class="three-columns">
-
-    <!-- LEFT COLUMN -->
-    <div class="col col-trending">
+    <div class="col">
       <h3 class="col-title">TRENDING</h3>
       <div class="col-list" id="trendingList"></div>
     </div>
 
-    <!-- MIDDLE COLUMN -->
-    <div class="col col-latest">
+    <div class="col">
       <h3 class="col-title">LATEST NEWS</h3>
       <div class="col-list" id="latestList"></div>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="col col-editorials">
+    <div class="col">
       <h3 class="col-title">EDITORIALS</h3>
       <div class="col-list" id="editorialList"></div>
     </div>
-
   </section>
-  
- <!-- ===========================
-     INFINITE FEED (below 3-columns) + YT SIDEBAR
-     Replace your existing #infiniteFeedSection with this block
-     =========================== -->
-<section id="infiniteFeedSection" class="infinite-feed container" style="max-width:1200px;margin:28px auto;padding:0 12px;">
-  <h3 style="margin-bottom:12px">Latest Stories</h3>
 
-  <!-- controls -->
-  <div id="feedControls" style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
-    <label style="font-weight:600;margin-right:8px">Show:</label>
-    <button class="feed-filter active" data-period="all">All</button>
-    <button class="feed-filter" data-period="1">1 day</button>
-    <button class="feed-filter" data-period="10">10 days</button>
-    <button class="feed-filter" data-period="30">1 month</button>
-  </div>
+  <!-- FEED + SIDEBAR -->
+  <section id="infiniteFeedSection" class="infinite-feed container" style="max-width:1200px;margin:28px auto;padding:0 12px;">
+    <h3 style="margin-bottom:12px">Latest Stories</h3>
 
-  <!-- grid: left = feed, right = youtube -->
-  <div class="feed-and-side" style="display:grid;grid-template-columns: 1fr 320px; gap:20px; align-items:start;">
-
-    <!-- LEFT: feed list (JS uses #feedList, #feedSentinel, #feedLoader) -->
-    <div>
-      <div id="feedList" class="feed-list"></div>
-      <div id="feedLoader" style="display:none;text-align:center;margin:16px 0;color:#666">Loading more stories…</div>
-      <div id="feedSentinel" style="height:28px;"></div>
+    <div id="feedControls" style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+      <label style="font-weight:600;margin-right:8px">Show:</label>
+      <button class="feed-filter active" data-period="all">All</button>
+      <button class="feed-filter" data-period="1">1 day</button>
+      <button class="feed-filter" data-period="10">10 days</button>
+      <button class="feed-filter" data-period="30">1 month</button>
     </div>
 
-    <!-- RIGHT: YT sidebar (lazy placeholders, will become iframes only when section visible) -->
-    <aside id="infiniteFeedSidebar" class="infinite-feed-sidebar" style="position:relative;">
-      <h4 style="margin:0 0 10px;font-weight:700;">Videos</h4>
-
-      <div class="yt-list" style="display:flex;flex-direction:column;gap:12px;">
-        <div class="yt-item lazy-yt" data-video-id="VIDEO_ID_1">
-          <div class="yt-thumb" style="height:120px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff">Loading video...</div>
-        </div>
-        <div class="yt-item lazy-yt" data-video-id="VIDEO_ID_2">
-          <div class="yt-thumb" style="height:120px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff">Loading video...</div>
-        </div>
-        <div class="yt-item lazy-yt" data-video-id="VIDEO_ID_3">
-          <div class="yt-thumb" style="height:120px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff">Loading video...</div>
-        </div>
-        <div class="yt-item lazy-yt" data-video-id="VIDEO_ID_4">
-          <div class="yt-thumb" style="height:120px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff">Loading video...</div>
-        </div>
-        <!-- optional 5th -->
-        <div class="yt-item lazy-yt" data-video-id="VIDEO_ID_5">
-          <div class="yt-thumb" style="height:120px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff">Loading video...</div>
-        </div>
+    <div class="feed-and-side" style="display:grid;grid-template-columns:1fr 320px;gap:20px;">
+      <div>
+        <div id="feedList" class="feed-list"></div>
+        <div id="feedLoader" style="display:none;text-align:center;margin:16px 0;color:#666">Loading...</div>
+        <div id="feedSentinel" style="height:28px;"></div>
       </div>
-    </aside>
-  </div>
-</section>
-<!-- =========================== END INFINITE FEED + YT SIDEBAR =========================== -->
 
-      <!-- ============================
-     RELATED POSTS ROW (homepage)
-     Place THIS just above the footer and below the main columns
-     (remove any other duplicate related-section in footer)
-     ============================ -->
-<section id="relatedHomeSection" class="related-home-section" style="max-width:1200px;margin:28px auto;padding:0 16px;">
-  <h2 class="related-home-title">संबंधित पोस्ट</h2>
+      <aside id="infiniteFeedSidebar" class="infinite-feed-sidebar">
+        <h4 style="margin:0 0 10px;font-weight:700;">Videos</h4>
+        <div class="yt-list" style="display:flex;flex-direction:column;gap:12px;">
+          <div class="yt-item lazy-yt" data-video-id="VIDEO1">
+            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
+          </div>
+          <div class="yt-item lazy-yt" data-video-id="VIDEO2">
+            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
+          </div>
+          <div class="yt-item lazy-yt" data-video-id="VIDEO3">
+            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-  <!-- grid of 4 cards (JS will inject content here) -->
-  <div id="relatedHomeGrid" class="related-home-grid">
-    <!-- JS will populate 4 cards -->
-  </div>
-
-  <!-- optional pagination / show more button -->
-  <div style="text-align:center;margin-top:16px;">
-    <button id="relatedShowMore" class="btn-outline" style="padding:8px 14px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer;">और पढ़ें</button>
-  </div>
-</section>
-<!-- ============================ END RELATED HOME ROW ============================ -->
-
+  <!-- RELATED HOME SECTION -->
+  <section id="relatedHomeSection" class="related-home-section" style="max-width:1200px;margin:28px auto;padding:0 16px;">
+    <h2 class="related-home-title">संबंधित पोस्ट</h2>
+    <div id="relatedHomeGrid" class="related-home-grid"></div>
+    <div style="text-align:center;margin-top:16px;">
+      <button id="relatedShowMore" class="btn-outline">और पढ़ें</button>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    © India Daily
+    <div class="footer-top container">
+
+      <div class="f-col">
+        <img src="images/india-daily-logo.jpg" class="footer-logo" />
+        <p class="brand-desc">India Daily — भरोसेमंद खबरें, हर पल।</p>
+      </div>
+
+      <div class="f-col">
+        <h4>Quick Links</h4>
+        <ul class="quick-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
+          <li><a href="category.html?cat=खेल">खेल</a></li>
+          <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>Newsletter</h4>
+        <form id="newsletterForm" class="newsletter">
+          <input id="newsletterEmail" type="email" placeholder="Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <div id="newsletterMsg" class="small muted"></div>
+
+        <div class="social-row small-row">
+          <a href="#" class="social-icon">F</a>
+          <a href="#" class="social-icon">X</a>
+          <a href="#" class="social-icon">YT</a>
+          <a href="#" class="social-icon">IG</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">© <span id="copyYear"></span> India Daily</div>
+      <div class="back-top"><a id="backToTop" href="#">Back to top ↑</a></div>
+    </div>
   </footer>
 
-  <!-- LOAD JS -->
+  <!-- JS -->
   <script type="module" src="js/main.js"></script>
- <!-- START: SITE FOOTER -->
-<footer class="site-footer">
-  <!-- top area: three columns -->
-  <div class="footer-top container">
-    <!-- left: logo + desc -->
-    <div class="f-col col-left">
-      <img src="images/india-daily-logo.jpg" alt="India Daily" class="footer-logo" />
-      <p class="brand-desc">India Daily — taza aur bharosemand khabar. Latest updates, analysis aur features.</p>
-    </div>
-
-    <!-- center: quick links (keeps same layout) -->
-    <div class="f-col col-center">
-      <h4>Quick Links</h4>
-      <ul class="quick-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="category.html?cat=politics">राजनीति</a></li>
-        <li><a href="category.html?cat=sports">खेल</a></li>
-        <li><a href="category.html?cat=entertainment">मनोरंजन</a></li>
-      </ul>
-    </div>
-
-    <!-- right: about + newsletter + social icons (clean icons) -->
-    <div class="f-col col-right">
-      <h4>About</h4>
-      <p>Hamara mission: sahi samay par sahi khabar. Contact: <a href="mailto:info@indiadaily.test">info@indiadaily.test</a></p>
-
-      <h4>Newsletter</h4>
-      <form id="newsletterForm" class="newsletter">
-        <input id="newsletterEmail" type="email" placeholder="Email daalein" required />
-        <button type="submit">Subscribe</button>
-      </form>
-
-      <!-- social icons (no white boxes) -->
-      <div class="social-row small-row">
-        <a href="#" class="social-icon" aria-label="facebook">F</a>
-        <a href="#" class="social-icon" aria-label="x">X</a>
-        <a href="#" class="social-icon" aria-label="youtube">YT</a>
-        <a href="#" class="social-icon" aria-label="instagram">IG</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- footer bottom: centered copyright + back to top at right (we will center copyright) -->
-  <div class="footer-bottom">
-    <div class="copyright">© <span id="copyYear"></span> India Daily. All rights reserved.</div>
-    <div class="back-top"><a href="#" id="backToTop">Back to top ↑</a></div>
-  </div>
-</footer>
-<!-- END: SITE FOOTER -->
-
-
 
 </body>
 </html>
