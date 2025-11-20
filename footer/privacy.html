@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Privacy &amp; Policy | India Daily</title>
+<style>
+  :root{
+    --brand:#ff0000;
+    --dark:#c80000;
+    --bg:#fff;
+    --muted:#666;
+    --card:#fff7f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.6}
+  .site-header-placeholder{
+    position:fixed;top:0;left:0;right:0;height:78px;background:linear-gradient(90deg,var(--dark), #5a0a0a);
+    display:flex;align-items:center;gap:12px;padding:10px 18px;z-index:60;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15)
+  }
+  .site-header-placeholder img{height:48px;display:block}
+  .site-header-placeholder .brand{font-weight:800;font-size:18px}
+
+  .wrap{max-width:980px;margin:0 auto;padding:110px 18px 60px}
+  h1{color:var(--dark);margin:0 0 8px;font-size:28px}
+  .tag{color:var(--brand);font-weight:700;margin-bottom:12px}
+  p{margin:10px 0;color:#222;font-size:15.6px}
+  h2{font-size:20px;color:var(--dark);margin-top:22px;border-left:6px solid var(--brand);padding-left:10px}
+  ul{margin:8px 0 8px 20px}
+  li{margin:6px 0}
+  .note{background:var(--card);padding:12px;border-left:4px solid var(--brand);border-radius:6px;margin:14px 0}
+  a{color:var(--dark);text-decoration:underline}
+  .footer-links{margin-top:22px;font-size:14px}
+  .to-top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;background:var(--brand);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18);z-index:90}
+
+  /* small screens */
+  @media (max-width:720px){
+    .wrap{padding-top:130px}
+  }
+</style>
+</head>
+<body>
+
+  <!-- header placeholder -->
+  <div class="site-header-placeholder" role="banner">
+    <img src="../assets/images/india-daily-logo.png" alt="India Daily logo (change path if needed)" id="privacyLogo">
+    <div>
+      <div class="brand">India Daily</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.95);margin-top:3px">Fast. Fearless. Facts.</div>
+    </div>
+  </div>
+
+  <main class="wrap" role="main" aria-labelledby="privacy-title">
+    <h1 id="privacy-title">Privacy &amp; Policy</h1>
+    <div class="tag">Your Information, Our Responsibility</div>
+
+    <p>Last updated: <strong><span id="lastUpdated"></span></strong></p>
+
+    <p>
+      At <strong>India Daily</strong>, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit our website, use our services, or interact with our content.
+    </p>
+
+    <h2>Information We Collect</h2>
+    <p>We may collect the following types of information:</p>
+    <ul>
+      <li><strong>Personal Information:</strong> Name, email address, phone number, and other details you provide when subscribing to newsletters, commenting, or contacting us.</li>
+      <li><strong>Technical Information:</strong> IP address, browser type, device information, and browsing behavior through cookies and analytics tools.</li>
+      <li><strong>User-Generated Content:</strong> Comments, feedback, and interactions on our website and social media channels.</li>
+    </ul>
+
+    <h2>How We Use Your Information</h2>
+    <p>We use the collected information for the following purposes:</p>
+    <ul>
+      <li>To improve website functionality and user experience.</li>
+      <li>To provide personalized news updates and recommendations.</li>
+      <li>To analyze website traffic and user engagement.</li>
+      <li>To communicate with you regarding inquiries, newsletters, or promotions.</li>
+      <li>To ensure compliance with legal obligations and website security.</li>
+    </ul>
+
+    <h2>Cookies &amp; Tracking Technologies</h2>
+    <p>
+      We use cookies and similar tracking technologies to enhance user experience and analyze website traffic. Cookies may be used to remember preferences, serve personalized content, and measure engagement.
+    </p>
+    <p class="note">
+      You can manage your cookie preferences through your browser settings. Disabling cookies may affect certain features of the website.
+    </p>
+
+    <h2>Sharing of Information</h2>
+    <p>We do not sell or rent your personal information. However, we may share your information with:</p>
+    <ul>
+      <li><strong>Service Providers:</strong> Third-party vendors assisting in website operations, analytics, and email communications.</li>
+      <li><strong>Legal Authorities:</strong> If required by law, we may disclose information to comply with legal obligations or protect our rights.</li>
+    </ul>
+
+    <h2>Data Security</h2>
+    <p>We implement security measures to protect your personal information from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet is entirely secure, and we cannot guarantee absolute security.</p>
+
+    <h2>Your Rights &amp; Choices</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Request access to your personal information.</li>
+      <li>Update or delete your personal data.</li>
+      <li>Opt out of marketing communications.</li>
+      <li>Manage cookie preferences.</li>
+    </ul>
+
+    <h2>Third-Party Links</h2>
+    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of external sites. Please review the privacy policies of any sites you visit.</p>
+
+    <h2>Changes to This Privacy Policy</h2>
+    <p>We reserve the right to update this Privacy Policy at any time. Changes will be posted on this page with an updated “Last Updated” date. Please check this page periodically for updates.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, please contact us at: <strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong></p>
+
+    
+  </main>
+
+   <!-- ------ FOOTER ------ -->
+   <div id="footer"></div>
+
+<script>
+fetch("./footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
+ 
+
+<script>
+  // set last updated to today's date (format: Month DD, YYYY)
+  (function(){
+    const d = new Date();
+    const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('lastUpdated').textContent = d.toLocaleDateString('en-US', opts);
+  })();
+
+  // back to top
+  document.getElementById('toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // logo fallback
+  (function(){
+    const logo = document.getElementById('privacyLogo');
+    if(logo) logo.onerror = ()=> { const t=document.createElement('div'); t.textContent='India Daily'; t.style.fontWeight='800'; t.style.color='#fff'; logo.replaceWith(t); }
+  })();
+</script>
+
+</body>
+</html>

@@ -192,49 +192,16 @@
       <button id="relatedShowMore" class="btn-outline">और पढ़ें</button>
     </div>
   </section>
+ <div id="footer"></div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-top container">
+<script>
+fetch("./footer/footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
 
-      <div class="f-col">
-        <img src="images/india-daily-logo.jpg" class="footer-logo" />
-        <p class="brand-desc">India Daily — भरोसेमंद खबरें, हर पल।</p>
-      </div>
-
-      <div class="f-col">
-        <h4>Quick Links</h4>
-        <ul class="quick-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
-          <li><a href="category.html?cat=खेल">खेल</a></li>
-          <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
-        </ul>
-      </div>
-
-      <div class="f-col">
-        <h4>Newsletter</h4>
-        <form id="newsletterForm" class="newsletter">
-          <input id="newsletterEmail" type="email" placeholder="Email" required />
-          <button type="submit">Subscribe</button>
-        </form>
-        <div id="newsletterMsg" class="small muted"></div>
-
-        <div class="social-row small-row">
-          <a href="#" class="social-icon">F</a>
-          <a href="#" class="social-icon">X</a>
-          <a href="#" class="social-icon">YT</a>
-          <a href="#" class="social-icon">IG</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <div class="copyright">© <span id="copyYear"></span> India Daily</div>
-      <div class="back-top"><a id="backToTop" href="#">Back to top ↑</a></div>
-    </div>
-  </footer>
 
   <!-- JS -->
   <script type="module" src="js/main.js"></script>

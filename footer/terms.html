@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Terms &amp; Conditions | India Daily</title>
+<style>
+  :root{
+    --brand:#ff0000;
+    --dark:#c80000;
+    --bg:#fff;
+    --muted:#666;
+    --card:#fff7f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.6}
+  .site-header-placeholder{
+    position:fixed;top:0;left:0;right:0;height:78px;background:linear-gradient(90deg,var(--dark), #5a0a0a);
+    display:flex;align-items:center;gap:12px;padding:10px 18px;z-index:60;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15)
+  }
+  .site-header-placeholder img{height:48px;display:block}
+  .site-header-placeholder .brand{font-weight:800;font-size:18px}
+
+  .wrap{max-width:980px;margin:0 auto;padding:110px 18px 60px}
+  .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:10px}
+  h1{color:var(--dark);margin:0 0 8px;font-size:28px}
+  .tag{color:var(--brand);font-weight:700;margin-bottom:12px}
+  p{margin:10px 0;color:#222;font-size:15.6px}
+  h2{font-size:18px;color:var(--dark);margin-top:20px;border-left:6px solid var(--brand);padding-left:10px}
+  ul{margin:8px 0 8px 20px}
+  li{margin:6px 0}
+  .note{background:var(--card);padding:12px;border-left:4px solid var(--brand);border-radius:6px;margin:14px 0}
+  a{color:var(--dark);text-decoration:underline}
+  .footer-links{margin-top:22px;font-size:14px}
+  .to-top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;background:var(--brand);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18);z-index:90}
+
+  @media (max-width:720px){ .wrap{padding-top:130px} }
+</style>
+</head>
+<body>
+
+  <!-- header placeholder (remove if your site has a header) -->
+  <div class="site-header-placeholder" role="banner">
+    <img src="/footer/india-daily-logo.jpg" alt="India Daily logo (change path if needed)" id="termsLogo">
+    <div>
+      <div class="brand">India Daily</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.95);margin-top:3px">Fast. Fearless. Facts.</div>
+    </div>
+  </div>
+
+  <main class="wrap" role="main" aria-labelledby="terms-title">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> &raquo; <span>Terms and Conditions</span>
+    </nav>
+
+    <h1 id="terms-title">Terms and Conditions</h1>
+    <div class="tag">Please read these terms carefully before using India Daily</div>
+
+    <p><strong>Introduction</strong></p>
+    <p>
+      These Terms and Conditions govern your use of the <strong>India Daily</strong> website and digital platforms. By accessing or using our services you agree to comply with these terms. If you do not agree, please do not use our services.
+    </p>
+
+    <h2>User Responsibilities</h2>
+    <ul>
+      <li>Users must provide accurate and truthful information when interacting with our platform.</li>
+      <li>Unauthorized reproduction, modification, or distribution of our content is strictly prohibited.</li>
+      <li>Users must not engage in illegal activities, harassment, hate speech, or disruptive behavior on our platforms.</li>
+      <li>Users are responsible for maintaining the confidentiality of any account credentials and for all activity under their account.</li>
+    </ul>
+
+    <h2>Intellectual Property Rights</h2>
+    <p>
+      All content on India Daily — including text, images, videos, logos, and design — is the property of India Daily or its content partners and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, republish, distribute, or otherwise use our content without prior written permission, except as permitted by law (e.g., fair use).
+    </p>
+
+    <h2>Limitation of Liability</h2>
+    <p>
+      India Daily and its affiliates are not liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to, or use of, the website or its content. While we aim for accuracy, we do not guarantee the completeness or timeliness of information.
+    </p>
+
+    <h2>Termination of Use</h2>
+    <p>
+      India Daily reserves the right to suspend or terminate access to the platform, at its sole discretion, for users who violate these Terms or engage in conduct prejudicial to the interests of India Daily or its users.
+    </p>
+
+    <h2>Changes to Terms and Conditions</h2>
+    <p>
+      We may revise these Terms and Conditions from time to time. The date of the latest update will be reflected on this page. Continued use of the site after changes indicates your acceptance of the revised terms.
+    </p>
+
+    <div class="note">
+      <strong>Important:</strong> If you have any legal concerns or require permission to use India Daily content, please contact us using the details below.
+    </div>
+
+    <h2>Contact</h2>
+    <p>For any concerns or questions regarding these Terms and Conditions, contact us at: <strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong></p>
+
+
+  </main>
+
+   <!-- ------ FOOTER ------ -->
+   <div id="footer"></div>
+
+<script>
+fetch("./footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
+ 
+
+<script>
+  // back to top
+  document.getElementById('toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // logo fallback
+  (function(){
+    const logo = document.getElementById('termsLogo');
+    if(logo) logo.onerror = ()=> { const t=document.createElement('div'); t.textContent='India Daily'; t.style.fontWeight='800'; t.style.color='#fff'; logo.replaceWith(t); }
+  })();
+</script>
+
+</body>
+</html>

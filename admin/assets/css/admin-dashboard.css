@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    display: flex;
+    background: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #e60000; /* India Daily Red */
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 12px;
+    margin: 8px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background: #b90000;
+}
+
+.sidebar .logout {
+    margin-top: 60px;
+    background: #660000;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px 30px;
+}
+
+.top-bar h1 {
+    margin: 0;
+    color: #333;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.cards {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.card h3 {
+    margin: 0;
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 34px;
+    font-weight: bold;
+    color: #e60000;
+}

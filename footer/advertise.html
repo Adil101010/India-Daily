@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Advertise | India Daily</title>
+<style>
+  :root{
+    --brand:#ff0000;
+    --brand-dark:#c80000;
+    --bg:#fff;
+    --muted:#555;
+    --card:#fff7f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);color:#222;line-height:1.6}
+  .site-header-placeholder{
+    position:fixed;top:0;left:0;right:0;height:78px;background:linear-gradient(90deg,var(--brand-dark), #5a0a0a);
+    display:flex;align-items:center;gap:12px;padding:10px 18px;z-index:60;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15)
+  }
+  .site-header-placeholder img{height:46px;display:block}
+  .site-header-placeholder .brand{font-weight:800;font-size:18px}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:110px 18px 60px}
+  .card{background:#fff;padding:20px;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:18px}
+  h1{margin:0 0 8px;color:var(--brand-dark);font-size:28px}
+  .tagline{color:var(--brand);font-weight:700;margin-bottom:12px}
+  p{margin:8px 0;color:#222}
+  .muted{color:var(--muted);font-size:14px}
+
+  /* two columns for specs */
+  .cols{display:grid;grid-template-columns: 1fr 320px;gap:20px;align-items:start}
+  @media (max-width:900px){ .cols{grid-template-columns:1fr} .sidebar{order:2} .main{order:1} }
+
+  /* specs list */
+  .specs{display:block}
+  .specs h3{margin:12px 0 8px;color:var(--brand-dark)}
+  .specs ul{padding-left:18px;margin:6px 0}
+  .specs li{margin:6px 0;font-size:15px}
+
+  table.spec-table{width:100%;border-collapse:collapse;margin-top:10px}
+  table.spec-table th, table.spec-table td{padding:8px;border:1px solid #eee;text-align:left}
+  table.spec-table th{background:#fff0f0;color:var(--brand-dark)}
+
+  .note{background:var(--card);padding:12px;border-left:4px solid var(--brand);border-radius:6px;margin-top:12px}
+
+  /* contact box */
+  .contact{background:#fff;border-radius:8px;padding:14px;border:1px solid #f0dcdc}
+  .contact a.btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;font-weight:700}
+  .contact p{margin:8px 0}
+
+  .download-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .download-links a{padding:8px 10px;border-radius:6px;background:#fff;border:1px solid #f0dcdc;text-decoration:none;color:var(--brand-dark);font-weight:700}
+
+  .footer-note{margin-top:18px;color:var(--muted);font-size:14px}
+
+  /* back to top */
+  .to-top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;background:var(--brand);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18);z-index:90}
+</style>
+</head>
+<body>
+
+  <!-- header placeholder (remove if you already have site header) -->
+  <div class="site-header-placeholder" role="banner">
+    <img src="../assets/images/india-daily-logo.png" alt="India Daily logo (change path if needed)" id="adLogo">
+    <div>
+      <div class="brand">India Daily</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:3px">Fast. Fearless. Facts.</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card main card-intro">
+      <h1>Advertising with India Daily</h1>
+      <div class="tagline">Reach your audience with high-impact banner placements across India Daily's digital network</div>
+      <p class="muted">
+        For advertising inquiries, placements, custom packages and creative support, contact our sales team.
+      </p>
+    </div>
+
+    <div class="cols">
+      <!-- LEFT: Detailed Specs -->
+      <div class="card main">
+        <h2>Banner Advertising Specifications</h2>
+
+        <div class="specs">
+          <h3>Leaderboard Banner</h3>
+          <ul>
+            <li><strong>Dimensions:</strong> 728 × 90 pixels</li>
+            <li><strong>Maximum File Size:</strong> Under 100KB</li>
+            <li><strong>Frame Rate:</strong> 12–16 fps</li>
+            <li><strong>Animation Limit:</strong> 15 seconds (animation must stop before 15s)</li>
+            <li><strong>Looping:</strong> Not allowed (Replay button permitted)</li>
+            <li><strong>User-Initiated Sound:</strong> Allowed</li>
+            <li><strong>Backup Image:</strong> Mandatory</li>
+            <li><strong>Branding Requirement:</strong> Last frame must include the company’s branding</li>
+          </ul>
+
+          <h3>Accepted File Formats</h3>
+          <ul>
+            <li>PNG, JPEG, GIF, HTML5</li>
+          </ul>
+
+          <h3>Third-Party Tags</h3>
+          <p class="muted">If you are submitting third-party tags, ensure all creative images include visible borders and meet the size & performance specs above.</p>
+
+          <h3>HTML Advertising Guidelines</h3>
+          <ul>
+            <li>An HTML document is mandatory for HTML creatives.</li>
+            <li>CSS files must be separate from the HTML.</li>
+            <li>JavaScript files must be separate from the HTML.</li>
+            <li>Images: PSD, JPG, PNG, GIF.</li>
+            <li>Videos (if used inside ad): MP4, OGV, WEBM.</li>
+            <li>If using Google Web Designer (GWD), provide files in open format (not published zip).</li>
+          </ul>
+
+          <div class="note">
+            <strong>Important:</strong> Keep creatives lightweight and optimized for fast delivery. Provide a static backup image (PNG/JPG) for all animated ads.
+          </div>
+
+          <h3>Standard Sizes (examples)</h3>
+          <table class="spec-table" aria-describedby="table-desc">
+            <thead>
+              <tr><th>Unit</th><th>Dimensions</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Leaderboard</td><td>728×90</td><td>Top of page, high visibility</td></tr>
+              <tr><td>Banner</td><td>468×60</td><td>Traditional banner</td></tr>
+              <tr><td>Medium Rectangle</td><td>300×250</td><td>Sidebar / in-article</td></tr>
+              <tr><td>Skyscraper</td><td>160×600 / 300×600</td><td>Right column long ads</td></tr>
+              <tr><td>Mobile Banner</td><td>320×50</td><td>Mobile optimized creatives</td></tr>
+            </tbody>
+          </table>
+
+        </div> <!-- specs -->
+      </div>
+
+      <!-- RIGHT: Contact / CTA box -->
+      <aside class="card sidebar" aria-label="Advertising contact">
+        <h3>Book an Ad</h3>
+        <div class="contact">
+          <p>For advertising inquiries and placement details, email our sales team:</p>
+          <p><strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong></p>
+
+          <p class="muted">(If you prefer, update this contact to your own booking email.)</p>
+
+          <div style="margin-top:12px">
+            <a class="btn" href="mailto:info.abstarnews@gmail.com">Contact Sales</a>
+          </div>
+
+          <div style="margin-top:14px" class="footer-note">
+            <strong>Need help with creative?</strong>
+            <p class="muted">We provide basic creative checks & compression guidance. Ask for recommended specs before submitting large HTML5 creatives.</p>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="muted">Download spec sheet</div>
+            <div class="download-links">
+              <!-- If you have spec PDFs, replace href with actual paths -->
+              <a href="#" onclick="alert('Replace with real PDF link')">Ad Specs (PDF)</a>
+              <a href="#" onclick="alert('Replace with real ZIP/guide link')">HTML5 Guide</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div> <!-- cols -->
+
+    <div class="card">
+      <h3>Final Notes</h3>
+      <p class="muted">All creatives submitted to India Daily will be reviewed for technical compliance and editorial fit. India Daily reserves the right to reject creatives that violate our advertising policy or brand guidelines.</p>
+      <p class="muted">For custom sponsorships, native content, or large-scale campaigns, please mention campaign goals, target geo, and preferred dates in your email.</p>
+    </div>
+
+    <div class="card">
+      <a href="../index.html" style="text-decoration:none;color:var(--brand-dark);font-weight:700">← Back to Home</a>
+    </div>
+
+  </div> <!-- wrap -->
+
+  <div class="to-top" id="toTop" title="Back to top">↑</div>
+
+     <!-- ------ FOOTER ------ -->
+   <div id="footer"></div>
+
+<script>
+fetch("./footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
+ 
+
+<script>
+  // Back to top
+  document.getElementById('toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Optional: fallback if logo missing
+  (function(){
+    var img = document.getElementById('adLogo');
+    if(!img) return;
+    img.onerror = function(){
+      var div = document.createElement('div');
+      div.textContent = 'India Daily';
+      div.style.fontWeight = '800';
+      div.style.color = '#fff';
+      img.replaceWith(div);
+    }
+  })();
+</script>
+
+</body>
+</html>

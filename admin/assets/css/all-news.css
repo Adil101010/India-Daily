@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: "Segoe UI", Arial;
+    background: #f4f4f4;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 95%;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-top: 0;
+    color: #e60000;
+    font-size: 26px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 250px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.add-btn {
+    background: #e60000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.add-btn:hover {
+    background: #c40000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #e60000;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.status-published {
+    color: green;
+    font-weight: 600;
+}
+
+.status-draft {
+    color: orange;
+    font-weight: 600;
+}
+
+.action-btns button {
+    padding: 6px 12px;
+    border: none;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #0056d2;
+    color: white;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #003e9e;
+}
+
+.delete-btn:hover {
+    background: #b00000;
+}

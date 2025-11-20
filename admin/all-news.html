@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>All News — Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .admin-layout{display:flex}
+    .admin-sidebar{width:220px;background:var(--dark-red);color:#fff;padding:20px;}
+    .admin-main{flex:1;padding:22px;}
+    .top-controls{display:flex;gap:12px;align-items:center;margin-bottom:18px;}
+    .search-input{padding:10px;border:1px solid #ddd;border-radius:6px;width:320px}
+    .add-btn{background:var(--primary-red);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+    thead th{background:var(--dark-red);color:#fff;padding:12px;text-align:left}
+    tbody td{padding:12px;border-bottom:1px solid #f2f2f2}
+    .action-btn{padding:6px 10px;border-radius:6px;border:none;cursor:pointer}
+    .edit-btn{background:#0056d2;color:#fff}
+    .delete-btn{background:#c10000;color:#fff}
+    @media (max-width:900px){ .search-input{width:160px} .admin-sidebar{display:none} }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>India Daily</h2>
+      <ul style="list-style:none;padding:0;margin-top:12px">
+        <li><a href="dashboard.html" style="color:#fff;text-decoration:none">Dashboard</a></li>
+        <li style="margin-top:8px"><a href="add-news.html" style="color:#fff;text-decoration:none">Add News</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-main">
+      <header style="display:flex;justify-content:space-between;align-items:center">
+        <h1 style="margin:0">All News</h1>
+        <a class="add-btn" href="add-news.html">+ Add News</a>
+      </header>
+
+      <div class="top-controls" style="margin-top:16px">
+        <input id="searchInput" class="search-input" placeholder="Search by title or category..." />
+      </div>
+
+      <div style="margin-top:8px;overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:60px">ID</th>
+              <th>Title</th>
+              <th style="width:160px">Category</th>
+              <th style="width:120px">Status</th>
+              <th style="width:140px">Date</th>
+              <th style="width:180px">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="newsTableBody">
+            <!-- JS fills -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/admin-all-news.js"></script>
+</body>
+</html>

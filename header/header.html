@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Search - India Daily</title>
+  <title>India Daily — Header</title>
 
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/search.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/header/header.css" />
 </head>
+
 <body>
-     <!-- TOP BAR -->
+
+  <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-left"><span id="topDate">Loading date...</span></div>
     <div class="top-right social-icons">
@@ -23,11 +27,11 @@
 
   <!-- HEADER -->
   <header class="header">
-    <img src="images/india-daily-logo.jpg" alt="India Daily" class="logo" />
+    <img src="/header/india-daily-logo.jpg" alt="India Daily" class="logo" />
   </header>
-  
+
   <!-- NAVBAR -->
-  <nav class="main-nav">
+  <nav class="main-nav" aria-label="Main navigation">
     <ul id="navLinks" class="nav-links">
 
       <li class="active">
@@ -113,73 +117,19 @@
 
     </ul>
 
-  <!-- include your header/nav here (same as index) -->
-  <!-- ... header/nav ... -->
+    <!-- RIGHT ACTIONS (SEARCH ICON + LIVE) -->
+    <div class="nav-right">
+      <button class="search-btn" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+          <path fill="#fff" d="M21 20l-5.7-5.7a7 7 0 10-1.4 1.4L20 21l1-1zM4 10a6 6 0 1112 0A6 6 0 014 10z"/>
+        </svg>
+      </button>
 
-  <main class="container" style="max-width:1100px;margin:28px auto;padding:0 16px;">
-    <header style="margin-bottom:18px;">
-      <h1 style="margin:0 0 8px;font-size:24px;">खोज</h1>
-      <p style="margin:0;color:#666">Site-wide search — शब्द लिखें और परिणाम turant दिखेंगे.</p>
-    </header>
+      <button class="live-btn" id="liveBtn" aria-label="Live">LIVE</button>
+    </div>
+  </nav>
 
-    <section class="search-top">
-      <div class="search-input-wrap">
-        <input id="searchInput" type="search" placeholder="खोजें — जैसे: क्रिकेट, दिल्ली, AI..." aria-label="Search input" />
-        <button id="clearBtn" aria-label="Clear search">✕</button>
-      </div>
-
-      <div class="search-controls">
-        <select id="categoryFilter">
-          <option value="">सभी श्रेणियाँ</option>
-        </select>
-        <div id="resultsSummary" class="results-summary"></div>
-      </div>
-    </section>
-
-    <section style="display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:14px;">
-      <div>
-        <div id="resultsList" class="results-list"></div>
-
-        <div style="text-align:center;margin-top:16px;">
-          <button id="loadMoreBtn" class="btn-outline" style="display:none;">और दिखाएँ</button>
-        </div>
-
-        <div id="noResults" style="display:none;text-align:center;color:#777;margin-top:18px;">
-          <p style="font-weight:700">कोई परिणाम नहीं मिला</p>
-          <p>कृपया अलग शब्द आज़माएँ या स्पेलिंग जाँचें।</p>
-        </div>
-      </div>
-
-      <aside id="searchSidebar">
-        <div class="sidebar-section">
-          <div class="sidebar-heading">लोकप्रिय खोजें</div>
-          <div class="popular-list">
-            <a href="search.html?q=क्रिकेट">क्रिकेट</a>
-            <a href="search.html?q=दिल्ली">दिल्ली</a>
-            <a href="search.html?q=AI">AI</a>
-            <a href="search.html?q=बॉलीवुड">बॉलीवुड</a>
-          </div>
-        </div>
-
-        <div class="sidebar-section">
-          <div class="sidebar-heading">हाल की खोजें</div>
-          <div id="recentSearches"></div>
-        </div>
-      </aside>
-    </section>
-  </main>
-
-   <div id="footer"></div>
-
-<script>
-fetch("./footer/footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-</script>
-
-
-  <script type="module" src="js/search.js"></script>
+  <!-- JS -->
+  <script type="module" src="/header/header.js"></script>
 </body>
 </html>

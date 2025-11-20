@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About Us | India Daily — Fast. Fearless. Facts.</title>
+<style>
+  :root{
+    --primary: #ff0000;    /* logo bright red */
+    --dark: #c80000;       /* deep red */
+    --bg: #fff;
+    --muted: #555;
+    --card: #fff7f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.6}
+  /* header placeholder (remove if your site already has header) */
+  .site-header-placeholder{
+    position:fixed;top:0;left:0;right:0;height:78px;background:linear-gradient(90deg,var(--dark), #5a0a0a);
+    display:flex;align-items:center;gap:12px;padding:10px 18px;z-index:60;color:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15)
+  }
+  .site-header-placeholder img{height:48px;display:block}
+  .site-header-placeholder .brand{font-weight:800;font-size:18px}
+
+  .page-wrap{max-width:1180px;margin:0 auto;padding:110px 18px 60px} /* top space for header */
+
+  /* two-column layout */
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+  @media (max-width:980px){ .grid{grid-template-columns:1fr 300px} }
+  @media (max-width:820px){ .grid{grid-template-columns:1fr} .sidebar{order:2} .main{order:1} .page-wrap{padding-top:130px} }
+
+  /* main content */
+  .main h1{font-size:34px;color:var(--dark);margin:0 0 12px}
+  .punch{color:var(--primary);font-weight:700;margin-bottom:18px}
+  .lead{font-size:17px;color:#222;margin-bottom:16px}
+  h2{font-size:26px;color:var(--dark);margin:28px 0 10px;border-left:6px solid var(--primary);padding-left:12px}
+  p{margin:10px 0;color:#222;font-size:15.5px}
+  .highlight{background:var(--card);border-left:5px solid var(--primary);padding:14px;border-radius:6px;margin:12px 0}
+  ul.core-list{list-style:none;padding-left:0;margin:0}
+  ul.core-list li{padding:8px 0;font-size:15.5px}
+  .tick{color:var(--dark);font-weight:700;margin-right:8px}
+
+  /* stats */
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .stat{background:#fff;border-radius:6px;padding:10px 12px;border-left:4px solid var(--primary);font-weight:700}
+
+  /* sidebar videos */
+  .sidebar .sticky-wrap{position:sticky;top:100px}
+  .video-card{background:#fff;border-radius:6px;padding:8px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+  .video-card iframe{width:100%;height:180px;border-radius:6px;border:0}
+  .video-title{font-size:14px;color:var(--dark);padding:8px 4px}
+
+  /* back to top */
+  .to-top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;background:var(--primary);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18);z-index:90}
+  .to-top:hover{transform:translateY(-3px)}
+
+  /* small */
+  .footer-note{margin-top:20px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+  <!-- header placeholder (replace/remove if you have real header) -->
+  <div class="site-header-placeholder" role="banner">
+    <img src="/footer/india-daily-logo.jpg" alt="India Daily logo (change path if needed)" id="siteLogo">
+    <div>
+      <div class="brand">India Daily</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:3px">Fast. Fearless. Facts.</div>
+    </div>
+  </div>
+
+  <div class="page-wrap" role="main">
+    <div class="grid">
+
+      <!-- LEFT: Main content -->
+      <main class="main" aria-labelledby="title-about">
+        <h1 id="title-about">About Us | India Daily</h1>
+        <div class="punch">Fast. Fearless. Facts.</div>
+
+        <p class="lead"><strong>Welcome to India Daily – The Voice of Truth</strong></p>
+
+        <p>
+          In an era of fast-moving news and digital transformation, <strong>India Daily</strong> stands as a beacon of credibility, accuracy, and fearless journalism. We are committed to delivering unbiased, fact-driven, and impactful news across multiple platforms, ensuring our audience stays informed, engaged, and empowered. From politics and business to sports, entertainment, and viral trends, we bring you breaking stories and in-depth analysis that shape national and global conversations.
+        </p>
+
+        <h2>Our Vision &amp; Mission</h2>
+        <p>
+          At India Daily, our mission is simple yet powerful – to provide truthful, unbiased, and insightful journalism that serves the people. We believe in the power of information and its ability to educate, inspire, and drive change. Our vision is to build a new-age digital news platform that prioritizes facts over sensationalism, keeping journalism credible, fearless, and people-centric.
+        </p>
+
+        <h2>Our Core Objectives:</h2>
+        <div class="highlight">
+          <ul class="core-list">
+            <li><span class="tick">✔</span><strong>Deliver Unbiased News:</strong> We present facts, letting our audience form their own opinions.</li>
+            <li><span class="tick">✔</span><strong>Enhance Public Awareness:</strong> We provide detailed insights and analysis on key issues.</li>
+            <li><span class="tick">✔</span><strong>Engage &amp; Empower:</strong> We encourage discussions, debates, and informed decision-making.</li>
+            <li><span class="tick">✔</span><strong>Leverage Digital Innovation:</strong> We use cutting-edge technology to enhance news accessibility and experience.</li>
+          </ul>
+        </div>
+
+        <h2>Our Editorial Principles</h2>
+        <p>Journalistic integrity is at the heart of everything we do. Our editorial policies ensure that every piece of content we publish adheres to the highest standards of accuracy and fairness.</p>
+
+        <div class="highlight">
+          <ul class="core-list">
+            <li>📝 <strong>Accuracy &amp; Fairness:</strong> Every story is thoroughly researched and fact-checked.</li>
+            <li>📝 <strong>Independence &amp; Neutrality:</strong> We do not favor any political or corporate entity.</li>
+            <li>📝 <strong>Transparency &amp; Accountability:</strong> We take responsibility for our reporting and acknowledge errors when they occur.</li>
+            <li>📝 <strong>Diversity &amp; Inclusion:</strong> We cover a wide spectrum of voices and perspectives.</li>
+          </ul>
+        </div>
+
+        <h2>Our Multi-Platform Presence</h2>
+        <ul class="core-list">
+          <li>📺 YouTube: Breaking news, investigative reports, and expert discussions.</li>
+          <li>📲 Facebook &amp; Instagram: Reels, updates, and live coverage.</li>
+          <li>🖥️ Website: Articles, analysis, and long-form journalism.</li>
+          <li>💬 Telegram &amp; WhatsApp: Instant news alerts and exclusive insights.</li>
+        </ul>
+
+        <h2>Our Team &amp; Expertise</h2>
+        <p>Behind India Daily is a passionate team of journalists, analysts, video creators, and digital strategists who work round-the-clock to deliver accurate and timely news.</p>
+
+        <div class="highlight">
+          <ul class="core-list">
+            <li>👨‍💼 <strong>Investigative Journalism:</strong> Deep dives into important issues.</li>
+            <li>🎥 <strong>Visual Storytelling:</strong> High-quality video content for digital audiences.</li>
+            <li>📊 <strong>Data-Driven Reporting:</strong> Insights backed by factual data and analysis.</li>
+            <li>🗣 <strong>Public Discourse:</strong> Engaging debates and community participation.</li>
+          </ul>
+        </div>
+
+        <h2>How India Daily Stands Out</h2>
+        <ul class="core-list">
+          <li>✅ Unbiased Reporting — no clickbait.</li>
+          <li>✅ Multi-format Coverage — video, text & live updates.</li>
+          <li>✅ Community-led Engagement — audience voices matter.</li>
+          <li>✅ Fact-first Journalism — accuracy over speed.</li>
+        </ul>
+
+        <h2>Impact & Audience Reach</h2>
+        <p>Our content reaches a growing national audience and continues to make an impact across platforms.</p>
+
+        <div class="stats">
+          <div class="stat">🌍 10M+ Monthly Visitors</div>
+          <div class="stat">📱 5M+ YouTube Subs</div>
+          <div class="stat">👍 3M+ Social Followers</div>
+          <div class="stat">🎥 100M+ Monthly Views</div>
+        </div>
+
+        <p class="footer-note">Join India Daily — stay informed, stay engaged, and be part of the conversation.</p>
+      </main>
+
+      <!-- RIGHT: Sidebar with 4 sample videos (replace VIDEO_ID_x with real IDs) -->
+      <aside class="sidebar" aria-label="Related videos">
+        <div class="sticky-wrap">
+          <div class="video-card" role="article" aria-label="Video 1">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="News video 1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-title">India Daily — Breaking News (sample)</div>
+          </div>
+
+          <div class="video-card" role="article" aria-label="Video 2">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="News video 2" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-title">India Daily — Latest Report (sample)</div>
+          </div>
+
+          <div class="video-card" role="article" aria-label="Video 3">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="News video 3" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-title">India Daily — Analysis (sample)</div>
+          </div>
+
+          <div class="video-card" role="article" aria-label="Video 4">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="News video 4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-title">India Daily — Interview (sample)</div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- grid -->
+  </div><!-- page-wrap -->
+
+   <!-- ------ FOOTER ------ -->
+   <div id="footer"></div>
+
+<script>
+fetch("./footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
+ 
+<script>
+  // Back to top
+  document.getElementById('toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // logo fallback
+  (function(){
+    const logo = document.getElementById('siteLogo');
+    if(!logo) return;
+    logo.onerror = ()=> {
+      const span = document.createElement('div');
+      span.textContent = 'India Daily';
+      span.style.fontWeight = '800';
+      span.style.color = '#fff';
+      logo.replaceWith(span);
+    };
+  })();
+</script>
+   
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Edit News — Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* reuse add-news styles */
+    .admin-layout{display:flex}
+    .admin-sidebar{width:220px;background:var(--dark-red);color:#fff;padding:20px;}
+    .admin-main{flex:1;padding:22px;}
+    .form-card{background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.05);max-width:900px}
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>India Daily</h2>
+      <ul style="list-style:none;padding:0;margin-top:12px">
+        <li><a href="dashboard.html" style="color:#fff;text-decoration:none">Dashboard</a></li>
+        <li style="margin-top:8px"><a href="all-news.html" style="color:#fff;text-decoration:none">All News</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-main">
+      <h1 style="margin:0">Edit News</h1>
+      <div class="form-card" style="margin-top:16px">
+        <form id="editNewsForm">
+          <input type="hidden" id="newsId">
+          <div class="form-row"><label>Title</label><input id="title" type="text" required /></div>
+          <div class="form-row"><label>Category</label><input id="category" type="text" /></div>
+          <div class="form-row"><label>Status</label><select id="status"><option>Published</option><option>Draft</option></select></div>
+          <div class="form-row"><label>Featured Image</label><input id="image" type="file" accept="image/*" /><div id="preview" style="margin-top:8px"></div></div>
+          <div class="form-row"><label>Content</label><textarea id="content"></textarea></div>
+
+          <div style="display:flex;gap:12px"><button class="save-btn" type="submit">Update</button><a href="all-news.html" style="padding:10px 14px;border-radius:6px;background:#f4f4f4;text-decoration:none;color:#333">Cancel</a></div>
+          <div id="msg" style="margin-top:10px;color:var(--muted)"></div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/admin-edit-news.js"></script>
+</body>
+</html>

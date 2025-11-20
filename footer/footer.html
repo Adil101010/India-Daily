@@ -1,0 +1,136 @@
+<!-- SAFE scoped footer: place as public-website/footer/footer.html -->
+<footer id="siteFooter" role="contentinfo" aria-label="Site footer">
+  <style>
+    /* ALL STYLES STRICTLY SCOPED TO #siteFooter */
+    #siteFooter{ --fd-brand:#ff0000; --fd-dark:#c80000; --fd-bg:#0b0b0b; --fd-muted:#bdbdbd; color:#fff; font-family: "Segoe UI", Roboto, Arial, sans-serif; display:block; width:100%; box-sizing:border-box; }
+    #siteFooter *{ box-sizing:border-box; }
+
+    /* prevent any accidental horizontal overflow when included */
+    #siteFooter { overflow-x: hidden; }
+
+    /* top links strip */
+    #siteFooter .ft-top{ background: linear-gradient(90deg,var(--fd-dark), #5a0606); padding:10px 12px; text-align:center; }
+    #siteFooter .ft-top .inner{ max-width:1180px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:0 8px; }
+    #siteFooter .ft-top a{ color:#fff;text-decoration:none;padding:6px 8px;font-weight:600;font-size:15px; white-space:normal; word-break:break-word; }
+    #siteFooter .ft-top .spacer{ flex:1 1 auto; min-width:12px; }
+
+    /* main area */
+    #siteFooter .ft-main{ background: var(--fd-bg); padding:28px 12px 18px; }
+    #siteFooter .ft-inner{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr 320px; gap:20px; align-items:start; }
+    @media (max-width:980px){ #siteFooter .ft-inner{ grid-template-columns:1fr 1fr; } #siteFooter .ft-news{ grid-column:1/-1; } }
+    @media (max-width:680px){ #siteFooter .ft-inner{ grid-template-columns:1fr; } }
+
+    /* brand */
+    #siteFooter .brand{ display:flex; gap:12px; align-items:flex-start; }
+    #siteFooter .brand img{ width:86px; height:auto; display:block; border-radius:6px; background:#fff; padding:6px; max-width:100%; }
+    #siteFooter .brand .txt{ color:var(--fd-muted); font-size:14px; line-height:1.45; max-width:420px; }
+
+    /* quick links */
+    #siteFooter .qlinks h4, #siteFooter .ft-news h4{ color:#fff; margin:0 0 8px; font-size:18px;
+    text-align: center;  }
+    #siteFooter .qlinks ul{ list-style:none; padding:0; margin:0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    #siteFooter .qlinks a{ color:var(--fd-muted); text-decoration:none; font-weight:600; font-size:15px; white-space:normal; }
+    #siteFooter .qlinks a:hover{ color:#fff; text-decoration:underline; }
+
+    /* newsletter */
+    #siteFooter .ft-news .form{ display:flex; gap:8px; align-items:center; }
+    #siteFooter .ft-news input[type="email"]{ flex:1; padding:10px; border-radius:6px; border:1px solid #222; background:#111; color:#fff; min-width:0; }
+    #siteFooter .ft-news button{ background:var(--fd-brand); color:#fff; border:0; padding:10px 14px; border-radius:6px; cursor:pointer; white-space:nowrap; }
+
+    /* social */
+    #siteFooter .socials{ display:flex; gap:10px; margin-top:12px; }
+    #siteFooter .socials a{ width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.06); color:#fff; text-decoration:none; }
+
+    /* bottom bar */
+    #siteFooter .ft-bottom{ border-top:1px solid rgba(255,255,255,0.04); padding:12px 12px; text-align:left; color:var(--fd-muted); position:relative; 
+      }
+    #siteFooter .ft-bottom .back-top{ position:absolute; right:12px; top:-10px; transform:translateY(0); background:var(--fd-brand); color:#fff; width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 14px rgba(0,0,0,0.18); }
+
+    /* accessibility focus */
+    #siteFooter a:focus, #siteFooter button:focus { outline:3px solid rgba(255,0,0,0.18); outline-offset:2px; }
+
+    /* ensure footer does not add min-height */
+    #siteFooter { min-height:0; }
+
+  </style>
+
+  <div class="ft-top" aria-hidden="false">
+    <div class="inner">
+      <div class="spacer"></div>
+      <a href="/footer/about.html">About Us</a>
+      <a href="/footer/advertise.html">Advertise</a>
+      <a href="/footer/disclaimer.html">Disclaimer</a>
+      <a href="/footer/feedback.html">Feedback</a>
+      <a href="/footer/privacy.html">Privacy &amp; Policy</a>
+      <a href="/footer/terms.html">Terms</a>
+      <a href="/footer/partner-content.html">Partner Content</a>
+      <div class="spacer"></div>
+    </div>
+  </div>
+
+  <div class="ft-main">
+    <div class="ft-inner">
+      <div class="brand" aria-hidden="false">
+        <!-- change path if your logo is elsewhere -->
+        <img src="/footer/india-daily-logo.jpg" alt="India Daily logo (change path if needed)">
+        <div class="txt">
+          <div style="font-weight:800;color:#fff;margin-bottom:5px">India Daily</div>
+          India Daily – भरोसेमंद खबरें, हर पल।
+        </div>
+      </div>
+
+      <div class="qlinks" aria-label="Quick links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/index.html">होम</a></li>
+          <li><a href="/category.html">राजनीति</a></li>
+          <li><a href="/category.html">खेल</a></li>
+          <li><a href="/category.html">मनोरंजन</a></li>
+        </ul>
+      </div>
+
+      <div class="ft-news" aria-label="Newsletter">
+        <h4>Newsletter</h4>
+        <form class="form" id="footerSubscribe" onsubmit="return false;" aria-label="Subscribe form" style="display:flex; gap:8px;">
+          <input type="email" id="footerEmail" placeholder="Email" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+
+        <div class="socials" aria-hidden="false">
+          <a href="#" aria-label="Facebook">F</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ft-bottom" role="contentinfo">
+      Copyright © All rights reserved. <span id="footerYear"></span> India Daily Live
+      <div class="back-top" id="footerBack" title="Back to top">↑</div>
+    </div>
+  </div>
+
+  <script>
+    // minimal JS scoped to footer only
+    (function(){
+      try { document.getElementById('footerYear').textContent = new Date().getFullYear(); } catch(e){}
+
+      const fsub = document.getElementById('footerSubscribe');
+      if(fsub){
+        fsub.addEventListener('submit', function(e){
+          e.preventDefault();
+          const em = document.getElementById('footerEmail').value.trim();
+          if(!/^\S+@\S+\.\S+$/.test(em)){ alert('Enter valid email'); return; }
+          alert('Subscribed (demo). Connect to backend to save.');
+          fsub.reset();
+        });
+      }
+
+      const bt = document.getElementById('footerBack');
+      if(bt) bt.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    })();
+  </script>
+</footer>

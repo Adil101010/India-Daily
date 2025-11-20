@@ -1,0 +1,53 @@
+/* search.css - styles for search page */
+
+:root { --muted:#777; --accent:#b33; --card-bg:#fff; }
+
+.container { font-family: 'Roboto', sans-serif; }
+
+.search-top { display:flex; gap:12px; flex-direction:column; }
+.search-input-wrap { display:flex; gap:6px; align-items:center; max-width:720px; }
+#searchInput {
+  flex:1;
+  padding:12px 14px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:16px;
+  outline:none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+#searchInput:focus { border-color:var(--accent); box-shadow:0 8px 24px rgba(0,0,0,0.06); }
+#clearBtn { background:transparent;border:1px solid #eee;padding:8px 10px;border-radius:8px;cursor:pointer; }
+
+.search-controls { display:flex; gap:12px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+#categoryFilter { padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fff; }
+.results-summary { color:var(--muted); font-size:14px; margin-left:6px; }
+
+.results-list { display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+
+.result-card {
+  display:flex; gap:12px; align-items:flex-start; background:var(--card-bg);
+  padding:12px; border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,0.04); text-decoration:none; color:inherit;
+}
+.result-thumb { width:160px; height:100px; overflow:hidden; border-radius:6px; flex-shrink:0; }
+.result-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.result-body { flex:1; }
+.result-body h3 { margin:0 0 6px; font-size:18px; color:#111; }
+.result-meta { color:var(--muted); font-size:13px; margin-bottom:8px; }
+.result-excerpt { color:#444; font-size:14px; }
+
+.highlight { background: #fff7e6; padding:0 2px; border-radius:2px; }
+
+/* sidebar */
+#searchSidebar .sidebar-section { background:#fff;padding:12px;border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.04); margin-bottom:12px; }
+.sidebar-heading { font-weight:700; margin-bottom:8px; }
+.popular-list a, .recent-list a { display:inline-block; margin:6px 6px 0 0; padding:6px 8px; background:#f7f7f7; border-radius:6px; text-decoration:none; color:#222; font-weight:600; }
+
+/* buttons */
+.btn-outline { background:#fff;border:1px solid #ddd;padding:8px 12px;border-radius:6px;cursor:pointer; }
+.btn-outline:hover { background:#fafafa; }
+
+/* responsive */
+@media (max-width:900px) {
+  section[style*="grid-template-columns"] { grid-template-columns: 1fr; }
+  .result-thumb { width:120px; height:80px; }
+}

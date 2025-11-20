@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Daily Admin Login</title>
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+    <div class="login-wrapper">
+
+        <!-- Logo -->
+        <div class="logo-box">
+            <img src="assets/images/india-daily-logo.jpg" alt="India Daily Logo">
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <h2>Admin Login</h2>
+
+            <form id="loginForm">
+
+                <label>Username or Email</label>
+                <input type="text" id="email" placeholder="Enter admin email" required>
+
+                <label>Password</label>
+                <div class="password-box">
+                    <input type="password" id="password" placeholder="Enter password" required>
+                    <span id="togglePassword" class="eye">👁️</span>
+                </div>
+
+                <div class="remember">
+                    <input type="checkbox" id="remember"> Remember Me
+                </div>
+
+                <button type="submit" class="login-btn">Log In</button>
+
+                <p id="errorMsg" class="error"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/admin-login.js"></script>
+</body>
+</html>

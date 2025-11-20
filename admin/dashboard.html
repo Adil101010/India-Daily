@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Dashboard — India Daily</title>
+
+  <!-- use main site CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* small admin-specific tweaks */
+    body { background: var(--bg-light); font-family: 'Roboto', sans-serif; }
+    .admin-layout { display:flex; min-height:100vh; }
+    .admin-sidebar {
+      width:220px; background:var(--dark-red); color:#fff; padding:20px; box-sizing:border-box;
+    }
+    .admin-sidebar h2 { margin:0 0 18px; font-size:20px; text-align:center; }
+    .admin-sidebar ul { list-style:none; padding:0; }
+    .admin-sidebar li { padding:10px; border-radius:6px; margin-bottom:8px; cursor:pointer; font-weight:600; }
+    .admin-sidebar li a { color:#fff; text-decoration:none; display:block; }
+    .admin-main { flex:1; padding:22px; box-sizing:border-box; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:20px; }
+    .stat-card { background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.05); text-align:center; }
+    .stat-card h3 { color:#777; font-size:14px; margin-bottom:8px; }
+    .stat-card p { font-size:28px; font-weight:700; color:var(--primary-red); margin:0; }
+    @media (max-width:900px){ .stats-grid { grid-template-columns:repeat(2,1fr); } .admin-sidebar{display:none;} }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>India Daily</h2>
+      <ul>
+        <li class="active"><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="add-news.html">Add News</a></li>
+        <li><a href="all-news.html">All News</a></li>
+        <li><a href="../index.html" target="_blank">View Site</a></li>
+        <li id="adminLogout">Logout</li>
+      </ul>
+    </aside>
+
+    <main class="admin-main">
+      <header style="display:flex;justify-content:space-between;align-items:center;">
+        <h1 style="margin:0;color:#222">Dashboard</h1>
+        <div style="color:var(--muted)">Welcome, Admin</div>
+      </header>
+
+      <div class="stats-grid" style="margin-top:18px;">
+        <div class="stat-card">
+          <h3>Total News</h3>
+          <p id="totalNews">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Drafts</h3>
+          <p id="draftNews">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Categories</h3>
+          <p id="totalCategories">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Views (est.)</h3>
+          <p id="totalViews">0</p>
+        </div>
+      </div>
+
+      <section style="margin-top:28px;">
+        <h2 style="color:#222;margin-bottom:12px">Recent Stories</h2>
+        <div id="recentList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/admin-dashboard.js"></script>
+</body>
+</html>

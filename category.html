@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">Category — India Daily</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/category.css" />
+  <meta name="description" content="Category page — India Daily" />
+</head>
+<body>
+
+  <!-- top/header/nav (use your existing shared partials) -->
+  <div class="top-bar">
+    <div class="top-left"><span id="topDate">Loading date...</span></div>
+    <div class="top-right social-icons">
+      <a href="#" class="social">FB</a>
+      <a href="#" class="social">X</a>
+      <a href="#" class="social">YT</a>
+      <a href="#" class="social">IG</a>
+    </div>
+  </div>
+
+  <header class="header">
+    <a href="index.html"><img src="images/india-daily-logo.jpg" alt="India Daily" class="logo"></a>
+  </header>
+
+  <!-- NAV (same as homepage) -->
+  <nav class="main-nav">
+    <!-- paste your nav ul here (kept minimal example) -->
+    <ul id="navLinks" class="nav-links">
+      <li class="active"><a href="index.html">होम</a></li>
+      <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
+      <li><a href="category.html?cat=खेल">खेल</a></li>
+      <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
+    </ul>
+  </nav>
+
+  <!-- Category banner -->
+  <section class="category-hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <img src="/mnt/data/ab09ea3f-1520-451d-abdd-d4982e481c16.png" alt="Category banner" class="hero-img">
+      </div>
+      <div class="hero-right">
+        <h1 id="catTitle">Category</h1>
+        <p id="catDesc">Latest updates and selected stories from this category.</p>
+        <div class="hero-actions">
+          <span id="catCount" class="pill">0 stories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters bar -->
+  <section class="category-controls">
+    <div class="container-sm">
+      <div class="controls-left">
+        <div class="filters" role="tablist" aria-label="Filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="latest">Latest</button>
+          <button class="filter-btn" data-filter="trending">Trending</button>
+          <button class="filter-btn" data-filter="mostviewed">Most Viewed</button>
+        </div>
+      </div>
+
+      <div class="controls-right">
+        <input id="catSearch" type="search" placeholder="Search in category..." aria-label="Search in category">
+        <select id="perPage" title="Items per page">
+          <option value="6">6 / page</option>
+          <option value="9" selected>9 / page</option>
+          <option value="12">12 / page</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content grid + sidebar (responsive) -->
+  <main class="category-main container-lg">
+    <div class="grid-main">
+      <div class="cards-grid" id="cardsGrid" aria-live="polite">
+        <!-- filled by JS -->
+      </div>
+
+      <aside class="sidebar">
+        <div class="widget">
+          <h4>Popular</h4>
+          <div id="popularList"></div>
+        </div>
+        <div class="widget">
+          <h4>Newsletter</h4>
+          <form id="sidebarNewsletter" class="newsletter">
+            <input id="sidebarEmail" type="email" placeholder="Your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+
+    <!-- pagination / load more -->
+    <div class="pagination-row">
+      <div id="pager" class="pager"></div>
+      <button id="loadMore" class="btn-outline">Load more</button>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+<script>
+fetch("./footer/footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
+
+     
+  <script src="js/main.js"></script>
+  <script src="js/category.js"></script>
+</body>
+</html>
