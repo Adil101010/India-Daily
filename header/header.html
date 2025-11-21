@@ -1,19 +1,5 @@
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>India Daily — Header</title>
-
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/header/header.css" />
-</head>
-
-<body>
-
+<!-- header.html -->
+<header id="site-header">
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-left"><span id="topDate">Loading date...</span></div>
@@ -24,14 +10,23 @@
       <a href="#" class="social">IG</a>
     </div>
   </div>
-
+  <link rel="stylesheet" href="header.css">
   <!-- HEADER -->
-  <header class="header">
-    <img src="/header/india-daily-logo.jpg" alt="India Daily" class="logo" />
-  </header>
+  <div class="header-wrap">
+    <header class="header">
+      <a href="/" class="logo-link">
+        <img src="india-daily-logo.jpg" alt="India Daily" class="logo" />
+      </a>
+    </header>
+
+    <!-- Hamburger button visible on mobile -->
+    <button id="siteHamburger" class="hamburger" aria-label="Open menu" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
   <!-- NAVBAR -->
-  <nav class="main-nav" aria-label="Main navigation">
+  <nav class="main-nav" aria-label="Primary navigation">
     <ul id="navLinks" class="nav-links">
 
       <li class="active">
@@ -44,74 +39,74 @@
       </li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=ट्रेंडिंग और वायरल">ट्रेंडिंग और वायरल</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=ट्रेंडिंग और वायरल&sub=टॉप स्टोरीज">टॉप स्टोरीज</a></li>
-          <li><a href="category.html?cat=ट्रेंडिंग और वायरल&sub=लोकल">लोकल</a></li>
+        <a href="category.html?cat=ट्रेंडिंग और वायरल" aria-haspopup="true" aria-expanded="false">ट्रेंडिंग और वायरल</a>
+        <ul class="dropdown" role="menu" aria-label="ट्रेंडिंग और वायरल subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=ट्रेंडिंग और वायरल&sub=टॉप स्टोरीज">टॉप स्टोरीज</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=ट्रेंडिंग और वायरल&sub=लोकल">लोकल</a></li>
         </ul>
       </li>
 
       <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=खेल">खेल</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=खेल&sub=अन्य खेल प्रतियोगिताएँ">अन्य खेल प्रतियोगिताएँ</a></li>
-          <li><a href="category.html?cat=खेल&sub=ओलंपिक्स">ओलंपिक्स</a></li>
-          <li><a href="category.html?cat=खेल&sub=क्रिकेट">क्रिकेट</a></li>
-          <li><a href="category.html?cat=खेल&sub=खिलाड़ियों के इंटरव्यू">खिलाड़ियों के इंटरव्यू</a></li>
-          <li><a href="category.html?cat=खेल&sub=टेनिस">टेनिस</a></li>
-          <li><a href="category.html?cat=खेल&sub=फुटबॉल">फुटबॉल</a></li>
+        <a href="category.html?cat=खेल" aria-haspopup="true" aria-expanded="false">खेल</a>
+        <ul class="dropdown" role="menu" aria-label="खेल subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=अन्य खेल प्रतियोगिताएँ">अन्य खेल प्रतियोगिताएँ</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=ओलंपिक्स">ओलंपिक्स</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=क्रिकेट">क्रिकेट</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=खिलाड़ियों के इंटरव्यू">खिलाड़ियों के इंटरव्यू</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=टेनिस">टेनिस</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=फुटबॉल">फुटबॉल</a></li>
         </ul>
       </li>
 
       <li><a href="category.html?cat=व्यापार और अर्थव्यवस्था">व्यापार और अर्थव्यवस्था</a></li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=मनोरंजन">मनोरंजन</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=मनोरंजन&sub=OTT अपडेट">OTT अपडेट</a></li>
-          <li><a href="category.html?cat=मनोरंजन&sub=Hollywood">Hollywood</a></li>
-          <li><a href="category.html?cat=मनोरंजन&sub=Bollywood">Bollywood</a></li>
-          <li><a href="category.html?cat=मनोरंजन&sub=Tollywood">Tollywood</a></li>
+        <a href="category.html?cat=मनोरंजन" aria-haspopup="true" aria-expanded="false">मनोरंजन</a>
+        <ul class="dropdown" role="menu" aria-label="मनोरंजन subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=OTT अपडेट">OTT अपडेट</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Hollywood">Hollywood</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Bollywood">Bollywood</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Tollywood">Tollywood</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=तकनीक">तकनीक</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=तकनीक&sub=इंटरनेट और सोशल मीडिया अपडेट">इंटरनेट और सोशल मीडिया अपडेट</a></li>
-          <li><a href="category.html?cat=तकनीक&sub=AI और Machine Learning">AI और Machine Learning</a></li>
-          <li><a href="category.html?cat=तकनीक&sub=Apps और Software">Apps और Software</a></li>
-          <li><a href="category.html?cat=तकनीक&sub=Gadgets">Gadgets</a></li>
-          <li><a href="category.html?cat=तकनीक&sub=Cyber सुरक्षा">Cyber सुरक्षा</a></li>
+        <a href="category.html?cat=तकनीक" aria-haspopup="true" aria-expanded="false">तकनीक</a>
+        <ul class="dropdown" role="menu" aria-label="तकनीक subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=इंटरनेट और सोशल मीडिया अपडेट">इंटरनेट और सोशल मीडिया अपडेट</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=AI और Machine Learning">AI और Machine Learning</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Apps और Software">Apps और Software</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Gadgets">Gadgets</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Cyber सुरक्षा">Cyber सुरक्षा</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=अपराध">अपराध</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=अपराध&sub=अपराध रिपोर्ट">अपराध रिपोर्ट</a></li>
-          <li><a href="category.html?cat=अपराध&sub=कानूनी अपडेट">कानूनी अपडेट</a></li>
-          <li><a href="category.html?cat=अपराध&sub=जांच और विवेचना">जांच और विवेचना</a></li>
+        <a href="category.html?cat=अपराध" aria-haspopup="true" aria-expanded="false">अपराध</a>
+        <ul class="dropdown" role="menu" aria-label="अपराध subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=अपराध रिपोर्ट">अपराध रिपोर्ट</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=कानूनी अपडेट">कानूनी अपडेट</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=जांच और विवेचना">जांच और विवेचना</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=विश्व समाचार">विश्व समाचार</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=विश्व समाचार&sub=आंतरराष्ट्रीय संबंध">आंतरराष्ट्रीय संबंध</a></li>
-          <li><a href="category.html?cat=विश्व समाचार&sub=विदेशी नीतिया">विदेशी नीतिया</a></li>
-          <li><a href="category.html?cat=विश्व समाचार&sub=वैश्विक घटनाएँ">वैश्विक घटनाएँ</a></li>
+        <a href="category.html?cat=विश्व समाचार" aria-haspopup="true" aria-expanded="false">विश्व समाचार</a>
+        <ul class="dropdown" role="menu" aria-label="विश्व समाचार subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=आंतरराष्ट्रीय संबंध">आंतरराष्ट्रीय संबंध</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=विदेशी नीतिया">विदेशी नीतिया</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=वैश्विक घटनाएँ">वैश्विक घटनाएँ</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown">
-        <a href="category.html?cat=तथ्य जाँच">तथ्य जाँच</a>
-        <ul class="dropdown">
-          <li><a href="category.html?cat=तथ्य जाँच&sub=गलत सूचनाओं का पर्दाफाश">गलत सूचनाओं का पर्दाफाश</a></li>
-          <li><a href="category.html?cat=तथ्य जाँच&sub=फर्जी खबरों की पड़ताल">फर्जी खबरों की पड़ताल</a></li>
-          <li><a href="category.html?cat=तथ्य जाँच&sub=वायरल दावों की सच्चाई">वायरल दावों की सच्चाई</a></li>
+        <a href="category.html?cat=तथ्य जाँच" aria-haspopup="true" aria-expanded="false">तथ्य जाँच</a>
+        <ul class="dropdown" role="menu" aria-label="तथ्य जाँच subcategories">
+          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=गलत सूचनाओं का पर्दाफाश">गलत सूचनाओं का पर्दाफाश</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=फर्जी खबरों की पड़ताल">फर्जी खबरों की पढ़ताल</a></li>
+          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=वायरल दावों की सच्चाई">वायरल दावों की सच्चाई</a></li>
         </ul>
       </li>
 
@@ -125,11 +120,21 @@
         </svg>
       </button>
 
-      <button class="live-btn" id="liveBtn" aria-label="Live">LIVE</button>
+      <button class="live-btn" id="liveBtn" aria-live="polite">LIVE</button>
+    </div>
+
+    <!-- MOBILE SLIDE MENU (hidden by default) -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <button id="closeMobileMenu" class="close-menu" aria-label="Close menu">×</button>
+      <ul class="mobile-list">
+        <li><a href="/">होम</a></li>
+        <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
+        <li><a href="category.html?cat=खेल">खेल</a></li>
+        <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
+        <li><a href="category.html?cat=तकनीक">तकनीक</a></li>
+        <li><a href="category.html?cat=व्यापार और अर्थव्यवस्था">व्यापार और अर्थव्यवस्था</a></li>
+        <li><a href="category.html?cat=तथ्य जाँच">तथ्य जाँच</a></li>
+      </ul>
     </div>
   </nav>
-
-  <!-- JS -->
-  <script type="module" src="/header/header.js"></script>
-</body>
-</html>
+</header>

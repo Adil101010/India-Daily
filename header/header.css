@@ -1,151 +1,97 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* header.css (replace dropdown-related rules only with these to get exact behavior) */
+
+/* keep root vars from your main css (assumes --primary-red and --dark-red defined) */
+
+/* make nav a simple horizontal bar */
+.main-nav{
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 12px;
+  min-height:var(--nav-height);
+  position:relative;
+  z-index:2000;
 }
 
-:root {
-  --primary-red: #ff0000;
-  --dark-red: #c70000;
-  --white: #fff;
-  --nav-black: #000;
-  font-family: 'Roboto', sans-serif;
+/* nav list inline, each li is position:relative so its sublist can appear just below it */
+.nav-links{ display:flex; gap:18px; align-items:center; margin:0; padding:0; list-style:none; overflow:visible; }
+
+/* hide dropdowns by default (no big box) */
+.nav-links .dropdown{
+  display:none;               /* hidden until hover/focus */
+  position:absolute;          /* positioned relative to the parent li */
+  top:100%;                   /* immediately below the parent item */
+  left:0;
+  margin-top:6px;             /* small gap */
+  background:#fff;            /* small white panel for legibility */
+  color:#222;
+  min-width:180px;            /* narrow vertical list - not a mega box */
+  border-radius:6px;
+  padding:6px 0;
+  box-shadow: none;           /* NO heavy shadow */
+  border:1px solid rgba(0,0,0,0.06);
+  z-index:2050;
+  white-space:normal;
 }
 
-/* TOP BAR */
-.top-bar {
-  background: var(--dark-red);
-  color: var(--white);
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 18px;
-  font-weight: 700;
-  align-items: center;
+/* styling of subitems: simple vertical list */
+.nav-links .dropdown li{ display:block; }
+.nav-links .dropdown li a{
+  display:block;
+  padding:10px 14px;
+  color:#222;
+  font-weight:600;
+  text-decoration:none;
+  font-size:15px;
+  line-height:1.1;
 }
 
-/* LOGO */
-.header {
-  background: #fff;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
-}
-.logo {
-  height: 46px;
+/* subtle hover on subitems */
+.nav-links .dropdown li a:hover{ background:#f7f7f7; color:#111; }
+
+/* SHOW dropdown only for hovered/focused parent — so ONLY that category opens */
+.nav-links li.has-dropdown:hover > .dropdown,
+.nav-links li.has-dropdown:focus-within > .dropdown{
+  display:block;
 }
 
-/* NAVBAR */
-.main-nav {
-  background: var(--nav-black);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 14px;
-  height: 60px;
-  position: relative;
-  z-index: 1000;
-}
+/* ensure other dropdowns remain hidden (default CSS behavior achieves this) */
 
-/* NAV LINKS */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 26px;
-  align-items: center;
-  overflow: hidden; /* FIXED: no scroll */
-}
+/* remove overflow/scrolling: let list expand naturally but keep it compact */
+.nav-links .dropdown { max-height: none; overflow: visible; }
 
-.nav-links li {
-  position: relative;
-}
+/* For a cleaner look keep items vertical with a small divider */
+.nav-links .dropdown li + li a{ border-top:1px solid #f2f2f2; }
 
-.nav-links li a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 18px;
-  padding: 18px 4px;
-  white-space: nowrap;
-  font-weight: 600;
-}
+/* Keep nav-right (search + live) on the right */
+.nav-right { display:flex; align-items:center; gap:12px; }
 
-/* ACTIVE */
-.nav-links li.active a {
-  border-bottom: 3px solid var(--primary-red);
+/* LIVE button blinking between red and black every 0.5s (color flips each 0.5s) */
+@keyframes liveBlink {
+  0%   { background: var(--primary-red); color: #fff; }
+  49%  { background: var(--primary-red); color: #fff; }
+  50%  { background: #000; color: #fff; }
+  100% { background: #000; color: #fff; }
 }
-
-/* HOME ICON */
-.home-svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* CLEAN DROPDOWN (exact screenshot style) */
-.dropdown {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%); /* CENTER FIX */
-  background: #fff;
-  min-width: 240px;
-  border-radius: 4px;
-  padding: 6px 0;
-  display: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.20);
-  z-index: 1200;
-}
-
-.dropdown li a {
-  padding: 14px 18px;
-  display: block;
-  font-size: 15.5px;
-  color: #222;
-  font-weight: 600;
-}
-
-.dropdown li + li a {
-  border-top: 1px solid #efefef;
-}
-
-.dropdown li a:hover {
-  background: #f7f7f7;
-}
-
-/* SHOW DROPDOWN ON HOVER */
-.has-dropdown:hover .dropdown {
-  display: block;
-}
-
-/* RIGHT SECTION */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.search-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
+/* one full cycle = 1s so color will change every 0.5s */
 .live-btn {
-  background: var(--primary-red);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  font-weight: 800;
-  border-radius: 6px;
-  cursor: pointer;
+  padding:8px 14px;
+  border-radius:6px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  animation: liveBlink 1s linear infinite;
 }
 
-/* BLINK */
-.blink-black {
-  background: #000 !important;
-  color: var(--primary-red) !important;
+/* accessibility: if prefers-reduced-motion, stop animation */
+@media (prefers-reduced-motion: reduce) {
+  .live-btn { animation: none; }
 }
-.has-dropdown:hover .dropdown {
-  display: block;
+
+/* Mobile behavior: on small screens show dropdowns as stacked (no absolute) */
+@media (max-width:900px){
+  .nav-links{ display:none; } /* keep original behavior: hamburger shows mobileMenu */
+  .hamburger{ display:inline-flex; }
+  /* Ensure mobile slide-in menu handles subcategories (we keep mobileMenu separate) */
 }

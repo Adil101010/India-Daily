@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Author — India Daily</title>
+  <meta name="description" content="India Daily — लेखक का पेज: लेख, बायो और संपर्क" />
+
+  <!-- Basic styles (you can replace with Tailwind or your project CSS) -->
+  <style>
+    :root{
+      --primary-red:#C80000;
+      --accent:#FF3B3B;
+      --muted:#666;
+      --bg:#fff;
+      --card-bg:#fafafa;
+      --max-width:1100px;
+      font-family: 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.45}
+    .container{max-width:var(--max-width);margin:26px auto;padding:0 16px}
+
+    /* Top bar */
+    .top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--primary-red);color:#fff;font-weight:700;border-radius:6px}
+    .top-bar .site{display:flex;gap:12px;align-items:center}
+    .brand{font-size:18px}
+
+    /* Layout */
+    .grid{display:grid;grid-template-columns:320px 1fr;gap:22px;margin-top:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    /* Author card */
+    .author-card{background:var(--card-bg);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+    .author-top{display:flex;gap:14px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:50%;background:#ddd;flex-shrink:0}
+    .author-name{font-size:20px;font-weight:700}
+    .author-meta{color:var(--muted);font-size:13px}
+    .bio{margin-top:12px;color:#222}
+    .author-stats{display:flex;gap:12px;margin-top:14px}
+    .stat{background:#fff;padding:8px 10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.03);font-size:13px}
+
+    /* Article list */
+    .articles{display:flex;flex-direction:column;gap:14px}
+    .article{display:flex;gap:14px;padding:12px;border-radius:10px;background:#fff;align-items:center}
+    .article img{width:120px;height:74px;object-fit:cover;border-radius:6px}
+    .art-content{flex:1}
+    .art-title{font-weight:700;margin-bottom:6px}
+    .art-excerpt{color:var(--muted);font-size:14px}
+    .art-meta{font-size:12px;color:var(--muted);margin-top:8px}
+
+    /* Pagination */
+    .pagination{display:flex;gap:8px;justify-content:center;margin:18px 0}
+    .page{padding:8px 12px;border-radius:8px;border:1px solid #eee;background:#fff}
+
+    /* Related authors */
+    .related{margin-top:18px}
+    .related h4{margin-bottom:8px}
+    .related-list{display:flex;flex-direction:column;gap:10px}
+    .related-item{display:flex;gap:10px;align-items:center}
+    .related-item .mini{width:44px;height:44px;border-radius:50%;background:#eee}
+
+    /* Small helpers */
+    a{color:var(--primary-red);text-decoration:none}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--primary-red);color:#fff;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="top-bar">
+      <div class="site">
+        <div class="brand">India Daily</div>
+        <div class="tag">खबरें | विश्लेषण | राय</div>
+      </div>
+      <div class="actions">@IndiaDaily</div>
+    </header>
+
+    <main class="grid">
+      <!-- LEFT: Author card + related -->
+      <aside>
+        <div class="author-card">
+          <div class="author-top">
+            <div class="avatar" id="authorAvatar" aria-hidden="true"></div>
+            <div>
+              <div class="author-name" id="authorName">लेखक का नाम</div>
+              <div class="author-meta" id="authorRole">रोल · शहर</div>
+            </div>
+          </div>
+
+          <p class="bio" id="authorBio">यहाँ लेखक की संक्षिप्त जानकारी लिखें — अनुभव, रूचियाँ और क्या विषयों पर लिखते हैं।</p>
+
+          <div class="author-stats">
+            <div class="stat"><strong id="countArticles">0</strong><div style="font-size:12px;color:var(--muted)">लेख</div></div>
+            <div class="stat"><strong id="countFollowers">0</strong><div style="font-size:12px;color:var(--muted)">अनुयायी</div></div>
+            <div class="stat"><a class="btn" href="#contact">संपर्क करें</a></div>
+          </div>
+        </div>
+
+        <div class="related">
+          <h4>अन्य लेखक</h4>
+          <div class="related-list" id="relatedAuthors">
+            <!-- JS fills -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Articles list -->
+      <section>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 id="pageHeading">लेखक: लेखक का नाम</h2>
+          <div style="color:var(--muted);font-size:14px">प्रोफाइल अपडेट: <span id="updatedAt">—</span></div>
+        </div>
+
+        <div class="articles" id="articlesList">
+          <!-- Articles appended here by JS -->
+        </div>
+
+        <div class="pagination" id="pagination">
+          <!-- Pages -->
+        </div>
+      </section>
+    </main>
+  </div>
+ 
+   <div id="footer"></div>
+
+<script>
+fetch("./footer/footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>   
+
+  <!-- Minimal JS to render demo content. Replace with real data fetching. -->
+  <script>
+    const author = {
+      name: 'सुभांकर मिश्रा',
+      role: 'स्टाफ रिपोर्टर',
+      city: 'नई दिल्ली',
+      bio: 'सुभांकर मिश्रा 10+ साल का पत्रकार, राजनीति और सामाजिक मुद्दों पर लिखते हैं। उन्होंने कई रिपोर्ट्स और विश्लेषण प्रकाशित किए हैं।',
+      avatarColor: '#d6d6d6',
+      articles: [
+        {id:1,title:'केंद्रीय बजट 2025: क्या बदला?',excerpt:'इस रिपोर्ट में हम देखते हैं कि बजट ने किन क्षेत्रों को प्राथमिकता दी...',date:'2025-02-01',img:''},
+        {id:2,title:'स्थानीय चुनाव: एक नजरा',excerpt:'स्थानीय चुनावों के नतीजों का त्वरित विश्लेषण...',date:'2025-01-12',img:''},
+        {id:3,title:'कृषि सुधार: बहस जारी',excerpt:'कृषि सुधारों पर बढ़ती बहस और उसके संभावित परिणाम...',date:'2024-12-08',img:''}
+      ],
+      followers: 12800,
+      updatedAt: '21 नवम्बर 2025'
+    }
+
+    // Populate author card
+    document.getElementById('authorName').textContent = author.name
+    document.getElementById('authorRole').textContent = author.role + ' · ' + author.city
+    document.getElementById('authorBio').textContent = author.bio
+    document.getElementById('countArticles').textContent = author.articles.length
+    document.getElementById('countFollowers').textContent = author.followers.toLocaleString('en-IN')
+    document.getElementById('pageHeading').textContent = 'लेखक: ' + author.name
+    document.getElementById('updatedAt').textContent = author.updatedAt
+
+    // Render avatar (simple colored circle)
+    const avatar = document.getElementById('authorAvatar')
+    avatar.style.background = author.avatarColor
+    avatar.textContent = author.name.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase()
+    avatar.style.display = 'flex'
+    avatar.style.alignItems = 'center'
+    avatar.style.justifyContent = 'center'
+    avatar.style.fontWeight = '700'
+    avatar.style.color = '#444'
+
+    // Articles list
+    const articlesList = document.getElementById('articlesList')
+    author.articles.forEach(a=>{
+      const el = document.createElement('article')
+      el.className = 'article'
+      el.innerHTML = `
+        <img src="${a.img || 'https://via.placeholder.com/320x200?text=Image'}" alt="" />
+        <div class="art-content">
+          <div class="art-title"><a href="/article/${a.id}">${a.title}</a></div>
+          <div class="art-excerpt">${a.excerpt}</div>
+          <div class="art-meta">${a.date} · 3 min read</div>
+        </div>
+      `
+      articlesList.appendChild(el)
+    })
+
+    // Related authors demo
+    const related = document.getElementById('relatedAuthors')
+    ['रवि शुक्ल','निया मेहता','सोरभ वारियर'].forEach(name=>{
+      const r = document.createElement('div')
+      r.className = 'related-item'
+      r.innerHTML = `<div class="mini"></div><div><a href="#">${name}</a><div style="font-size:12px;color:var(--muted)">लेखक</div></div>`
+      related.appendChild(r)
+    })
+
+    // Simple pagination (if articles > pageSize)
+    function renderPagination(total, page=1, pageSize=5){
+      const pages = Math.ceil(total/pageSize)
+      const node = document.getElementById('pagination')
+      node.innerHTML = ''
+      if(pages<=1) return
+      for(let i=1;i<=pages;i++){
+        const btn = document.createElement('button')
+        btn.className='page'
+        btn.textContent = i
+        if(i===page) btn.style.fontWeight='700'
+        btn.addEventListener('click',()=>alert('Pagination demo — load page '+i))
+        node.appendChild(btn)
+      }
+    }
+    renderPagination(author.articles.length,1,5)
+  </script>
+</body>
+</html>

@@ -514,3 +514,51 @@
 
 
 
+/* EXTRA MOBILE FIXES (100% working on all phones) */
+@media (max-width:600px){
+
+  /* container spacing reduce */
+  #infiniteFeedSection {
+    padding: 0 8px !important;
+    margin-top: 12px !important;
+  }
+
+  /* feed + sidebar become single column */
+  .feed-and-side {
+    display: block !important;
+  }
+
+  /* feed cards full width */
+  .feed-card {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  /* image full width */
+  .feed-card .f-thumb {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 180px !important;
+  }
+
+  /* body padding smaller */
+  .feed-card .f-body {
+    padding: 10px !important;
+  }
+
+  .feed-card .f-body strong {
+    font-size: 16px !important;
+    margin-bottom: 6px;
+  }
+
+  /* hide sidebar entirely on mobile (optional but recommended) */
+  .infinite-feed-sidebar {
+    display: none !important;
+  }
+
+  /* YT thumb bigger */
+  .yt-list .yt-thumb {
+    height: 160px !important;
+  }
+}
