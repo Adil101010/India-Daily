@@ -15,7 +15,7 @@
 <body>
 
   <!-- ------------- HEADER + TOP BAR + NAV ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <main>
 
@@ -93,7 +93,7 @@
 
   <script>
     // Load footer partial
-    fetch("./footer/footer.html")
+    fetch("footer/footer.html")
       .then(res => res.text())
       .then(data => {
         const footerEl = document.getElementById("footer");
