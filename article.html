@@ -5,92 +5,93 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title id="pageTitle">Article — India Daily</title>
 
-  <!-- fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- global + article css -->
+  <!-- Global + Article CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/article.css" />
+
   <meta name="description" id="metaDescription" content="India Daily" />
 </head>
 
-<body>
-    <!-- -------------  header or top bar or navigation ------------- -->
+<body class="page-article">
 
-<div include-html="/header/header.html"></div>
+  <!-- -------------  HEADER / TOP BAR / NAVIGATION ------------- -->
+  <div include-html="/header/header.html"></div>
 
+  <!-- ====================== ARTICLE PAGE ====================== -->
+  <main class="article-container" aria-labelledby="articleTitle">
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a> › 
+      <a id="bcCategory" href="#">Category</a> › 
+      <span id="bcTitle">Article</span>
+    </nav>
 
+    <article id="articleCard" class="article-card">
+      <!-- HERO IMAGE -->
+      <div class="featured-img" id="featuredImgWrap"></div>
 
+      <header class="article-meta">
+        <div class="kicker" id="articleCategory"></div>
+        <h1 id="articleTitle"></h1>
 
-<!-- ====================== ARTICLE PAGE ====================== -->
-<main class="article-container">
+        <div class="meta-row">
+          <span id="articleAuthor"></span> • 
+          <span id="articleDate"></span> • 
+          <span id="readTime"></span>
+        </div>
+      </header>
 
-  <!-- Breadcrumbs -->
-  <div class="breadcrumbs" id="breadcrumbs">
-    <a href="index.html">Home</a> › 
-    <a id="bcCategory" href="#">Category</a> › 
-    <span id="bcTitle">Article</span>
-  </div>
+      <!-- MAIN CONTENT -->
+      <div class="article-body" id="articleBody"></div>
 
-  <article id="articleCard" class="article-card">
+      <!-- Author Box -->
+      <section id="authorBox" class="author-box" aria-label="Author details"></section>
 
-    <!-- HERO IMAGE -->
-    <div class="featured-img" id="featuredImgWrap"></div>
+      <!-- Share Buttons -->
+      <section class="share-row" aria-label="Share this article">
+        <button id="shareFb" type="button">Facebook</button>
+        <button id="shareX"  type="button">Twitter</button>
+        <button id="shareWa" type="button">WhatsApp</button>
+      </section>
 
-    <div class="article-meta">
-      <div class="kicker" id="articleCategory"></div>
-      <h1 id="articleTitle"></h1>
+      <!-- Related -->
+      <section id="relatedList" class="related" aria-label="Related articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid"></div>
+      </section>
 
-      <div class="meta-row">
-        <span id="articleAuthor"></span> • 
-        <span id="articleDate"></span> • 
-        <span id="readTime"></span>
-      </div>
-    </div>
+      <!-- Comments -->
+      <section class="comments" aria-label="Comments">
+        <h3>Comments</h3>
+        <div class="comments-note">Comments integration will be added later.</div>
+      </section>
+    </article>
 
-    <div class="article-body" id="articleBody"></div>
+  </main>
 
-    <!-- Author Box -->
-    <div id="authorBox" class="author-box"></div>
+  <!-- ====================== FOOTER ====================== -->
+  <div id="footer"></div>
 
-    <!-- Share Buttons -->
-    <div class="share-row">
-      <button id="shareFb">Facebook</button>
-      <button id="shareX">Twitter</button>
-      <button id="shareWa">WhatsApp</button>
-    </div>
+  <script>
+    fetch("./footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => console.error("Error loading footer:", err));
+  </script>
 
-    <!-- Related -->
-    <section id="relatedList" class="related">
-      <h3>Related Articles</h3>
-      <div class="related-grid"></div>
-    </section>
-
-    <!-- Comments -->
-    <section class="comments">
-      <h3>Comments</h3>
-      <div class="comments-note">Comments integration will be added later.</div>
-    </section>
-
-  </article>
-
-</main>
-
-<!-- ====================== FOOTER ====================== -->
-<div id="footer"></div>
-
-<script>
-fetch("./footer/footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-</script>
-
-<!-- scripts -->
-<script src="js/main.js"></script>
-<script src="js/article.js"></script>
-<!-- -------------  for the header or the header  ------------- -->
-<script src="/include.js"></script>
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/article.js"></script>
+  <!-- Header include handler -->
+  <script src="/include.js"></script>
 </body>
 </html>

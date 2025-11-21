@@ -14,86 +14,101 @@
 
 <body>
 
-  <!-- -------------  header or top bar or navigation ------------- -->
-     
-<div include-html="/header/header.html"></div>
+  <!-- ------------- HEADER + TOP BAR + NAV ------------- -->
+  <div include-html="/header/header.html"></div>
 
-  <!-- 3 COLUMNS -->
-  <section class="three-columns">
-    <div class="col">
-      <h3 class="col-title">TRENDING</h3>
-      <div class="col-list" id="trendingList"></div>
-    </div>
+  <main>
 
-    <div class="col">
-      <h3 class="col-title">LATEST NEWS</h3>
-      <div class="col-list" id="latestList"></div>
-    </div>
-
-    <div class="col">
-      <h3 class="col-title">EDITORIALS</h3>
-      <div class="col-list" id="editorialList"></div>
-    </div>
-  </section>
-
-  <!-- FEED + SIDEBAR -->
-  <section id="infiniteFeedSection" class="infinite-feed container" style="max-width:1200px;margin:28px auto;padding:0 12px;">
-    <h3 style="margin-bottom:12px">Latest Stories</h3>
-
-    <div id="feedControls" style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
-      <label style="font-weight:600;margin-right:8px">Show:</label>
-      <button class="feed-filter active" data-period="all">All</button>
-      <button class="feed-filter" data-period="1">1 day</button>
-      <button class="feed-filter" data-period="10">10 days</button>
-      <button class="feed-filter" data-period="30">1 month</button>
-    </div>
-
-    <div class="feed-and-side" style="display:grid;grid-template-columns:1fr 320px;gap:20px;">
-      <div>
-        <div id="feedList" class="feed-list"></div>
-        <div id="feedLoader" style="display:none;text-align:center;margin:16px 0;color:#666">Loading...</div>
-        <div id="feedSentinel" style="height:28px;"></div>
+    <!-- 3 COLUMNS: TRENDING / LATEST / EDITORIALS -->
+    <section class="three-columns container" aria-label="Top news sections">
+      <div class="col">
+        <h2 class="col-title">TRENDING</h2>
+        <div class="col-list" id="trendingList"></div>
       </div>
 
-      <aside id="infiniteFeedSidebar" class="infinite-feed-sidebar">
-        <h4 style="margin:0 0 10px;font-weight:700;">Videos</h4>
-        <div class="yt-list" style="display:flex;flex-direction:column;gap:12px;">
-          <div class="yt-item lazy-yt" data-video-id="VIDEO1">
-            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
-          </div>
-          <div class="yt-item lazy-yt" data-video-id="VIDEO2">
-            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
-          </div>
-          <div class="yt-item lazy-yt" data-video-id="VIDEO3">
-            <div class="yt-thumb" style="height:120px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;">Loading...</div>
-          </div>
+      <div class="col">
+        <h2 class="col-title">LATEST NEWS</h2>
+        <div class="col-list" id="latestList"></div>
+      </div>
+
+      <div class="col">
+        <h2 class="col-title">EDITORIALS</h2>
+        <div class="col-list" id="editorialList"></div>
+      </div>
+    </section>
+
+    <!-- FEED + SIDEBAR -->
+    <section id="infiniteFeedSection" class="infinite-feed container" aria-label="Latest stories">
+      <header class="feed-header">
+        <h2 class="feed-title">Latest Stories</h2>
+
+        <div id="feedControls" class="feed-controls" aria-label="Filter stories by date range">
+          <span class="feed-controls-label">Show:</span>
+          <button class="feed-filter active" type="button" data-period="all">All</button>
+          <button class="feed-filter" type="button" data-period="1">1 day</button>
+          <button class="feed-filter" type="button" data-period="10">10 days</button>
+          <button class="feed-filter" type="button" data-period="30">1 month</button>
         </div>
-      </aside>
-    </div>
-  </section>
+      </header>
 
-  <!-- RELATED HOME SECTION -->
-  <section id="relatedHomeSection" class="related-home-section" style="max-width:1200px;margin:28px auto;padding:0 16px;">
-    <h2 class="related-home-title">संबंधित पोस्ट</h2>
-    <div id="relatedHomeGrid" class="related-home-grid"></div>
-    <div style="text-align:center;margin-top:16px;">
-      <button id="relatedShowMore" class="btn-outline">और पढ़ें</button>
-    </div>
-  </section>
- <div id="footer"></div>
+      <div class="feed-layout">
+        <!-- MAIN FEED -->
+        <div class="feed-main">
+          <div id="feedList" class="feed-list" aria-live="polite"></div>
+          <div id="feedLoader" class="feed-loader">Loading...</div>
+          <div id="feedSentinel" class="feed-sentinel" aria-hidden="true"></div>
+        </div>
 
-<script>
-fetch("./footer/footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-</script>
+        <!-- SIDEBAR -->
+        <aside id="infiniteFeedSidebar" class="infinite-feed-sidebar" aria-label="Latest videos">
+          <h3 class="sidebar-title">Videos</h3>
+          <div class="yt-list">
+            <article class="yt-item lazy-yt" data-video-id="VIDEO1" aria-label="Video 1">
+              <div class="yt-thumb">Loading...</div>
+            </article>
+            <article class="yt-item lazy-yt" data-video-id="VIDEO2" aria-label="Video 2">
+              <div class="yt-thumb">Loading...</div>
+            </article>
+            <article class="yt-item lazy-yt" data-video-id="VIDEO3" aria-label="Video 3">
+              <div class="yt-thumb">Loading...</div>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
 
+    <!-- RELATED HOME SECTION -->
+    <section id="relatedHomeSection" class="related-home-section container" aria-label="Related posts">
+      <h2 class="related-home-title">संबंधित पोस्ट</h2>
+      <div id="relatedHomeGrid" class="related-home-grid"></div>
+      <div class="related-home-more">
+        <button id="relatedShowMore" class="btn-outline" type="button">और पढ़ें</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <script>
+    // Load footer partial
+    fetch("./footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => {
+        console.error("Error loading footer:", err);
+      });
+  </script>
 
   <!-- JS -->
   <script type="module" src="js/main.js"></script>
-<!-- -------------  for the header or the header  ------------- -->
-<script src="/include.js"></script>
+  <!-- Include header partials -->
+  <script src="/include.js"></script>
 </body>
 </html>

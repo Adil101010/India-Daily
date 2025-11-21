@@ -16,17 +16,24 @@
   box-sizing: border-box;
 }
 
-/* TOP RED BAR */
+/* REMOVE HORIZONTAL SCROLL */
+html, body {
+  overflow-x: hidden;
+}
 
- /*  ============================= */
+/* =======================
+   🔴 TOP RED BAR
+   ======================= */
 .top-bar{
   background:var(--primary-red);
   color:#fff;
   display:flex;
   justify-content:space-between;
-  padding:10px 18px;
+  padding:8px 14px;
   font-weight:700;
   align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
 }
 
 /* SOCIAL ICONS */
@@ -42,7 +49,9 @@
   transform: scale(1.1);
 }
 
-/* WHITE LOGO BAR */
+/* =======================
+   ⚪ WHITE LOGO BAR
+   ======================= */
 .logo-bar {
   background: #fff;
   padding: 8px 16px;
@@ -50,11 +59,16 @@
   align-items: center;
 }
 
-.logo-bar img {
+.logo-bar img,
+.site-logo {
   height: 46px;
+  width: auto;
+  display:block;
 }
 
-/* BLACK CATEGORY BAR */
+/* =======================
+   ⚫ BLACK CATEGORY BAR
+   ======================= */
 .category-bar {
   background: #000;
   height: var(--nav-height);
@@ -62,6 +76,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* MOBILE MENU TOGGLE (DEFAULT HIDDEN) */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 18px;
 }
 
 /* MENU */
@@ -92,39 +115,58 @@
   border-bottom: 3px solid var(--primary-red);
 }
 
-/* VERTICAL DROPDOWN */
-.v-parent { position: relative; }
+/* =======================
+   VERTICAL DROPDOWN
+   ======================= */
+.v-parent {
+  position: relative;
+}
 
+/* main dropdown box */
 .v-menu {
-  
   width: 260px;
   background: #fff;
   color: var(--text-dark);
   position: absolute;
-  top: calc(200% - 1px); 
+  top: 100%;               /* ⭐ yahan change */
   left: 0;
+  margin-top: 1px;         /* optional: thoda sa gap for look */
   display: none;
   list-style: none;
-  border-radius: 0 0 6px 6px; /* ⭐ Rounded bottom only */
+  border-radius: 0 0 6px 6px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   overflow: hidden;
   z-index: 9999;
 }
 
-.v-parent:hover .v-menu { display: block; }
+/* hover se open (desktop) */
+.v-parent:hover .v-menu {
+  display: block;
+}
 
+/* li ke basic border */
 .v-menu li {
-  padding: 14px 20px;
-  font-size: 17px;
   border-bottom: 1px solid #eee;
 }
 
-.v-menu li:hover {
+/* submenu anchor style (text visible) */
+.v-menu li a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 17px;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+/* hover effect */
+.v-menu li:hover a {
   background: var(--bg-light);
   color: var(--dark-red);
 }
 
-/* RIGHT TOOLS */
+/* =======================
+   RIGHT TOOLS (SEARCH + LIVE)
+   ======================= */
 .right-tools {
   display: flex;
   align-items: center;
@@ -174,16 +216,20 @@
   }
 }
 
-/* REMOVE HORIZONTAL SCROLL */
-html, body {
-  overflow-x: hidden;
+/* =============================
+   DESKTOP ONLY FIX
+   click se open band, sirf hover
+   ============================= */
+@media (min-width: 901px) {
+  .v-parent.open .v-menu {
+    display: none !important;
+  }
 }
 
 /* ========================================= */
-/* MOBILE RESPONSIVE  */
+/* 📱 MOBILE RESPONSIVE  (max-width: 900px) */
 /* ========================================= */
 
-/* FOR SCREENS BELOW 900px */
 @media (max-width: 900px) {
 
   /* TOP BAR */
@@ -198,7 +244,8 @@ html, body {
   }
 
   /* LOGO BAR */
-  .logo-bar img {
+  .logo-bar img,
+  .site-logo {
     height: 40px;
   }
 
@@ -207,6 +254,11 @@ html, body {
     height: auto;
     padding: 10px 16px;
     position: relative;
+  }
+
+  /* MOBILE MENU BUTTON VISIBLE */
+  .menu-toggle {
+    display: block;
   }
 
   /* HIDE NAV MENU IN MOBILE */
@@ -218,15 +270,6 @@ html, body {
     padding: 10px 0;
     margin-top: 10px;
     border-top: 1px solid #333;
-  }
-
-  /* MOBILE MENU BUTTON */
-  .menu-toggle {
-    display: block;
-    font-size: 28px;
-    color: #fff;
-    cursor: pointer;
-    margin-right: 18px;
   }
 
   /* WHEN MENU OPEN */
@@ -255,12 +298,12 @@ html, body {
     display: none;
   }
 
-  /* OPEN SUBMENU ON TAP */
+  /* OPEN SUBMENU ON TAP (class .open JS se aati hai) */
   .v-parent.open .v-menu {
     display: block;
   }
 
-  .v-menu li {
+  .v-menu li a {
     padding: 12px 20px;
     font-size: 16px;
     border-bottom: 1px solid #2a2a2a;
@@ -268,7 +311,7 @@ html, body {
     color: #ddd;
   }
 
-  .v-menu li:hover {
+  .v-menu li:hover a {
     background: #222;
     color: var(--primary-red);
   }
@@ -300,7 +343,8 @@ html, body {
     padding: 6px 10px;
   }
 
-  .logo-bar img {
+  .logo-bar img,
+  .site-logo {
     height: 34px;
   }
 
