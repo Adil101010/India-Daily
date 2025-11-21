@@ -18,7 +18,7 @@
 <body class="page-article">
 
   <!-- -------------  HEADER / TOP BAR / NAVIGATION ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <!-- ====================== ARTICLE PAGE ====================== -->
   <main class="article-container" aria-labelledby="articleTitle">
@@ -77,7 +77,7 @@
   <div id="footer"></div>
 
   <script>
-    fetch("./footer/footer.html")
+    fetch("footer/footer.html")
       .then(res => res.text())
       .then(data => {
         const footerEl = document.getElementById("footer");
@@ -92,6 +92,6 @@
   <script src="js/main.js"></script>
   <script src="js/article.js"></script>
   <!-- Header include handler -->
-  <script src="/include.js"></script>
+  <script src="include.js"></script>
 </body>
 </html>

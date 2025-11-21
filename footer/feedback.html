@@ -173,7 +173,7 @@
 <body>
 
 <!-- ------------- HEADER INCLUDE ------------- -->
-<div include-html="/header/header.html"></div>
+<div include-html="header/header.html"></div>
 
 <main class="wrap" role="main">
   <section class="card">
@@ -219,7 +219,7 @@
 <!-- FOOTER -->
 <div id="footer"></div>
 <script>
-fetch("./footer.html")
+fetch("footer.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("footer").innerHTML = data;
@@ -270,7 +270,7 @@ clearBtn.addEventListener('click', ()=> {
 </script>
 
 <!-- HEADER INCLUDE SCRIPT -->
-<script src="/include.js"></script>
+<script src="include.js"></script>
 
 </body>
 </html>

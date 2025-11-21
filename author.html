@@ -321,7 +321,7 @@
 <body>
 
   <!-- -------------  HEADER / NAV ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <div class="container">
     <!-- Author page top bar -->
@@ -397,7 +397,7 @@
 
   <script>
     // footer include
-    fetch("./footer/footer.html")
+    fetch("footer/footer.html")
       .then(res => res.text())
       .then(data => {
         const footer = document.getElementById("footer");
@@ -517,6 +517,6 @@
   </script>
 
   <!-- Header include handler -->
-  <script src="/include.js"></script>
+  <script src="include.js"></script>
 </body>
 </html>

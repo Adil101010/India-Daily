@@ -225,7 +225,7 @@
 <body>
 
   <!-- -------------  header or top bar or navigation ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <div class="page-wrap" role="main">
     <div class="grid">
@@ -368,7 +368,7 @@
   <div id="footer"></div>
   <script>
     // about.html is inside /footer/, so footer.html is in same folder
-    fetch("./footer.html")
+    fetch("footer.html")
       .then(res => res.text())
       .then(data => {
         document.getElementById("footer").innerHTML = data;
@@ -386,6 +386,6 @@
   </script>
 
   <!-- -------------  for the header include ------------- -->
-  <script src="/include.js"></script>
+  <script src="include.js"></script>
 </body>
 </html>

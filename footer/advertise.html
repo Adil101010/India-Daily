@@ -195,7 +195,7 @@
 <body>
 
 <!-- ------------- HEADER INCLUDE ------------- -->
-<div include-html="/header/header.html"></div>
+<div include-html="header/header.html"></div>
 
 <div class="wrap">
 
@@ -283,7 +283,7 @@
     <p class="muted">All creatives go through editorial review. Non-compliant creatives will be rejected.</p>
   </div>
 
-  <a style="color:var(--brand-dark); font-weight:700; text-decoration:none;" href="../index.html">← Back to Home</a>
+  <a style="color:var(--brand-dark); font-weight:700; text-decoration:none;" href="index.html">← Back to Home</a>
 
 </div>
 
@@ -292,7 +292,7 @@
 <!-- FOOTER -->
 <div id="footer"></div>
 <script>
-fetch("./footer.html")
+fetch("footer.html")
   .then(r=>r.text())
   .then(d=>document.getElementById("footer").innerHTML = d);
 </script>
@@ -302,7 +302,7 @@ document.getElementById("toTop").onclick = () =>
   window.scrollTo({top:0, behavior:"smooth"});
 </script>
 
-<script src="/include.js"></script>
+<script src="include.js"></script>
 
 </body>
 </html>

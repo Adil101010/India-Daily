@@ -17,7 +17,7 @@
 <body class="page-search">
 
   <!-- -------------  HEADER / TOP BAR / NAV ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <!-- ====================== SEARCH PAGE ====================== -->
   <main class="search-main container-lg" aria-labelledby="searchPageTitle">
@@ -94,7 +94,7 @@
   <div id="footer"></div>
 
   <script>
-    fetch("./footer/footer.html")
+    fetch("footer/footer.html")
       .then(res => res.text())
       .then(data => {
         const footerEl = document.getElementById("footer");
@@ -106,7 +106,7 @@
   </script>
 
   <!-- Header include handler -->
-  <script src="/include.js"></script>
+  <script src="include.js"></script>
 
   <!-- Search logic -->
   <script type="module" src="js/search.js"></script>

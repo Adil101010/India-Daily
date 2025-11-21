@@ -17,7 +17,7 @@
 <body class="page-category">
 
   <!-- -------------  HEADER / TOP BAR / NAV ------------- -->
-  <div include-html="/header/header.html"></div>
+  <div include-html="header/header.html"></div>
 
   <!-- -------------  CATEGORY HERO ------------- -->
   <section class="category-hero" aria-labelledby="catTitle">
@@ -105,7 +105,7 @@
 
   <script>
     // Footer partial include
-    fetch("./footer/footer.html")
+    fetch("footer/footer.html")
       .then(res => res.text())
       .then(data => {
         const footerEl = document.getElementById("footer");
@@ -117,7 +117,7 @@
   </script>
 
   <!-- Header include handler -->
-  <script src="/include.js"></script>
+  <script src="include.js"></script>
 
   <!-- Global + category JS -->
   <script src="js/main.js"></script>

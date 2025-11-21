@@ -128,7 +128,7 @@
 <body>
 
 <!-- -------------  header / top / nav ------------- -->
-<div include-html="/header/header.html"></div>
+<div include-html="header/header.html"></div>
 
 <div class="wrap">
   <h1>Disclaimer</h1>
@@ -180,7 +180,7 @@
 <!-- ------ FOOTER ------ -->
 <div id="footer"></div>
 <script>
-  fetch("./footer.html")
+  fetch("footer.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer").innerHTML = data;
@@ -193,6 +193,6 @@
 </script>
 
 <!-- include header script -->
-<script src="/include.js"></script>
+<script src="include.js"></script>
 </body>
 </html>
