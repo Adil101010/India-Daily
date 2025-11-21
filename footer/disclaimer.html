@@ -85,15 +85,9 @@
 </style>
 </head>
 <body>
-
-<!-- Header -->
-<div class="header">
-  <img src="/footer/india-daily-logo.jpg" alt="India Daily">
-  <div>
-    <div class="brand">India Daily</div>
-    <div style="font-size:12px;opacity:0.9;margin-top:3px">Fast. Fearless. Facts.</div>
-  </div>
-</div>
+<!-- -------------  header or top bar or navigation ------------- -->
+     
+<div include-html="/header/header.html"></div>
 
 <div class="wrap">
   <h1>Disclaimer</h1>
@@ -149,6 +143,7 @@ fetch("./footer.html")
     document.getElementById("footer").innerHTML = data;
   });
 </script>
- 
+ <!-- -------------  for the header or the header  ------------- -->
+<script src="/include.js"></script>
 </body>
 </html>

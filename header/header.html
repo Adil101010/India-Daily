@@ -1,140 +1,118 @@
-<!-- header.html -->
-<header id="site-header">
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <div class="top-left"><span id="topDate">Loading date...</span></div>
-    <div class="top-right social-icons">
-      <a href="#" class="social">FB</a>
-      <a href="#" class="social">X</a>
-      <a href="#" class="social">YT</a>
-      <a href="#" class="social">IG</a>
-    </div>
-  </div>
-  <link rel="stylesheet" href="header.css">
-  <!-- HEADER -->
-  <div class="header-wrap">
-    <header class="header">
-      <a href="/" class="logo-link">
-        <img src="india-daily-logo.jpg" alt="India Daily" class="logo" />
-      </a>
-    </header>
+<header class="main-header">
 
-    <!-- Hamburger button visible on mobile -->
-    <button id="siteHamburger" class="hamburger" aria-label="Open menu" type="button">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+    <!-- TOP RED BAR -->
+    <div class="top-bar">
+        <span id="current-date"></span>
 
-  <!-- NAVBAR -->
-  <nav class="main-nav" aria-label="Primary navigation">
-    <ul id="navLinks" class="nav-links">
-
-      <li class="active">
-        <a href="index.html">
-          <svg class="home-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path fill="white" d="M12 3l9 8h-3v10H6V11H3l9-8z"/>
-          </svg>
-          होम
-        </a>
-      </li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=ट्रेंडिंग और वायरल" aria-haspopup="true" aria-expanded="false">ट्रेंडिंग और वायरल</a>
-        <ul class="dropdown" role="menu" aria-label="ट्रेंडिंग और वायरल subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=ट्रेंडिंग और वायरल&sub=टॉप स्टोरीज">टॉप स्टोरीज</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=ट्रेंडिंग और वायरल&sub=लोकल">लोकल</a></li>
-        </ul>
-      </li>
-
-      <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=खेल" aria-haspopup="true" aria-expanded="false">खेल</a>
-        <ul class="dropdown" role="menu" aria-label="खेल subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=अन्य खेल प्रतियोगिताएँ">अन्य खेल प्रतियोगिताएँ</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=ओलंपिक्स">ओलंपिक्स</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=क्रिकेट">क्रिकेट</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=खिलाड़ियों के इंटरव्यू">खिलाड़ियों के इंटरव्यू</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=टेनिस">टेनिस</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=खेल&sub=फुटबॉल">फुटबॉल</a></li>
-        </ul>
-      </li>
-
-      <li><a href="category.html?cat=व्यापार और अर्थव्यवस्था">व्यापार और अर्थव्यवस्था</a></li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=मनोरंजन" aria-haspopup="true" aria-expanded="false">मनोरंजन</a>
-        <ul class="dropdown" role="menu" aria-label="मनोरंजन subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=OTT अपडेट">OTT अपडेट</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Hollywood">Hollywood</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Bollywood">Bollywood</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=मनोरंजन&sub=Tollywood">Tollywood</a></li>
-        </ul>
-      </li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=तकनीक" aria-haspopup="true" aria-expanded="false">तकनीक</a>
-        <ul class="dropdown" role="menu" aria-label="तकनीक subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=इंटरनेट और सोशल मीडिया अपडेट">इंटरनेट और सोशल मीडिया अपडेट</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=AI और Machine Learning">AI और Machine Learning</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Apps और Software">Apps और Software</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Gadgets">Gadgets</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तकनीक&sub=Cyber सुरक्षा">Cyber सुरक्षा</a></li>
-        </ul>
-      </li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=अपराध" aria-haspopup="true" aria-expanded="false">अपराध</a>
-        <ul class="dropdown" role="menu" aria-label="अपराध subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=अपराध रिपोर्ट">अपराध रिपोर्ट</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=कानूनी अपडेट">कानूनी अपडेट</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=अपराध&sub=जांच और विवेचना">जांच और विवेचना</a></li>
-        </ul>
-      </li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=विश्व समाचार" aria-haspopup="true" aria-expanded="false">विश्व समाचार</a>
-        <ul class="dropdown" role="menu" aria-label="विश्व समाचार subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=आंतरराष्ट्रीय संबंध">आंतरराष्ट्रीय संबंध</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=विदेशी नीतिया">विदेशी नीतिया</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=विश्व समाचार&sub=वैश्विक घटनाएँ">वैश्विक घटनाएँ</a></li>
-        </ul>
-      </li>
-
-      <li class="has-dropdown">
-        <a href="category.html?cat=तथ्य जाँच" aria-haspopup="true" aria-expanded="false">तथ्य जाँच</a>
-        <ul class="dropdown" role="menu" aria-label="तथ्य जाँच subcategories">
-          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=गलत सूचनाओं का पर्दाफाश">गलत सूचनाओं का पर्दाफाश</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=फर्जी खबरों की पड़ताल">फर्जी खबरों की पढ़ताल</a></li>
-          <li role="none"><a role="menuitem" href="category.html?cat=तथ्य जाँच&sub=वायरल दावों की सच्चाई">वायरल दावों की सच्चाई</a></li>
-        </ul>
-      </li>
-
-    </ul>
-
-    <!-- RIGHT ACTIONS (SEARCH ICON + LIVE) -->
-    <div class="nav-right">
-      <button class="search-btn" aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-          <path fill="#fff" d="M21 20l-5.7-5.7a7 7 0 10-1.4 1.4L20 21l1-1zM4 10a6 6 0 1112 0A6 6 0 014 10z"/>
-        </svg>
-      </button>
-
-      <button class="live-btn" id="liveBtn" aria-live="polite">LIVE</button>
+        <div class="social-icons">
+            <a href="#"><img src="/icons/facebook.png" alt="FB"></a>
+            <a href="#"><img src="/icons/twitter.png" alt="X"></a>
+            <a href="#"><img src="/icons/youtube.png" alt="YT"></a>
+            <a href="#"><img src="/icons/instagram.png" alt="IG"></a>
+        </div>
     </div>
 
-    <!-- MOBILE SLIDE MENU (hidden by default) -->
-    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-      <button id="closeMobileMenu" class="close-menu" aria-label="Close menu">×</button>
-      <ul class="mobile-list">
-        <li><a href="/">होम</a></li>
-        <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
-        <li><a href="category.html?cat=खेल">खेल</a></li>
-        <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
-        <li><a href="category.html?cat=तकनीक">तकनीक</a></li>
-        <li><a href="category.html?cat=व्यापार और अर्थव्यवस्था">व्यापार और अर्थव्यवस्था</a></li>
-        <li><a href="category.html?cat=तथ्य जाँच">तथ्य जाँच</a></li>
-      </ul>
+    <!-- WHITE LOGO BAR -->
+    <div class="logo-bar">
+        <img src="/header/india-daily-logo.jpg" alt="India Daily Logo">
     </div>
-  </nav>
+
+    <!-- BLACK CATEGORY BAR -->
+    <nav class="category-bar">
+     <div class="menu-toggle">☰</div>
+
+        <ul class="nav-menu">
+           
+            <li class="nav-item">
+                
+                <a href="#"><i class="fa fa-home"></i> होम</a>
+            </li>
+
+            <li class="nav-item v-parent">ट्रेंडिंग और वायरल
+                <ul class="v-menu">
+                    <li>लेटेस्ट वायरल</li>
+                    <li>टॉप ट्रेंडिंग</li>
+                    <li>सोशल मीडिया</li>
+                    <li>फनी क्लिप्स</li>
+                    <li>लोकप्रिय खबरें</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">राजनीति
+                <ul class="v-menu">
+                    <li>चुनाव</li>
+                    <li>सरकार</li>
+                    <li>नेता</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">खेल
+                <ul class="v-menu">
+                    <li>क्रिकेट</li>
+                    <li>फुटबॉल</li>
+                    <li>कबड्डी</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">व्यापार और अर्थव्यवस्था
+                <ul class="v-menu">
+                    <li>शेयर बाजार</li>
+                    <li>बिजनेस</li>
+                    <li>रिपोर्ट्स</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">मनोरंजन
+                <ul class="v-menu">
+                    <li>OTT</li>
+                    <li>हॉलीवुड</li>
+                    <li>बॉलीवुड</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">तकनीक
+                <ul class="v-menu">
+                    <li>मोबाइल</li>
+                    <li>गैजेट्स</li>
+                    <li>AI अपडेट</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">अपराध
+                <ul class="v-menu">
+                    <li>लोकल क्राइम</li>
+                    <li>देश क्राइम</li>
+                    <li>CCTV फुटेज</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">विश्व समाचार
+                <ul class="v-menu">
+                    <li>एशिया</li>
+                    <li>अमेरिका</li>
+                    <li>यूरोप</li>
+                </ul>
+            </li>
+
+            <li class="nav-item v-parent">तथ्य जाँच
+                <ul class="v-menu">
+                    <li>फैक्ट चेक</li>
+                    <li>जांच रिपोर्ट</li>
+                    <li>फेक न्यूज़</li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-tools">
+            <img src="/icons/search.png" class="search-icon-img" alt="search">
+            <button class="live-btn">LIVE</button>
+        </div>
+
+    </nav>
+
 </header>
+
+<link rel="stylesheet" href="/header/header.css">
+<script src="/header/header.js"></script>

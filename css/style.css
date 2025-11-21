@@ -562,3 +562,38 @@
     height: 160px !important;
   }
 }
+
+
+
+body {
+    overflow-x: hidden;
+}
+
+header {
+    overflow-x: hidden;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden !important;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+}
+
+.nav-menu li {
+    white-space: nowrap;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}

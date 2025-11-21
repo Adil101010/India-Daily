@@ -41,14 +41,10 @@
 </head>
 <body>
 
-  <!-- header placeholder -->
-  <div class="site-header-placeholder" role="banner">
-    <img src="../assets/images/india-daily-logo.png" alt="India Daily logo (change path if needed)" id="privacyLogo">
-    <div>
-      <div class="brand">India Daily</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.95);margin-top:3px">Fast. Fearless. Facts.</div>
-    </div>
-  </div>
+ 
+<!-- -------------  header or top bar or navigation ------------- -->
+     
+<div include-html="/header/header.html"></div>
 
   <main class="wrap" role="main" aria-labelledby="privacy-title">
     <h1 id="privacy-title">Privacy &amp; Policy</h1>
@@ -146,6 +142,8 @@ fetch("./footer.html")
     if(logo) logo.onerror = ()=> { const t=document.createElement('div'); t.textContent='India Daily'; t.style.fontWeight='800'; t.style.color='#fff'; logo.replaceWith(t); }
   })();
 </script>
-
+ 
+<!-- -------------  for the header or the header  ------------- -->
+<script src="/include.js"></script>
 </body>
 </html>
