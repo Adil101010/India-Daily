@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Disclaimer | India Daily</title>
+
 <style>
   :root{
     --brand:#ff0000;
@@ -11,52 +12,44 @@
     --card:#fff7f7;
     --muted:#666;
   }
-  *{box-sizing:border-box}
+
+  *{ box-sizing:border-box; }
+
   body{
     margin:0;
     font-family:"Segoe UI",Roboto,Arial,sans-serif;
     background:#fff;
     color:#222;
     line-height:1.6;
+    overflow-x:hidden;
   }
-
-  .header{
-    position:fixed;
-    top:0;left:0;right:0;
-    height:78px;
-    background:linear-gradient(90deg,var(--dark),#5a0a0a);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 18px;
-    color:#fff;
-    box-shadow:0 2px 8px rgba(0,0,0,0.15);
-    z-index:50;
-  }
-  .header img{height:46px}
-  .brand{font-weight:800;font-size:18px}
 
   .wrap{
     max-width:900px;
     margin:0 auto;
-    padding:110px 18px 60px;
+    padding:40px 18px 60px;  /* top padding thoda kam, kyunki global header already hai */
   }
 
   h1{
     color:var(--dark);
     margin-top:0;
     margin-bottom:10px;
-    font-size:28px;
+    font-size:30px;
   }
+
   h2{
     font-size:22px;
     color:var(--dark);
     margin-top:26px;
+    margin-bottom:8px;
     border-left:6px solid var(--brand);
     padding-left:10px;
   }
 
-  p{margin:10px 0;font-size:16px}
+  p{
+    margin:10px 0;
+    font-size:16px;
+  }
 
   .note{
     background:var(--card);
@@ -66,6 +59,20 @@
     margin:14px 0;
   }
 
+  .muted{
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  a{
+    color:var(--dark);
+    text-decoration:none;
+  }
+  a:hover{
+    text-decoration:underline;
+  }
+
+  /* back to top button */
   .to-top{
     position:fixed;
     right:18px;
@@ -81,69 +88,111 @@
     cursor:pointer;
     font-weight:700;
     box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    z-index:90;
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media(max-width:768px){
+    .wrap{
+      padding:28px 14px 50px;
+    }
+    h1{
+      font-size:24px;
+    }
+    h2{
+      font-size:19px;
+      border-left-width:4px;
+    }
+    p{
+      font-size:15px;
+    }
+  }
+
+  @media(max-width:480px){
+    .wrap{
+      padding:24px 12px 48px;
+    }
+    h1{
+      font-size:22px;
+    }
+    .to-top{
+      width:40px;
+      height:40px;
+      right:12px;
+      bottom:12px;
+      font-size:18px;
+    }
   }
 </style>
 </head>
 <body>
-<!-- -------------  header or top bar or navigation ------------- -->
-     
+
+<!-- -------------  header / top / nav ------------- -->
 <div include-html="/header/header.html"></div>
 
 <div class="wrap">
   <h1>Disclaimer</h1>
 
   <p>
-    The information provided on <strong>India Daily</strong> is published in good faith and for general informational purposes only. 
-    While we strive to deliver accurate and authentic news, we do not make any warranties regarding the completeness, reliability, 
-    or accuracy of the information.
+    The information provided on <strong>India Daily</strong> is published in good faith and for general informational
+    purposes only. While we strive to deliver accurate and authentic news, we do not make any warranties regarding
+    the completeness, reliability, or accuracy of the information.
   </p>
 
   <h2>Content Responsibility</h2>
   <p>
-    India Daily does not take responsibility for any losses, damages, or inconveniences caused as a result of using the 
-    information on this website. Users are advised to verify critical information independently.
+    India Daily does not take responsibility for any losses, damages, or inconveniences caused as a result of using
+    the information on this website. Users are advised to verify critical information independently.
   </p>
 
   <h2>External Links</h2>
   <p>
-    Our website may contain external links leading to third-party websites. Although we try to provide quality and ethical links, 
-    we have no control over the content and nature of those sites. Clicking external links is strictly at your own risk.
+    Our website may contain external links leading to third-party websites. Although we try to provide quality and
+    ethical links, we have no control over the content and nature of those sites. Clicking external links is strictly
+    at your own risk.
   </p>
 
   <div class="note">
-    <strong>Note:</strong> External website content may change without notice, and we are not responsible for changes that occur after the link is added.
+    <strong>Note:</strong> External website content may change without notice, and we are not responsible for changes
+    that occur after the link is added.
   </div>
 
-  <h2>Opinions & Views</h2>
+  <h2>Opinions &amp; Views</h2>
   <p>
-    Articles, opinions, and editorials published on India Daily may include the writers’ personal views. These views do not represent 
-    the official stance of India Daily.
+    Articles, opinions, and editorials published on India Daily may include the writers’ personal views. These views
+    do not represent the official stance of India Daily.
   </p>
 
-  <h2>Updates & Amendments</h2>
+  <h2>Updates &amp; Amendments</h2>
   <p>
-    India Daily reserves the right to update or modify this disclaimer at any time without prior notice. Please check this page 
-    periodically for updates.
+    India Daily reserves the right to update or modify this disclaimer at any time without prior notice. Please check
+    this page periodically for updates.
   </p>
 
   <p class="muted" style="margin-top:20px">
-    If you require any more information or have questions about our disclaimer, please contact us at:  
+    If you require any more information or have questions about our disclaimer, please contact us at:
     <strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong>
   </p>
 </div>
 
-<!-- <div class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div> -->
-   <!-- ------ FOOTER ------ -->
-   <div id="footer"></div>
+<div class="to-top" id="toTop" title="Back to top">↑</div>
 
+<!-- ------ FOOTER ------ -->
+<div id="footer"></div>
 <script>
-fetch("./footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
+  fetch("./footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  // back to top
+  document.getElementById('toTop').addEventListener('click', () => {
+    window.scrollTo({top:0, behavior:'smooth'});
   });
 </script>
- <!-- -------------  for the header or the header  ------------- -->
+
+<!-- include header script -->
 <script src="/include.js"></script>
 </body>
 </html>
