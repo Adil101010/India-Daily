@@ -225,8 +225,8 @@
 <body>
 
   <!-- -------------  header or top bar or navigation ------------- -->
+  
   <div include-html="header/header.html"></div>
-
   <div class="page-wrap" role="main">
     <div class="grid">
 
@@ -364,16 +364,7 @@
   <!-- Back To Top Button -->
   <div class="to-top" id="toTop" aria-label="Back to top">↑</div>
 
-  <!-- FOOTER INCLUDE -->
-  <div id="footer"></div>
-  <script>
-    // about.html is inside /footer/, so footer.html is in same folder
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-  </script>
+ 
 
   <script>
     // Back to top scroll
@@ -385,7 +376,23 @@
     }
   </script>
 
-  <!-- -------------  for the header include ------------- -->
+  <!-- ====================== FOOTER ====================== -->
+  <div id="footer"></div>
+
+  <script>
+    fetch("footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => console.error("Error loading footer:", err));
+  </script>
+
+  <!-- Header include handler -->
   <script src="include.js"></script>
+
 </body>
 </html>

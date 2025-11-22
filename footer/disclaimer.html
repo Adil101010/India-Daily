@@ -127,8 +127,9 @@
 </head>
 <body>
 
-<!-- -------------  header / top / nav ------------- -->
-<div include-html="header/header.html"></div>
+  <!-- -------------  header or top bar or navigation ------------- -->
+  
+  <div include-html="header/header.html"></div>
 
 <div class="wrap">
   <h1>Disclaimer</h1>
@@ -177,22 +178,23 @@
 
 <div class="to-top" id="toTop" title="Back to top">↑</div>
 
-<!-- ------ FOOTER ------ -->
-<div id="footer"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer").innerHTML = data;
-    });
+  <!-- ====================== FOOTER ====================== -->
+  <div id="footer"></div>
 
-  // back to top
-  document.getElementById('toTop').addEventListener('click', () => {
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-</script>
+  <script>
+    fetch("footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => console.error("Error loading footer:", err));
+  </script>
 
-<!-- include header script -->
-<script src="include.js"></script>
+  <!-- Header include handler -->
+  <script src="include.js"></script>
+
 </body>
 </html>

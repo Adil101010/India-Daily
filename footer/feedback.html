@@ -172,8 +172,9 @@
 </head>
 <body>
 
-<!-- ------------- HEADER INCLUDE ------------- -->
-<div include-html="header/header.html"></div>
+  <!-- -------------  header or top bar or navigation ------------- -->
+  
+  <div include-html="header/header.html"></div>
 
 <main class="wrap" role="main">
   <section class="card">
@@ -216,15 +217,7 @@
   </section>
 </main>
 
-<!-- FOOTER -->
-<div id="footer"></div>
-<script>
-fetch("footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-</script>
+ 
 
 <!-- FORM SCRIPT -->
 <script>
@@ -269,8 +262,24 @@ clearBtn.addEventListener('click', ()=> {
 });
 </script>
 
-<!-- HEADER INCLUDE SCRIPT -->
-<script src="include.js"></script>
+  <!-- ====================== FOOTER ====================== -->
+  <div id="footer"></div>
+
+  <script>
+    fetch("footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => console.error("Error loading footer:", err));
+  </script>
+
+  <!-- Header include handler -->
+  <script src="include.js"></script>
+
 
 </body>
 </html>
