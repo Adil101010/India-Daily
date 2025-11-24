@@ -38,8 +38,9 @@ public class AdminService {
         return repo.findById(id).orElse(null);
     }
 
-    // UPDATE
+    // UPDATE  (FULLY FIXED)
     public Admin updateAdmin(Long id, Admin updated) {
+
         Admin admin = repo.findById(id).orElse(null);
 
         if (admin == null) return null;
@@ -47,6 +48,7 @@ public class AdminService {
         admin.setName(updated.getName());
         admin.setEmail(updated.getEmail());
         admin.setPassword(updated.getPassword());
+        admin.setRole(updated.getRole());  // <-- IMPORTANT (missing before)
 
         return repo.save(admin);
     }
