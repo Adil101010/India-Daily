@@ -1,7 +1,9 @@
 package com.indiadaily.backend.service;
 
+import com.indiadaily.backend.model.Author;
 import com.indiadaily.backend.model.News;
 import com.indiadaily.backend.repository.NewsRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Normalizer;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,124 +25,146 @@ public class NewsService {
         this.repo = repo;
     }
 
-    // IMAGE UPLOAD COMMON FUNCTION
+    // =====================================
+    // IMAGE UPLOAD
+    // =====================================
     private String uploadImage(MultipartFile image) {
         try {
             if (image != null && !image.isEmpty()) {
+
                 String uploadDir = "uploads/";
                 File dir = new File(uploadDir);
                 if (!dir.exists()) dir.mkdirs();
 
                 String originalName = image.getOriginalFilename();
-                if (originalName == null) {
-                    originalName = "image";
-                }
+                if (originalName == null) originalName = "image";
 
-                String fileName = System.currentTimeMillis() + "_" + originalName.replaceAll("\\s+", "_");
+                String cleanedName = originalName.replaceAll("\\s+", "_");
+                String fileName = System.currentTimeMillis() + "_" + cleanedName;
+
                 Path filePath = Paths.get(uploadDir + fileName);
                 Files.write(filePath, image.getBytes());
 
-                // TODO: base URL ko config se read kar sakte ho, abhi localhost ke liye
                 return "http://localhost:8080/" + uploadDir + fileName;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Image upload failed: " + e.getMessage());
         }
         return null;
     }
 
+    // =====================================
     // ADD NEWS
+    // =====================================
     public News addNews(String title,
                         String category,
-                        String author,
+                        String authorName,
                         String status,
                         String content,
                         MultipartFile image) {
 
         News n = new News();
 
-        // basic fields
-        n.setTitle(title != null ? title.trim() : null);
-        n.setCategory(category != null ? category.trim() : null);
-        n.setAuthor(author != null ? author.trim() : null);
-
-        // status normalize (Published/Draft)
-        String finalStatus = (status == null || status.isBlank())
-                ? "DRAFT"
-                : status.trim().toUpperCase(Locale.ROOT);
-        n.setStatus(finalStatus);
-
-        // long content
+        n.setTitle(title);
+        n.setCategory(category);
         n.setContent(content);
 
-        // summary (listing ke liye short text)
+        // AUTHOR OBJECT
+        Author author = new Author();
+        author.setName(authorName != null ? authorName.trim() : "India Daily");
+        author.setBio(null);
+        author.setAvatar(null);
+        n.setAuthor(author);
+
+        // STATUS
+        String finalStatus =
+                (status == null || status.isBlank())
+                        ? "DRAFT"
+                        : status.trim().toUpperCase(Locale.ROOT);
+
+        n.setStatus(finalStatus);
+
+        // SUMMARY
         n.setSummary(buildSummary(content));
 
-        // slug (SEO URL) – title se generate
-        if (title != null && !title.isBlank()) {
-            String slug = generateSlug(title);
-            n.setSlug(slug);
-        }
+        // SLUG → unique
+        n.setSlug(generateUniqueSlug(title));
 
-        // flags default
-        n.setFeatured(false);
-        n.setBreaking(false);
-
-        // image upload (optional)
+        // IMAGE
         String imgUrl = uploadImage(image);
-        if (imgUrl != null) {
-            n.setImageUrl(imgUrl);
-        }
+        if (imgUrl != null) n.setImageUrl(imgUrl);
 
-        // views default 0 entity me already set hai
+        // publishedAt only if published
+        if (finalStatus.equals("PUBLISHED")) {
+            n.setPublishedAt(LocalDateTime.now());
+        }
 
         return repo.save(n);
     }
 
-    // UPDATE WITH OPTIONAL IMAGE
+    // =====================================
+    // UPDATE NEWS
+    // =====================================
     public News updateNews(Long id,
                            String title,
                            String category,
                            String status,
                            String content,
-                           MultipartFile image) {
+                           MultipartFile image,
+                           String authorName,
+                           Boolean featured,
+                           Boolean breaking) {
 
         News old = repo.findById(id).orElse(null);
         if (old == null) return null;
 
         if (title != null && !title.isBlank()) {
-            old.setTitle(title.trim());
-            // agar pehle slug null tha to ab generate kar do
+            old.setTitle(title);
             if (old.getSlug() == null || old.getSlug().isBlank()) {
-                old.setSlug(generateSlug(title));
+                old.setSlug(generateUniqueSlug(title));
             }
         }
 
-        if (category != null && !category.isBlank()) {
-            old.setCategory(category.trim());
-        }
+        if (category != null) old.setCategory(category);
 
-        if (status != null && !status.isBlank()) {
-            String finalStatus = status.trim().toUpperCase(Locale.ROOT);
-            old.setStatus(finalStatus);
-        }
-
-        if (content != null && !content.isBlank()) {
+        if (content != null) {
             old.setContent(content);
-            // summary bhi update kar sakte hain
             old.setSummary(buildSummary(content));
         }
 
-        // image optional – sirf nayi aayi to hi update
-        String imgUrl = uploadImage(image);
-        if (imgUrl != null) {
-            old.setImageUrl(imgUrl);
+        // STATUS
+        if (status != null) {
+            String st = status.trim().toUpperCase(Locale.ROOT);
+            old.setStatus(st);
+
+            if (st.equals("PUBLISHED") && old.getPublishedAt() == null) {
+                old.setPublishedAt(LocalDateTime.now());
+            }
         }
+
+        // AUTHOR UPDATE
+        if (authorName != null) {
+            Author a = old.getAuthor();
+            if (a == null) a = new Author();
+
+            a.setName(authorName.trim());
+            old.setAuthor(a);
+        }
+
+        // IMAGE UPDATE
+        String imgUrl = uploadImage(image);
+        if (imgUrl != null) old.setImageUrl(imgUrl);
+
+        // FEATURED + BREAKING
+        if (featured != null) old.setFeatured(featured);
+        if (breaking != null) old.setBreaking(breaking);
 
         return repo.save(old);
     }
 
-    // OTHERS – ADMIN SIDE
+    // =====================================
+    // CRUD
+    // =====================================
     public List<News> getAll() {
         return repo.findAll();
     }
@@ -154,68 +179,66 @@ public class NewsService {
         return true;
     }
 
-    // ================================
-    // PUBLIC SIDE METHODS (frontend k liye)
-    // ================================
-
-    // Latest news (home page) – max 10, ya limit jitna mile
+    // =====================================
+    // PUBLIC APIs
+    // =====================================
     public List<News> getLatestPublished(int limit) {
-        List<News> list = repo.findTop10ByStatusOrderByPublishedAtDesc("PUBLISHED");
-        if (limit <= 0 || limit >= list.size()) {
-            return list;
-        }
-        return list.subList(0, limit);
+        return repo.findByStatusOrderByPublishedAtDesc("PUBLISHED",
+                PageRequest.of(0, Math.max(1, limit)));
     }
 
-    // Trending news – views ke basis par
     public List<News> getTrending(int limit) {
-        List<News> list = repo.findTop5ByStatusOrderByViewsDesc("PUBLISHED");
-        if (limit <= 0 || limit >= list.size()) {
-            return list;
-        }
-        return list.subList(0, limit);
+        return repo.findByStatusOrderByViewsDesc("PUBLISHED",
+                PageRequest.of(0, Math.max(1, limit)));
     }
 
-    // Featured stories – home hero section
     public List<News> getFeatured() {
         return repo.findByFeaturedTrueOrderByPublishedAtDesc();
     }
 
-    // Category wise listing (abhi simple String category)
     public List<News> getByCategory(String category) {
-        if (category == null || category.isBlank()) {
-            return List.of();
-        }
-        return repo.findByCategoryOrderByPublishedAtDesc(category.trim());
+        return repo.findByCategoryIgnoreCaseOrderByPublishedAtDesc(category);
     }
 
-    // Article page – slug se fetch + views++
     public News getBySlugAndIncreaseViews(String slug) {
-        if (slug == null || slug.isBlank()) {
-            return null;
-        }
-        News news = repo.findBySlug(slug.trim()).orElse(null);
+        News news = repo.findBySlug(slug).orElse(null);
         if (news == null) return null;
 
         news.setViews(news.getViews() + 1);
         return repo.save(news);
     }
 
-    // === helpers ===
-
+    // =====================================
+    // HELPERS
+    // =====================================
     private String buildSummary(String content) {
         if (content == null) return null;
-        String trimmed = content.trim();
-        if (trimmed.length() <= 180) {
-            return trimmed;
+        content = content.trim();
+        return content.length() <= 180 ? content : content.substring(0, 177) + "...";
+    }
+
+    private String generateUniqueSlug(String input) {
+        if (input == null) return null;
+
+        String baseSlug = generateSlug(input);
+        String slug = baseSlug;
+
+        int counter = 1;
+        while (repo.findBySlug(slug).isPresent()) {
+            slug = baseSlug + "-" + counter;
+            counter++;
         }
-        return trimmed.substring(0, 177) + "...";
+
+        return slug;
     }
 
     private String generateSlug(String input) {
         String nowhitespace = input.trim().replaceAll("\\s+", "-");
         String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
-        String slug = normalized.replaceAll("[^\\w-]", "").toLowerCase(Locale.ROOT);
-        return slug;
+        return normalized.replaceAll("[^\\w-]", "").toLowerCase(Locale.ROOT);
     }
+    public News saveDirect(News news) {
+        return repo.save(news);
+    }
+
 }

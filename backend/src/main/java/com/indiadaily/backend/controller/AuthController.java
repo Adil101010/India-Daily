@@ -4,9 +4,12 @@ import com.indiadaily.backend.dto.LoginRequest;
 import com.indiadaily.backend.model.Admin;
 import com.indiadaily.backend.service.AdminService;
 import com.indiadaily.backend.config.JwtUtil;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -21,52 +24,87 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
-    // CREATE ADMIN (NO TOKEN REQUIRED)
+    // ============================
+    // CREATE ADMIN (Public)
+    // ============================
     @PostMapping("/create")
-    public Admin createAdmin(@RequestBody Admin admin) {
-        return adminService.addAdmin(admin);
+    public ResponseEntity<?> createAdmin(@RequestBody Admin admin) {
+        Admin saved = adminService.addAdmin(admin);
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("message", "Admin created successfully");
+        res.put("admin", saved);
+
+        return ResponseEntity.ok(res);
     }
 
-    // LOGIN (NO TOKEN REQUIRED)
+    // ============================
+    // LOGIN (Public)
+    // ============================
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+
         Admin admin = adminService.login(request.getEmail(), request.getPassword());
-        if (admin == null) return "INVALID";
-        return jwtUtil.generateToken(admin.getEmail());
+
+        if (admin == null) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("error", "Invalid email or password");
+            return ResponseEntity.status(401).body(error);
+        }
+
+        // Generate token
+        String token = jwtUtil.generateToken(admin.getEmail());
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("token", token);
+        res.put("admin", admin);
+
+        return ResponseEntity.ok(res);
     }
 
-    // TEST TOKEN (TOKEN REQUIRED)
+    // ============================
+    // TEST TOKEN (Protected)
+    // ============================
     @GetMapping("/test")
-    public String test() {
-        return "Token Verified Successfully!";
+    public ResponseEntity<?> test() {
+        return ResponseEntity.ok("Token Verified Successfully!");
     }
 
-    //---------------------------
-    // CRUD — (TOKEN REQUIRED)
-    //---------------------------
+    // ============================
+    // CRUD (Protected)
+    // ============================
 
     @PostMapping("/add")
-    public Admin add(@RequestBody Admin admin) {
-        return adminService.addAdmin(admin);
+    public ResponseEntity<?> add(@RequestBody Admin admin) {
+        return ResponseEntity.ok(adminService.addAdmin(admin));
     }
 
     @GetMapping("/all")
-    public List<Admin> allAdmins() {
-        return adminService.getAllAdmins();
+    public ResponseEntity<List<Admin>> allAdmins() {
+        return ResponseEntity.ok(adminService.getAllAdmins());
     }
 
     @GetMapping("/{id}")
-    public Admin getById(@PathVariable Long id) {
-        return adminService.getAdminById(id);
+    public ResponseEntity<?> getById(@PathVariable Long id) {
+        Admin admin = adminService.getAdminById(id);
+        if (admin == null)
+            return ResponseEntity.status(404).body("Admin not found");
+        return ResponseEntity.ok(admin);
     }
 
     @PutMapping("/{id}")
-    public Admin update(@PathVariable Long id, @RequestBody Admin admin) {
-        return adminService.updateAdmin(id, admin);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Admin updated) {
+        Admin admin = adminService.updateAdmin(id, updated);
+        if (admin == null)
+            return ResponseEntity.status(404).body("Admin not found");
+        return ResponseEntity.ok(admin);
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
-        return adminService.deleteAdmin(id) ? "DELETED" : "NOT FOUND";
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        boolean deleted = adminService.deleteAdmin(id);
+        if (!deleted)
+            return ResponseEntity.status(404).body("NOT FOUND");
+        return ResponseEntity.ok("DELETED");
     }
 }

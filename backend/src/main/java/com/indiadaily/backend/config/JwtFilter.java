@@ -29,15 +29,15 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        // 1️⃣ If no token → skip JWT validation for this request
+        // ❌ If header missing → skip
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // 2️⃣ Extract token
+        // Extract token
         String token = authHeader.substring(7);
-        String email = null;
+        String email;
 
         try {
             email = jwtUtil.extractEmail(token);
@@ -46,13 +46,20 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        // 3️⃣ Validate token
+        // Already authenticated? skip
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+
             if (jwtUtil.validateToken(token, email)) {
+
                 UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(email, null, null);
+                        new UsernamePasswordAuthenticationToken(
+                                email,   // principal
+                                null,    // credentials
+                                null     // authorities (admin role handled in controller)
+                        );
 
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }

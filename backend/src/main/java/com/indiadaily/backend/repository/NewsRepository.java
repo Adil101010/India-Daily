@@ -1,25 +1,42 @@
 package com.indiadaily.backend.repository;
 
 import com.indiadaily.backend.model.News;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
 
-    // For slug-based article page
+    // ==========================
+    // SLUG (Article Page)
+    // ==========================
     Optional<News> findBySlug(String slug);
 
-    // For category page (latest first)
-    List<News> findByCategoryOrderByPublishedAtDesc(String category);
 
-    // For home page latest news
-    List<News> findTop10ByStatusOrderByPublishedAtDesc(String status);
+    // ==========================
+    // CATEGORY (Ignore Case + Latest First)
+    // ==========================
+    List<News> findByCategoryIgnoreCaseOrderByPublishedAtDesc(String category);
 
-    // For trending news (views high first)
-    List<News> findTop5ByStatusOrderByViewsDesc(String status);
 
-    // For featured stories on home page
+    // ==========================
+    // LATEST PUBLISHED (Dynamic limit via Pageable)
+    // ==========================
+    List<News> findByStatusOrderByPublishedAtDesc(String status, Pageable pageable);
+
+
+    // ==========================
+    // TRENDING (Views Based)
+    // ==========================
+    List<News> findByStatusOrderByViewsDesc(String status, Pageable pageable);
+
+
+    // ==========================
+    // FEATURED (Hero Section)
+    // ==========================
     List<News> findByFeaturedTrueOrderByPublishedAtDesc();
 }

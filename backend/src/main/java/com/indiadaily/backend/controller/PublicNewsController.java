@@ -2,6 +2,7 @@ package com.indiadaily.backend.controller;
 
 import com.indiadaily.backend.model.News;
 import com.indiadaily.backend.service.NewsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,12 @@ public class PublicNewsController {
     }
 
     // ==========================
-    // LATEST NEWS (home page)
+    // LATEST NEWS (Home)
     // /api/public/news/latest?limit=10
     // ==========================
     @GetMapping("/latest")
-    public List<News> getLatest(@RequestParam(defaultValue = "10") int limit) {
-        return newsService.getLatestPublished(limit);
+    public ResponseEntity<?> getLatest(@RequestParam(defaultValue = "10") int limit) {
+        return ResponseEntity.ok(newsService.getLatestPublished(limit));
     }
 
     // ==========================
@@ -31,35 +32,38 @@ public class PublicNewsController {
     // /api/public/news/trending?limit=5
     // ==========================
     @GetMapping("/trending")
-    public List<News> getTrending(@RequestParam(defaultValue = "5") int limit) {
-        return newsService.getTrending(limit);
+    public ResponseEntity<?> getTrending(@RequestParam(defaultValue = "5") int limit) {
+        return ResponseEntity.ok(newsService.getTrending(limit));
     }
 
     // ==========================
-    // FEATURED NEWS (hero section)
-    // /api/public/news/featured
+    // FEATURED NEWS (Hero)
     // ==========================
     @GetMapping("/featured")
-    public List<News> getFeatured() {
-        return newsService.getFeatured();
+    public ResponseEntity<?> getFeatured() {
+        return ResponseEntity.ok(newsService.getFeatured());
     }
 
     // ==========================
-    // CATEGORY WISE LISTING
-    // /api/public/news/category?name=Politics
-    // (abhi simple name se, baad me slug kar sakte)
+    // CATEGORY (ignore-case)
+    // /api/public/news/category?name=Sports
     // ==========================
     @GetMapping("/category")
-    public List<News> getByCategory(@RequestParam("name") String category) {
-        return newsService.getByCategory(category);
+    public ResponseEntity<?> getByCategory(@RequestParam("name") String category) {
+        return ResponseEntity.ok(newsService.getByCategory(category));
     }
 
     // ==========================
-    // SINGLE ARTICLE BY SLUG
-    // /api/public/news/article/{slug}
+    // ARTICLE PAGE (slug)
+    // /api/public/news/article/india-wins-2025
     // ==========================
     @GetMapping("/article/{slug}")
-    public News getBySlug(@PathVariable String slug) {
-        return newsService.getBySlugAndIncreaseViews(slug);
+    public ResponseEntity<?> getBySlug(@PathVariable String slug) {
+        News news = newsService.getBySlugAndIncreaseViews(slug);
+
+        if (news == null)
+            return ResponseEntity.status(404).body("Article not found");
+
+        return ResponseEntity.ok(news);
     }
 }

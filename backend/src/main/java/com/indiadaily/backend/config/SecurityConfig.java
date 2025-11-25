@@ -22,27 +22,33 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
                 .authorizeHttpRequests(auth -> auth
-                        // Static uploaded images (for frontend) – always public
+
+                        // Static image URLs — always public
                         .requestMatchers("/uploads/**").permitAll()
 
-                        // Admin auth (login/create) – public
+                        // Admin login (public)
                         .requestMatchers("/api/admin/login").permitAll()
                         .requestMatchers("/api/admin/create").permitAll()
 
-                        // Public read-only APIs (future: latest, category, slug etc.)
+                        // Public APIs like:
+                        // latest news, category, slug, trending, featured etc.
                         .requestMatchers("/api/public/**").permitAll()
 
-                        // Admin / News management – JWT required
-                        .requestMatchers("/api/admin/**").authenticated()
+                        // News CRUD — protect with JWT
+                        .requestMatchers("/api/news/add").authenticated()
                         .requestMatchers("/api/news/**").authenticated()
 
-                        // Anything else – allowed (e.g. index.html, static resources)
+                        // Admin dashboards — fully protected
+                        .requestMatchers("/api/admin/**").authenticated()
+
+                        // Everything else — allow
                         .anyRequest().permitAll()
                 );
 
-        // JWT Filter
+        // Add JWT filter
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

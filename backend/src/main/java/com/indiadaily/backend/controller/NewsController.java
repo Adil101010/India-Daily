@@ -2,10 +2,9 @@ package com.indiadaily.backend.controller;
 
 import com.indiadaily.backend.model.News;
 import com.indiadaily.backend.service.NewsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/news")
@@ -18,59 +17,99 @@ public class NewsController {
         this.service = service;
     }
 
-    // ==========================
+    // ==========================================================
     // ADD NEWS (multipart/form-data)
-    // ==========================
+    // ==========================================================
     @PostMapping(value = "/add", consumes = {"multipart/form-data"})
-    public News add(
+    public ResponseEntity<?> addNews(
             @RequestPart("title") String title,
-            @RequestPart("category") String category,
-            @RequestPart("status") String status,
-            @RequestPart("content") String content,
-            @RequestPart(value = "author", required = false) String author,
-            @RequestPart(value = "image", required = false) MultipartFile image
+            @RequestPart(value = "category", required = false) String category,
+            @RequestPart(value = "author", required = false) String authorName,
+            @RequestPart(value = "status", required = false) String status,
+            @RequestPart(value = "content", required = false) String content,
+            @RequestPart(value = "image", required = false) MultipartFile image,
+            @RequestPart(value = "featured", required = false) Boolean featured,
+            @RequestPart(value = "breaking", required = false) Boolean breaking
     ) {
-        // agar frontend se author na aaye to default "Admin"
-        String finalAuthor = (author == null || author.isBlank()) ? "Admin" : author.trim();
-        return service.addNews(title, category, finalAuthor, status, content, image);
+
+        News saved = service.addNews(
+                title,
+                category,
+                authorName,
+                status,
+                content,
+                image
+        );
+
+        return ResponseEntity.ok(saved);
     }
 
-    // ==========================
-    // GET ALL
-    // ==========================
-    @GetMapping("/all")
-    public List<News> all() {
-        return service.getAll();
-    }
 
-    // ==========================
-    // GET BY ID
-    // ==========================
-    @GetMapping("/{id}")
-    public News one(@PathVariable Long id) {
-        return service.getById(id);
-    }
-
-    // ==========================
-    // UPDATE (with OR without image)
-    // ==========================
+    // ==========================================================
+    // UPDATE NEWS (multipart/form-data)
+    // ==========================================================
     @PutMapping(value = "/{id}", consumes = {"multipart/form-data"})
-    public News update(
+    public ResponseEntity<?> updateNews(
             @PathVariable Long id,
-            @RequestPart("title") String title,
-            @RequestPart("category") String category,
-            @RequestPart("status") String status,
-            @RequestPart("content") String content,
-            @RequestPart(value = "image", required = false) MultipartFile image
+            @RequestPart(value = "title", required = false) String title,
+            @RequestPart(value = "category", required = false) String category,
+            @RequestPart(value = "status", required = false) String status,
+            @RequestPart(value = "content", required = false) String content,
+            @RequestPart(value = "image", required = false) MultipartFile image,
+            @RequestPart(value = "author", required = false) String authorName,
+            @RequestPart(value = "featured", required = false) Boolean featured,
+            @RequestPart(value = "breaking", required = false) Boolean breaking
     ) {
-        return service.updateNews(id, title, category, status, content, image);
+
+        News updated = service.updateNews(
+                id,
+                title,
+                category,
+                status,
+                content,
+                image,
+                authorName,
+                featured,
+                breaking
+        );
+
+        if (updated == null)
+            return ResponseEntity.status(404).body("NOT FOUND");
+
+        return ResponseEntity.ok(updated);
     }
 
-    // ==========================
-    // DELETE
-    // ==========================
+    // ==========================================================
+    // DELETE NEWS
+    // ==========================================================
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
-        return service.delete(id) ? "DELETED" : "NOT FOUND";
+    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
+        boolean ok = service.delete(id);
+
+        if (!ok)
+            return ResponseEntity.status(404).body("NOT FOUND");
+
+        return ResponseEntity.ok("DELETED");
+    }
+
+    // ==========================================================
+    // GET ALL NEWS (Admin)
+    // ==========================================================
+    @GetMapping("/all")
+    public ResponseEntity<?> all() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    // ==========================================================
+    // GET SINGLE NEWS (Admin)
+    // ==========================================================
+    @GetMapping("/{id}")
+    public ResponseEntity<?> one(@PathVariable Long id) {
+        News news = service.getById(id);
+
+        if (news == null)
+            return ResponseEntity.status(404).body("NOT FOUND");
+
+        return ResponseEntity.ok(news);
     }
 }

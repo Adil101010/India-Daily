@@ -3,8 +3,9 @@ package com.indiadaily.backend.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "news")
@@ -16,40 +17,34 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Main content
-    @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
 
-    // SEO friendly URL: e.g. "pm-modi-addresses-nation"
-    // Optional for now: Add News API me auto-generate kar sakte ho
     @Column(unique = true)
     private String slug;
 
-    // Short description for listing cards
-    @Column(length = 255)
     private String summary;
 
-    // Category: abhi String hi rakha hai (baad me relation bana sakte hain)
     private String category;
+
+    // ⭐ Added for subcategories like "फनी क्लिप्स", "देश क्राइम", etc.
+    private String subcategory;
 
     private String imageUrl;
 
-    private String author;
+    @Embedded
+    private Author author;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date publishedAt = new Date();
+    @CreationTimestamp
+    private LocalDateTime publishedAt;
 
     private int views = 0;
 
-    // Published / Draft
-    private String status;
+    private String status = "DRAFT";
 
-    // Home page hero / top story ke liye
     private boolean featured = false;
 
-    // Breaking news badge ke liye
     private boolean breaking = false;
 }
