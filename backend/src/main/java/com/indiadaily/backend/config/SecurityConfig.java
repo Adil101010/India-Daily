@@ -6,6 +6,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class SecurityConfig {
@@ -14,6 +15,11 @@ public class SecurityConfig {
 
     public SecurityConfig(JwtFilter jwtFilter) {
         this.jwtFilter = jwtFilter;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -26,29 +32,20 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
 
-                        // Static image URLs — always public
+                        // PUBLIC ENDPOINTS
                         .requestMatchers("/uploads/**").permitAll()
-
-                        // Admin login (public)
                         .requestMatchers("/api/admin/login").permitAll()
                         .requestMatchers("/api/admin/create").permitAll()
-
-                        // Public APIs like:
-                        // latest news, category, slug, trending, featured etc.
                         .requestMatchers("/api/public/**").permitAll()
 
-                        // News CRUD — protect with JWT
-                        .requestMatchers("/api/news/add").authenticated()
+                        // PROTECTED ENDPOINTS
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/news/**").authenticated()
 
-                        // Admin dashboards — fully protected
-                        .requestMatchers("/api/admin/**").authenticated()
-
-                        // Everything else — allow
+                        // ANY OTHER REQUEST
                         .anyRequest().permitAll()
                 );
 
-        // Add JWT filter
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

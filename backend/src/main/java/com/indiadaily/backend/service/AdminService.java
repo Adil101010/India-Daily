@@ -13,8 +13,7 @@ import java.util.List;
 public class AdminService {
 
     private final AdminRepository repo;
-
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder passwordEncoder;
 
     // ===========================
     // LOGIN (JWT Ready)

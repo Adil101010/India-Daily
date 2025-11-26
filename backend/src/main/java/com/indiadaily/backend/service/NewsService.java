@@ -69,32 +69,24 @@ public class NewsService {
         n.setCategory(category);
         n.setContent(content);
 
-        // AUTHOR OBJECT
         Author author = new Author();
         author.setName(authorName != null ? authorName.trim() : "India Daily");
         author.setBio(null);
         author.setAvatar(null);
         n.setAuthor(author);
 
-        // STATUS
         String finalStatus =
                 (status == null || status.isBlank())
                         ? "DRAFT"
                         : status.trim().toUpperCase(Locale.ROOT);
 
         n.setStatus(finalStatus);
-
-        // SUMMARY
         n.setSummary(buildSummary(content));
-
-        // SLUG → unique
         n.setSlug(generateUniqueSlug(title));
 
-        // IMAGE
         String imgUrl = uploadImage(image);
         if (imgUrl != null) n.setImageUrl(imgUrl);
 
-        // publishedAt only if published
         if (finalStatus.equals("PUBLISHED")) {
             n.setPublishedAt(LocalDateTime.now());
         }
@@ -108,6 +100,7 @@ public class NewsService {
     public News updateNews(Long id,
                            String title,
                            String category,
+                           String subcategory,
                            String status,
                            String content,
                            MultipartFile image,
@@ -127,12 +120,13 @@ public class NewsService {
 
         if (category != null) old.setCategory(category);
 
+        if (subcategory != null) old.setSubcategory(subcategory);
+
         if (content != null) {
             old.setContent(content);
             old.setSummary(buildSummary(content));
         }
 
-        // STATUS
         if (status != null) {
             String st = status.trim().toUpperCase(Locale.ROOT);
             old.setStatus(st);
@@ -142,7 +136,6 @@ public class NewsService {
             }
         }
 
-        // AUTHOR UPDATE
         if (authorName != null) {
             Author a = old.getAuthor();
             if (a == null) a = new Author();
@@ -151,11 +144,9 @@ public class NewsService {
             old.setAuthor(a);
         }
 
-        // IMAGE UPDATE
         String imgUrl = uploadImage(image);
         if (imgUrl != null) old.setImageUrl(imgUrl);
 
-        // FEATURED + BREAKING
         if (featured != null) old.setFeatured(featured);
         if (breaking != null) old.setBreaking(breaking);
 
@@ -237,8 +228,8 @@ public class NewsService {
         String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
         return normalized.replaceAll("[^\\w-]", "").toLowerCase(Locale.ROOT);
     }
+
     public News saveDirect(News news) {
         return repo.save(news);
     }
-
 }

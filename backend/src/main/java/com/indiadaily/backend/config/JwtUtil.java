@@ -12,13 +12,14 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "MySuperSecretKeyForJWTGeneration12345"; // must be 32+ chars
+    private final String SECRET = "MySuperSecretKeyForJWTGeneration12345";
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
-
-    private final long EXPIRATION = 1000 * 60 * 60 * 24; // 24 hrs
+    private final long EXPIRATION = 1000 * 60 * 60 * 24; // 24 hours
 
     public String generateToken(String email) {
+
         return Jwts.builder()
+                .claim("email", email)   // 👈 Claim पास कर
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
@@ -27,12 +28,12 @@ public class JwtUtil {
     }
 
     public String extractEmail(String token) {
-        return getClaims(token).getSubject();
+        return getClaims(token).get("email", String.class); // 👈 SUBJECT नहीं, CLAIM पढ़
     }
 
     public boolean validateToken(String token, String email) {
         String extractedEmail = extractEmail(token);
-        return (email.equals(extractedEmail) && !isExpired(token));
+        return extractedEmail != null && extractedEmail.equals(email) && !isExpired(token);
     }
 
     private boolean isExpired(String token) {

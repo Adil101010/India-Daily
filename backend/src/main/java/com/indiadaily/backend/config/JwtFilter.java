@@ -5,12 +5,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Collections;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -29,13 +31,11 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        // ❌ If header missing → skip
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Extract token
         String token = authHeader.substring(7);
         String email;
 
@@ -46,16 +46,19 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        // Already authenticated? skip
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             if (jwtUtil.validateToken(token, email)) {
 
+                // 🔥 IMPORTANT: Give ADMIN ROLE here
+                SimpleGrantedAuthority role =
+                        new SimpleGrantedAuthority("ROLE_ADMIN");
+
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
-                                email,   // principal
-                                null,    // credentials
-                                null     // authorities (admin role handled in controller)
+                                email,
+                                null,
+                                Collections.singletonList(role)  // ✔ now user has ADMIN role
                         );
 
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

@@ -18,7 +18,7 @@ public class NewsController {
     }
 
     // ==========================================================
-    // ADD NEWS (multipart/form-data)
+    // ADD NEWS
     // ==========================================================
     @PostMapping(value = "/add", consumes = {"multipart/form-data"})
     public ResponseEntity<?> addNews(
@@ -53,6 +53,7 @@ public class NewsController {
             @PathVariable Long id,
             @RequestPart(value = "title", required = false) String title,
             @RequestPart(value = "category", required = false) String category,
+            @RequestPart(value = "subcategory", required = false) String subcategory,
             @RequestPart(value = "status", required = false) String status,
             @RequestPart(value = "content", required = false) String content,
             @RequestPart(value = "image", required = false) MultipartFile image,
@@ -65,6 +66,7 @@ public class NewsController {
                 id,
                 title,
                 category,
+                subcategory,
                 status,
                 content,
                 image,
