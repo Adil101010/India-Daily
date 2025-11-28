@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+import com.indiadaily.backend.model.Author;
+import jakarta.persistence.Embedded;
 @Entity
 @Table(name = "news")
 @Getter

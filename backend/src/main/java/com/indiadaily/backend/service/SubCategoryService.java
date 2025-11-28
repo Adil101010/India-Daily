@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.Locale;
-
+import java.util.Map;        // ✅ ADD THIS
+import java.util.HashMap;    // ✅ ADD THIS
 @Service
 public class SubCategoryService {
 
@@ -73,9 +74,56 @@ public class SubCategoryService {
     }
 
     private String generateSlug(String input) {
-        if (input == null) return null;
-        String nowhitespace = input.trim().replaceAll("\\s+", "-");
-        String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
-        return normalized.replaceAll("[^\\w-]", "").toLowerCase(Locale.ROOT);
+        if (input == null || input.trim().isEmpty()) {
+            return "";
+        }
+
+        // Hindi to English mapping for subcategories
+        Map<String, String> hindiToEnglish = new HashMap<>();
+
+        // Politics
+        hindiToEnglish.put("राष्ट्रीय", "national");
+        hindiToEnglish.put("अंतर्राष्ट्रीय", "international");
+        hindiToEnglish.put("चुनाव", "election");
+
+        // Sports
+        hindiToEnglish.put("क्रिकेट", "cricket");
+        hindiToEnglish.put("फुटबॉल", "football");
+        hindiToEnglish.put("ओलंपिक", "olympics");
+        hindiToEnglish.put("अन्य खेल", "other-sports");
+
+        // Business
+        hindiToEnglish.put("बाजार", "market");
+        hindiToEnglish.put("कंपनियां", "companies");
+        hindiToEnglish.put("नीति", "policy");
+
+        // Entertainment
+        hindiToEnglish.put("बॉलीवुड", "bollywood");
+        hindiToEnglish.put("हॉलीवुड", "hollywood");
+        hindiToEnglish.put("टीवी", "tv");
+        hindiToEnglish.put("संगीत", "music");
+
+        // Technology
+        hindiToEnglish.put("मोबाइल", "mobile");
+        hindiToEnglish.put("AI और तकनीक", "ai-tech");
+        hindiToEnglish.put("गैजेट्स", "gadgets");
+
+        // World News
+        hindiToEnglish.put("एशिया", "asia");
+        hindiToEnglish.put("यूरोप", "europe");
+        hindiToEnglish.put("अमेरिका", "america");
+
+        if (hindiToEnglish.containsKey(input.trim())) {
+            return hindiToEnglish.get(input.trim());
+        }
+
+        // Fallback
+        String slug = input.toLowerCase()
+                .trim()
+                .replaceAll("\\s+", "-")
+                .replaceAll("[^a-z0-9-]", "");
+
+        return slug.isEmpty() ? "subcategory-" + System.currentTimeMillis() : slug;
     }
+
 }

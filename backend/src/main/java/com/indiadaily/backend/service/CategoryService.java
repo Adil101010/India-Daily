@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;        // ✅ ADD THIS
+import java.util.HashMap;    // ✅ ADD THIS
+
 
 @Service
 public class CategoryService {
@@ -14,6 +17,7 @@ public class CategoryService {
     private final CategoryRepository repo;
 
     public CategoryService(CategoryRepository repo) {
+
         this.repo = repo;
     }
 
@@ -27,11 +31,13 @@ public class CategoryService {
 
     // Get all
     public List<Category> all() {
+
         return repo.findAll();
     }
 
     // Get by slug
     public Category getBySlug(String slug) {
+
         return repo.findBySlug(slug).orElse(null);
     }
 
@@ -53,9 +59,34 @@ public class CategoryService {
     }
 
     private String generateSlug(String input) {
-        if (input == null) return null;
-        String nowhitespace = input.trim().replaceAll("\\s+", "-");
-        String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
-        return normalized.replaceAll("[^\\w-]", "").toLowerCase(Locale.ROOT);
+        if (input == null || input.trim().isEmpty()) {
+            return "";
+        }
+
+        // Hindi to English mapping (manual)
+        Map<String, String> hindiToEnglish = new HashMap<>();
+        hindiToEnglish.put("ट्रेंडिंग और वायरल", "trending-viral");
+        hindiToEnglish.put("राजनीति", "politics");
+        hindiToEnglish.put("खेल", "sports");
+        hindiToEnglish.put("व्यापार और अर्थव्यवस्था", "business-economy");
+        hindiToEnglish.put("मनोरंजन", "entertainment");
+        hindiToEnglish.put("तकनीक", "technology");
+        hindiToEnglish.put("अपराध", "crime");
+        hindiToEnglish.put("विश्व समाचार", "world-news");
+        hindiToEnglish.put("तथ्य जाँच", "fact-check");
+
+        // Check if Hindi name exists in map
+        if (hindiToEnglish.containsKey(input.trim())) {
+            return hindiToEnglish.get(input.trim());
+        }
+
+        // Fallback: transliterate or simple conversion
+        String slug = input.toLowerCase()
+                .trim()
+                .replaceAll("\\s+", "-")
+                .replaceAll("[^a-z0-9-]", "");
+
+        return slug.isEmpty() ? "category-" + System.currentTimeMillis() : slug;
     }
+
 }
