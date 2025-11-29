@@ -31,6 +31,7 @@ public class News {
 
     private String category;
 
+
     // ⭐ Added for subcategories like "फनी क्लिप्स", "देश क्राइम", etc.
     private String subcategory;
 

@@ -54,6 +54,27 @@ public class PublicNewsController {
     }
 
     // ==========================
+    // SUBCATEGORIES (for a category)
+    // /api/public/news/subcategories?category=Sports
+    // ==========================
+    @GetMapping("/subcategories")
+    public ResponseEntity<List<String>> getSubCategories(@RequestParam("category") String category) {
+        return ResponseEntity.ok(newsService.getSubCategoriesByCategory(category));
+    }
+
+    // ==========================
+    // CATEGORY + SUBCATEGORY FILTER
+    // /api/public/news/category/filter?category=Sports&subcategory=Cricket
+    // ==========================
+    @GetMapping("/category/filter")
+    public ResponseEntity<List<News>> filterByCategoryAndSubcategory(
+            @RequestParam("category") String category,
+            @RequestParam(value = "subcategory", required = false) String subcategory
+    ) {
+        return ResponseEntity.ok(newsService.getByCategoryAndSubcategory(category, subcategory));
+    }
+
+    // ==========================
     // ARTICLE PAGE (slug)
     // /api/public/news/article/india-wins-2025
     // ==========================
@@ -66,4 +87,13 @@ public class PublicNewsController {
 
         return ResponseEntity.ok(news);
     }
+    // ==========================
+// EDITORIALS (right column)
+// /api/public/news/editorials?limit=5
+// ==========================
+    @GetMapping("/editorials")
+    public ResponseEntity<?> getEditorials(@RequestParam(defaultValue = "5") int limit) {
+        return ResponseEntity.ok(newsService.getEditorials(limit));
+    }
+
 }

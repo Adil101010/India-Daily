@@ -15,6 +15,7 @@ import java.text.Normalizer;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class NewsService {
@@ -199,6 +200,29 @@ public class NewsService {
         return repo.save(news);
     }
 
+    // ===== NEW: SUBCATEGORIES BY CATEGORY =====
+    public List<String> getSubCategoriesByCategory(String category) {
+        List<News> list = repo.findByCategoryIgnoreCase(category);
+
+        return list.stream()
+                .map(News::getSubcategory)
+                .filter(s -> s != null && !s.isBlank())
+                .map(String::trim)
+                .map(s -> s.replaceAll("\\s+", " "))
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    // ===== NEW: CATEGORY + SUBCATEGORY FILTER =====
+    public List<News> getByCategoryAndSubcategory(String category, String subcategory) {
+        if (subcategory != null && !subcategory.isBlank()) {
+            return repo.findByCategoryIgnoreCaseAndSubcategoryIgnoreCaseOrderByPublishedAtDesc(
+                    category, subcategory
+            );
+        }
+        return repo.findByCategoryIgnoreCaseOrderByPublishedAtDesc(category);
+    }
+
     // =====================================
     // HELPERS
     // =====================================
@@ -232,4 +256,12 @@ public class NewsService {
     public News saveDirect(News news) {
         return repo.save(news);
     }
+
+    public List<News> getEditorials(int limit) {
+        return repo.findByCategoryIgnoreCaseOrderByPublishedAtDesc("Editorial")
+                .stream()
+                .limit(Math.max(1, limit))
+                .toList();
+    }
+
 }
