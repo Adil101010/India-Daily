@@ -3,6 +3,8 @@ package com.indiadaily.backend.controller;
 import com.indiadaily.backend.model.Category;
 import com.indiadaily.backend.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -47,4 +49,16 @@ public class CategoryController {
         boolean ok = service.delete(id);
         return ok ? "Deleted" : "Not Found";
     }
+    // ========== PUBLIC: MEGA MENU TOP 9 CATEGORIES ==========
+    @GetMapping("/public/category/mega-menu")
+    public ResponseEntity<?> getMegaMenuData() {
+        try {
+            List<Category> topCategories = service.getTop9CategoriesWithSubCategories();
+            return ResponseEntity.ok(topCategories);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error fetching mega menu data");
+        }
+    }
+
 }

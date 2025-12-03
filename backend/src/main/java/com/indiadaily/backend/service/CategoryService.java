@@ -57,6 +57,11 @@ public class CategoryService {
         c.setSlug(generateSlug(name));
         return repo.save(c);
     }
+    // Get Top 9 categories for Mega Menu
+    public List<Category> getTop9CategoriesWithSubCategories() {
+        return repo.findTop9ByOrderByIdDesc();
+    }
+
 
     private String generateSlug(String input) {
         if (input == null || input.trim().isEmpty()) {
