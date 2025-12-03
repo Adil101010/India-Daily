@@ -15,6 +15,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     boolean existsBySlug(String slug);
 
     boolean existsByName(String name);
-    List<Category> findTop9ByOrderByIdDesc();
+    // NEW: mega menu ke liye latest 10
+    List<Category> findTop10ByOrderByIdDesc();
 
 }

@@ -48,4 +48,6 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // FEATURED (Hero Section)
     // ==========================
     List<News> findByFeaturedTrueOrderByPublishedAtDesc();
+
+
 }

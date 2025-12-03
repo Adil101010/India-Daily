@@ -58,9 +58,11 @@ public class CategoryService {
         return repo.save(c);
     }
     // Get Top 9 categories for Mega Menu
-    public List<Category> getTop9CategoriesWithSubCategories() {
-        return repo.findTop9ByOrderByIdDesc();
+    // Mega menu ke liye top 10 categories
+    public List<Category> getTop10ForMegaMenu() {
+        return repo.findTop10ByOrderByIdDesc();
     }
+
 
 
     private String generateSlug(String input) {

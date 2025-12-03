@@ -1,137 +1,56 @@
 <header class="main-header">
 
-    <!-- 🔴 TOP RED BAR -->
-    <div class="top-bar">
-        <span id="current-date"></span>
+  <!-- 🔴 TOP RED BAR -->
+  <div class="top-bar">
+    <span id="current-date"></span>
 
-        <div class="social-icons">
-            <a href="#" aria-label="Facebook"><img src="/images/icons/facebook.png" alt="Facebook"></a>
-            <a href="#" aria-label="Twitter"><img src="/images/icons/twitter.png" alt="Twitter"></a>
-            <a href="#" aria-label="YouTube"><img src="/images/icons/youtube.png" alt="YouTube"></a>
-            <a href="#" aria-label="Instagram"><img src="/images/icons/instagram.png" alt="Instagram"></a>
-        </div>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><img src="/images/icons/facebook.png" alt="Facebook"></a>
+      <a href="#" aria-label="Twitter"><img src="/images/icons/twitter.png" alt="Twitter"></a>
+      <a href="#" aria-label="YouTube"><img src="/images/icons/youtube.png" alt="YouTube"></a>
+      <a href="#" aria-label="Instagram"><img src="/images/icons/instagram.png" alt="Instagram"></a>
+    </div>
+  </div>
+
+  <!-- 🔵 WHITE LOGO BAR -->
+  <div class="logo-bar">
+    <a href="index.html">
+      <img src="/images/logo/india-daily-logo.jpg" alt="India Daily Logo" class="site-logo">
+    </a>
+  </div>
+
+  <!-- ⚫ BLACK CATEGORY NAVIGATION -->
+  <nav class="category-bar">
+
+    <!-- MOBILE TOGGLE -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    <!-- 🔵 WHITE LOGO BAR -->
-    <div class="logo-bar">
-        <a href="index.html">
-            <img src="/images/logo/india-daily-logo.jpg" alt="India Daily Logo" class="site-logo">
-        </a>
+    <!-- MAIN NAV -->
+    <ul class="nav-menu" id="navMenu">
+      <li class="nav-item">
+        <a href="index.html">होम</a>
+      </li>
+      <!-- Baaki categories JS se aayengi -->
+    </ul>
+
+    <!-- RIGHT SIDE TOOLS -->
+    <div class="right-tools">
+      <a href="search.html" class="search-link" aria-label="Search">
+        <img src="/images/icons/search.png" class="search-icon-img" alt="Search">
+      </a>
+      <a href="https://www.youtube.com/live/nZmoE6rPy4M"
+         class="live-btn"
+         target="_blank">
+        LIVE
+      </a>
     </div>
 
-    <!-- ⚫ BLACK CATEGORY NAVIGATION -->
-    <nav class="category-bar">
-
-        <!-- MOBILE TOGGLE -->
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <!-- MAIN NAV -->
-        <ul class="nav-menu" id="navMenu">
-
-            <li class="nav-item">
-                <a href="index.html">होम</a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">ट्रेंडिंग और वायरल</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=लेटेस्ट वायरल">लेटेस्ट वायरल</a></li>
-                    <li><a href="category.html?cat=टॉप ट्रेंडिंग">टॉप ट्रेंडिंग</a></li>
-                    <li><a href="category.html?cat=सोशल मीडिया">सोशल मीडिया</a></li>
-                    <li><a href="category.html?cat=फनी क्लिप्स">फनी क्लिप्स</a></li>
-                    <li><a href="category.html?cat=लोकप्रिय खबरें">लोकप्रिय खबरें</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">राजनीति</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=चुनाव">चुनाव</a></li>
-                    <li><a href="category.html?cat=सरकार">सरकार</a></li>
-                    <li><a href="category.html?cat=नेता">नेता</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">खेल</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=क्रिकेट">क्रिकेट</a></li>
-                    <li><a href="category.html?cat=फुटबॉल">फुटबॉल</a></li>
-                    <li><a href="category.html?cat=कबड्डी">कबड्डी</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">व्यापार और अर्थव्यवस्था</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=शेयर बाजार">शेयर बाजार</a></li>
-                    <li><a href="category.html?cat=बिजनेस">बिजनेस</a></li>
-                    <li><a href="category.html?cat=रिपोर्ट्स">रिपोर्ट्स</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">मनोरंजन</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=OTT">OTT</a></li>
-                    <li><a href="category.html?cat=हॉलीवुड">हॉलीवुड</a></li>
-                    <li><a href="category.html?cat=बॉलीवुड">बॉलीवुड</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">तकनीक</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=मोबाइल">मोबाइल</a></li>
-                    <li><a href="category.html?cat=गैजेट्स">गैजेट्स</a></li>
-                    <li><a href="category.html?cat=AI अपडेट">AI अपडेट</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">अपराध</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=लोकल क्राइम">लोकल क्राइम</a></li>
-                    <li><a href="category.html?cat=देश क्राइम">देश क्राइम</a></li>
-                    <li><a href="category.html?cat=CCTV फुटेज">CCTV फुटेज</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">विश्व समाचार</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=एशिया">एशिया</a></li>
-                    <li><a href="category.html?cat=अमेरिका">अमेरिका</a></li>
-                    <li><a href="category.html?cat=यूरोप">यूरोप</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle">तथ्य जाँच</a>
-                <ul class="dropdown-menu">
-                    <li><a href="category.html?cat=फैक्ट चेक">फैक्ट चेक</a></li>
-                    <li><a href="category.html?cat=जांच रिपोर्ट">जांच रिपोर्ट</a></li>
-                    <li><a href="category.html?cat=फेक न्यूज़">फेक न्यूज़</a></li>
-                </ul>
-            </li>
-
-        </ul>
-
-        <!-- RIGHT SIDE TOOLS -->
-        <div class="right-tools">
-            <a href="search.html" class="search-link" aria-label="Search">
-                <img src="/images/icons/search.png" class="search-icon-img" alt="Search">
-            </a>
-            <a href="live.html" class="live-btn">LIVE</a>
-        </div>
-
-    </nav>
-
+  </nav>
 </header>
 
-<link rel="stylesheet" href="header/header.css">
-<script src="header/header.js"></script>
+<link rel="stylesheet" href="/frontend/header/header.css">
+<script src="/frontend/header/header.js"></script>

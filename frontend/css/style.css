@@ -37,7 +37,7 @@ body {
 /* =========================================
    TOP BAR (DATE + SOCIAL)
 ========================================= */
-.top-bar {
+ .top-bar {
   background: var(--dark-red);
   color: #fff;
   display: flex;
@@ -71,7 +71,7 @@ body {
 .logo {
   height: 46px;
   width: auto;
-}
+} 
 
 /* Slightly smaller on very small screens */
 @media (max-width: 520px) {
@@ -724,19 +724,19 @@ body {
 .infinite-feed-sidebar .yt-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 50px;
 }
 
 .infinite-feed-sidebar .yt-item {
   background: #111;
-  border-radius: 6px;
+  border-radius: 20px;
   overflow: hidden;
 }
 
 .infinite-feed-sidebar .yt-thumb,
 .infinite-feed-sidebar .yt-item iframe {
   width: 100%;
-  height: 120px;
+  height: 200px;
   border: 0;
   display: block;
   background: #000;

@@ -12,7 +12,7 @@ document.querySelectorAll("[include-html]").forEach(el => {
             // Load header.js when header loads
             if (file.includes("header.html")) {
                 const script = document.createElement("script");
-                script.src = "/header/header.js";
+                script.src = "/frontend/header/header.js";
                 document.body.appendChild(script);
             }
 

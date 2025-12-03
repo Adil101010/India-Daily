@@ -53,7 +53,10 @@ async function fetchJson(url, opts = {}) {
    DOM Ready
 ========================= */
 document.addEventListener("DOMContentLoaded", async () => {
-  setTopDate();
+
+  /* ❌ DUPLICATE with header.js → so COMMENTED */
+  // setTopDate();
+
   initLiveBtn();
   wireFooterHelpers();
 
@@ -77,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.editorialArticles
     );
 
-    initInfiniteFeed({ pageSize: 6, maxPages: 5 }); // 6 per page, 1–5 buttons
+    initInfiniteFeed({ pageSize: 6, maxPages: 5 });
     initLazyYouTubeForInfiniteSection();
     initRelatedHomeLoadMore();
   } catch (err) {
@@ -85,18 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-/* =========================
-   Top date and Live button
-========================= */
-function setTopDate() {
-  const dateEl = document.getElementById("topDate");
-  if (!dateEl) return;
-  dateEl.textContent = new Date().toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+
 
 function initLiveBtn() {
   const liveBtn = document.querySelector(".live-btn");
@@ -148,13 +140,12 @@ function initLazyYouTubeForInfiniteSection() {
   observer.observe(section);
 }
 
-/* =========================
+/* =========================================================
    INFINITE FEED (Latest Stories)
-   -> Converted to page-based with buttons 1–5
-========================= */
+========================================================= */
 function initInfiniteFeed(opts = {}) {
   const pageSize = opts.pageSize || 6;
-  const maxPages = opts.maxPages || 5; // show buttons 1..5
+  const maxPages = opts.maxPages || 5;
   let period = opts.periodDays || "all";
 
   const feedList = document.getElementById("feedList");
@@ -162,10 +153,9 @@ function initInfiniteFeed(opts = {}) {
   const loader = document.getElementById("feedLoader");
   if (!feedList) return;
 
-  /* remove intersection observer behaviour; we use buttons now */
   if (sentinel) sentinel.style.display = "none";
 
-  let page = 0; // 0-based index for internal use
+  let page = 0;
 
   const filterByPeriod = (arr, periodDays) => {
     if (!periodDays || periodDays === "all") return arr;
@@ -227,7 +217,6 @@ function initInfiniteFeed(opts = {}) {
     }, 150);
   }
 
-  /* pagination buttons container */
   function ensurePaginationContainer() {
     let wrap = document.getElementById("feedPagination");
     if (!wrap) {
@@ -242,21 +231,19 @@ function initInfiniteFeed(opts = {}) {
   }
 
   function renderPaginationButtons(totalPages, currentPage) {
-    const maxBtns = maxPages;
     const wrap = ensurePaginationContainer();
     if (totalPages <= 1) {
       wrap.innerHTML = "";
       return;
     }
 
-    const pagesToShow = Math.min(totalPages, maxBtns);
+    const pagesToShow = Math.min(totalPages, maxPages);
     let startPage = 0;
 
-    if (totalPages > maxBtns) {
-      // try to keep current page in middle
+    if (totalPages > maxPages) {
       startPage = Math.max(
         0,
-        Math.min(currentPage - Math.floor(maxBtns / 2), totalPages - maxBtns)
+        Math.min(currentPage - Math.floor(maxPages / 2), totalPages - maxPages)
       );
     }
 
@@ -289,7 +276,6 @@ function initInfiniteFeed(opts = {}) {
     renderPage(0);
   }
 
-  // Filter buttons
   document.querySelectorAll(".feed-filter").forEach((btn) => {
     btn.addEventListener("click", () => {
       const p = btn.getAttribute("data-period") || "all";
@@ -297,7 +283,6 @@ function initInfiniteFeed(opts = {}) {
     });
   });
 
-  // initial load
   renderPage(0);
 }
 
@@ -352,7 +337,7 @@ function renderColumns(
 
   all.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-  /* TRENDING (LEFT) – EXACT 4 */
+  /* TRENDING */
   const trendingEl = document.getElementById("trendingList");
   const trendingItems = (trendingArr.length ? trendingArr : all).slice(0, 4);
   if (trendingEl) {
@@ -373,9 +358,9 @@ function renderColumns(
       .join("");
   }
 
-  /* LATEST HERO SLIDER (CENTER) – 6 slides */
+  /* LATEST SLIDER */
   const latestEl = document.getElementById("latestList");
-  const sliderSlides = all.slice(0, 6); // 6 news
+  const sliderSlides = all.slice(0, 6);
 
   if (latestEl) {
     if (sliderSlides.length) {
@@ -407,10 +392,10 @@ function renderColumns(
     }
   }
 
-  /* EDITORIALS (RIGHT) – max 4 */
+  /* EDITORIAL */
   const editorialEl = document.getElementById("editorialList");
   let editorialItems = editorialArr.length ? editorialArr : all.slice(3);
-  editorialItems = editorialItems.slice(0, 4); // hard limit 4
+  editorialItems = editorialItems.slice(0, 4);
 
   if (editorialEl) {
     editorialEl.innerHTML = editorialItems
@@ -428,7 +413,7 @@ function renderColumns(
       .join("");
   }
 
-  /* RELATED HOME SECTION (base list store for load-more) */
+  /* RELATED HOME SECTION */
   const relatedTarget = featuredArr[0] || all[0] || null;
   if (relatedTarget)
     buildRelatedStore(
@@ -436,11 +421,11 @@ function renderColumns(
       relatedTarget.category,
       all
     );
-  renderRelatedBatch(); // first 4
+  renderRelatedBatch();
 }
 
 /* =========================
-   Feature slider (LATEST)
+   Slider Logic
 ========================= */
 function initFeatureSlider(containerId = "latestList") {
   const container = document.getElementById(containerId);
@@ -494,7 +479,7 @@ function initFeatureSlider(containerId = "latestList") {
 }
 
 /* =========================
-   Related home (store + load-more)
+   Related home (Load More)
 ========================= */
 function buildRelatedStore(featureId, featureCategory, items) {
   const cat = featureCategory ? String(featureCategory).toLowerCase() : null;
@@ -568,3 +553,41 @@ function initRelatedHomeLoadMore() {
     renderRelatedBatch(4);
   });
 }
+
+/* ----------------------------------------------------------
+   DUPLICATE YOUTUBE SIDEBAR DOMContentLoaded → COMMENTED
+------------------------------------------------------------ */
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const ytItems = document.querySelectorAll(".yt-item");
+
+  ytItems.forEach(item => {
+    const videoId = item.getAttribute("data-video-id");
+    const thumb = item.querySelector(".yt-thumb");
+
+    thumb.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`;
+    thumb.style.backgroundSize = "cover";
+
+    item.addEventListener("click", function () {
+      item.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>`;
+    });
+  });
+
+  window.addEventListener("scroll", function () {
+    document.querySelectorAll("iframe").forEach(frame => {
+      const rect = frame.getBoundingClientRect();
+
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        const src = frame.src.replace("?autoplay=1", "");
+        frame.src = src;
+      }
+    });
+  });
+});
+
+

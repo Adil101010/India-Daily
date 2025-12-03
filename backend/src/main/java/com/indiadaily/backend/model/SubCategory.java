@@ -3,6 +3,7 @@ package com.indiadaily.backend.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Getter
@@ -14,12 +15,13 @@ public class SubCategory {
     private Long id;
 
     @Column(nullable = false)
-    private String name;   // Hindi → “क्रिकेट”
+    private String name;
 
     @Column(nullable = false, unique = true)
-    private String slug;   // English slug → “cricket”
+    private String slug;   // e.g. "cricket", "football"
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
     private Category category;
 }
