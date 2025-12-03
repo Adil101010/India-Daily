@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feedback | India Daily</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#ff0000;
+      --dark:#c80000;
+      --bg:#fff;
+      --muted:#666;
+      --card:#fff7f7;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:"Roboto","Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:#222;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* SIMPLE TOP RED HEADER (same style as other footer pages) */
+    .simple-header{
+      background:var(--brand);
+      color:#fff;
+      padding:8px 12px;
+    }
+    .simple-header-inner{
+      max-width:920px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .simple-date{
+      font-weight:900;
+      font-size:20px;
+    }
+    .simple-logo{
+      height:38px;
+      width:auto;
+    }
+    @media(max-width:600px){
+      .simple-date{font-size:12px;}
+      .simple-logo{height:30px;}
+    }
+
+    /* MAIN WRAPPER */
+    .wrap{
+      max-width:920px;
+      margin:0 auto;
+      padding:32px 18px 60px;
+    }
+
+    h1{
+      color:var(--dark);
+      margin:0 0 6px;
+      font-size:28px;
+    }
+
+    .sub{
+      color:var(--brand);
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    .card{
+      background:#fff;
+      padding:18px;
+      border-radius:8px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+      margin-bottom:18px;
+    }
+
+    form .row{
+      display:flex;
+      gap:12px;
+    }
+    @media(max-width:720px){
+      form .row{
+        flex-direction:column;
+      }
+    }
+
+    label{
+      display:block;
+      font-weight:700;
+      color:#333;
+      margin-bottom:6px;
+      font-size:14px;
+    }
+
+    input[type="text"], input[type="email"], textarea{
+      width:100%;
+      padding:10px;
+      border:1px solid #e6e6e6;
+      border-radius:6px;
+      font-size:15px;
+      background:#fff;
+    }
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .required{
+      color:var(--brand);
+      margin-left:6px;
+      font-weight:700;
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:12px;
+    }
+
+    button.primary{
+      background:var(--brand);
+      color:#fff;
+      border:0;
+      padding:11px 16px;
+      border-radius:6px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    button.primary:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+    }
+
+    button.secondary{
+      background:#fff;
+      border:1px solid #eee;
+      padding:10px 14px;
+      border-radius:6px;
+      cursor:pointer;
+    }
+
+    .msg-success{
+      background:#e9ffef;
+      border-left:4px solid #2db34a;
+      padding:12px;
+      border-radius:6px;
+      color:#166b2b;
+      margin-top:12px;
+    }
+
+    .msg-error{
+      background:#fff2f2;
+      border-left:4px solid #e04b4b;
+      padding:12px;
+      border-radius:6px;
+      color:#6b1b1b;
+      margin-top:12px;
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+
+    /* SIMPLE FOOTER WITH BACK HOME */
+    .simple-footer{
+      border-top:1px solid #eee;
+      padding:16px 12px 20px;
+      background:#fafafa;
+    }
+    .simple-footer-inner{
+      max-width:920px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .back-home-btn{
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      border-radius:20px;
+      padding:8px 18px;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+      cursor:pointer;
+      transition:background 0.2s, transform 0.1s;
+    }
+    .back-home-btn:hover{
+      background:var(--dark);
+      transform:translateY(-1px);
+    }
+    @media(max-width:600px){
+      .simple-footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    /* BACK TO TOP */
+    .to-top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:48px;
+      height:48px;
+      background:var(--brand);
+      color:#fff;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      z-index:90;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMPLE RED HEADER -->
+  <header class="simple-header">
+    <div class="simple-header-inner">
+      <div class="simple-date" id="fbDate"></div>
+      <img src="/images/logo/india-daily-logo.jpg" alt="India Daily" class="simple-logo">
+    </div>
+  </header>
+
+  <main class="wrap" role="main">
+    <section class="card">
+      <h1>Feedback Form</h1>
+      <div class="sub">Share Your Thoughts with India Daily</div>
+
+      <form id="feedbackForm" novalidate>
+        <!-- honeypot -->
+        <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div style="margin-bottom:12px">
+          <label for="comment">Comment / Message <span class="required">*</span></label>
+          <textarea id="comment" name="comment" placeholder="Write your comment here..." required></textarea>
+          <div class="small">Please keep messages respectful. Some feedback may be published anonymously.</div>
+        </div>
+
+        <div class="row" style="margin-bottom:8px">
+          <div style="flex:1">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" placeholder="First" required>
+          </div>
+          <div style="flex:1">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Last">
+          </div>
+        </div>
+
+        <div style="margin-bottom:8px">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="primary" id="submitBtn">Submit</button>
+          <button type="button" class="secondary" id="clearBtn">Clear</button>
+          <div id="formMessage" style="flex:1"></div>
+        </div>
+
+        <div class="note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>.</div>
+      </form>
+    </section>
+  </main>
+
+  <!-- BACK TO TOP BUTTON -->
+  <div class="to-top" id="toTop">↑</div>
+
+  <!-- SIMPLE FOOTER WITH BACK HOME -->
+  <footer class="simple-footer">
+    <div class="simple-footer-inner">
+      <span>Copyright © <span id="fbYear"></span> India Daily. All rights reserved.</span>
+      <a href="../index.html" class="back-home-btn">← Back to Home</a>
+    </div>
+  </footer>
+
+  <!-- FORM SCRIPT (same as before) -->
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const msg = document.getElementById('formMessage');
+
+    function showMessage(type, text){
+      msg.innerHTML = '<div class="'+(type==='ok'?'msg-success':'msg-error')+'">'+text+'</div>';
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      msg.innerHTML = '';
+
+      const hp = form.hp_field.value;
+      if(hp) return showMessage('err','Unable to submit form.');
+
+      const comment = form.comment.value.trim();
+      const fn = form.firstName.value.trim();
+      const email = form.email.value.trim();
+
+      if(!comment) return showMessage('err','Please enter your comment.');
+      if(!fn) return showMessage('err','Please enter your first name.');
+      if(!email || !/^\S+@\S+\.\S+$/.test(email)) return showMessage('err','Enter a valid email.');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(()=>{
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+        showMessage('ok','Thank you! Your feedback has been received.');
+      },900);
+    });
+
+    clearBtn.addEventListener('click', ()=> {
+      form.reset();
+      msg.innerHTML = '';
+    });
+
+    // date, year, back-to-top
+    (function(){
+      const d = new Date();
+      const dateEl = document.getElementById('fbDate');
+      if(dateEl){
+        const opt = { day:'numeric', month:'long', year:'numeric' };
+        dateEl.textContent = d.toLocaleDateString('en-IN', opt);
+      }
+      const y = document.getElementById('fbYear');
+      if(y) y.textContent = d.getFullYear();
+
+      const t = document.getElementById('toTop');
+      if(t){
+        t.addEventListener('click', function(){
+          window.scrollTo({top:0, behavior:'smooth'});
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

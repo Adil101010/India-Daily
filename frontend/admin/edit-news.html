@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit News</title>
+
+  <!-- 🔐 TOKEN CHECK -->
+  <script>
+      const token = localStorage.getItem("admin_token");
+      if (!token || token.trim() === "") {
+          window.location.href = "login.html";
+      }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/admin-edit-news.css">
+</head>
+
+<body>
+
+<!-- 🔥 SIMPLE ADMIN HEADER -->
+<div style="
+      background:#c80000;
+      color:white;
+      padding:12px 20px;
+      font-size:18px;
+      font-weight:bold;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;">
+      
+    <span>India Daily Admin Panel</span>
+    <button id="logoutBtn" style="
+        background:white;
+        color:#c80000;
+        border:none;
+        padding:6px 14px;
+        font-size:14px;
+        border-radius:5px;
+        cursor:pointer;">
+        Logout
+    </button>
+</div>
+
+<div class="edit-container">
+
+  <h2>Edit News</h2>
+
+  <div id="msg"></div>
+
+  <form id="editNewsForm" enctype="multipart/form-data">
+
+    <label>Title</label>
+    <input type="text" id="title" required>
+
+    <label>Category</label>
+    <input type="text" id="category">
+
+    <!-- ⭐ NEW FIELD -->
+    <label>Subcategory</label>
+    <input type="text" id="subcategory">
+
+    <label>Author</label>
+    <input type="text" id="author">
+
+    <label>Status</label>
+    <select id="status">
+      <option value="DRAFT">Draft</option>
+      <option value="PUBLISHED">Published</option>
+    </select>
+
+    <label>Content</label>
+    <textarea id="content"></textarea>
+
+    <label>Featured</label>
+    <input type="checkbox" id="featured">
+
+    <label>Breaking News</label>
+    <input type="checkbox" id="breaking">
+
+    <label>Image (Optional)</label>
+    <input type="file" id="image">
+
+    <div class="preview" id="preview"></div>
+
+    <button type="submit">Update News</button>
+
+  </form>
+
+</div>
+
+<!-- LOGOUT FIX -->
+<script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("admin_token");
+        window.location.href = "login.html";
+    });
+</script>
+
+<script src="assets/js/admin-edit-news.js"></script>
+
+</body>
+</html>

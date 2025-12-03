@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+</head>
+
+<body>
+
+    <!-- ---------------- SIDEBAR ------------------ -->
+    <div class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/india-daily-logo.jpg" alt="India Daily">
+  </div>
+
+  <ul>
+    <li class="active"><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="add-admin.html">Add Admin</a></li>
+    <li><a href="all-news.html">Manage News</a></li>
+    <li><a href="add-news.html">Add News</a></li>
+    <li><a href="all-category.html">Manage Categories</a></li>
+    <li><a href="all-subcategory.html">Manage Subcategories</a></li>
+    <li class="logout" id="adminLogout">Logout</li>
+  </ul>
+</div>
+
+
+    <!-- ---------------- MAIN CONTENT ---------------- -->
+    <div class="main-content">
+
+        <div class="top-bar">
+            <h1 id="adminName">Welcome Admin</h1>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Admins</h3>
+                <p id="totalAdmins">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Sessions</h3>
+                <p>1</p>
+            </div>
+
+            <div class="card">
+                <h3>Total News</h3>
+                <p id="totalNews">—</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Categories</h3>
+                <p id="totalCategories">—</p>
+            </div>
+        </div>
+
+      <h2 style="margin-top: 35px;">Admin List</h2>
+
+<div class="admin-table-wrapper">
+  <div class="table-shell">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="adminTable"></tbody>
+    </table>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- ✅ ONLY ONE JS FILE -->
+    <script src="assets/js/admin-dashboard.js"></script>
+
+</body>
+</html>

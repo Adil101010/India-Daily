@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Admin - India Daily</title>
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+    <style>
+        /* Edit Admin Specific Styles */
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e63946;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            flex: 1;
+            padding: 14px 25px;
+            background: #e63946;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #d62828;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 14px 25px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-cancel:hover {
+            background: #5a6268;
+        }
+
+        /* ✅ FIXED Toast Notification */
+        .toast {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            min-width: 320px;
+            max-width: 400px;
+            background: white !important;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
+            display: none;
+            z-index: 999999 !important;
+            animation: slideIn 0.4s ease;
+        }
+
+        .toast.show {
+            display: block !important;
+        }
+
+        .toast.success {
+            border-left: 6px solid #28a745;
+            background: linear-gradient(135deg, #f8fff9 0%, #ffffff 100%) !important;
+        }
+
+        .toast.error {
+            border-left: 6px solid #dc3545;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%) !important;
+        }
+
+        .toast.warning {
+            border-left: 6px solid #ffc107;
+            background: linear-gradient(135deg, #fffef5 0%, #ffffff 100%) !important;
+        }
+
+        .toast-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .toast-message {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(500px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ✅ FIXED Loading Overlay */
+        .loading-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: rgba(0,0,0,0.7) !important;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999998 !important;
+        }
+
+        .loading-overlay.show {
+            display: flex !important;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #e63946;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+    <div class="toast-title" id="toastTitle"></div>
+    <div class="toast-message" id="toastMessage"></div>
+</div>
+
+<!-- ---------------- SIDEBAR ------------------ -->
+<div class="sidebar">
+    <h2>India Daily</h2>
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="add-admin.html">Add Admin</a></li>
+        <li><a href="all-news.html">Manage News</a></li>
+        <li><a href="add-news.html">Add News</a></li>
+        <li><a href="all-category.html">Manage Categories</a></li>
+        <li><a href="all-subcategory.html">Manage Subcategories</a></li>
+        <li class="logout" id="adminLogout">Logout</li>
+    </ul>
+</div>
+
+<!-- ---------------- MAIN CONTENT ---------------- -->
+<div class="main-content">
+
+    <div class="top-bar">
+        <h1>Edit Admin</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="editAdminForm">
+
+            <div class="form-group">
+                <label>Name *</label>
+                <input type="text" id="name" placeholder="Enter admin name" required />
+            </div>
+
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="email" placeholder="admin@example.com" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password (Leave blank to keep current)</label>
+                <input type="password" id="password" placeholder="New password (optional)" />
+            </div>
+
+            <div class="form-group">
+                <label>Role *</label>
+                <select id="role" required>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="SUPER_ADMIN">SUPER ADMIN</option>
+                    <option value="EDITOR">EDITOR</option>
+                </select>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-submit">Update Admin</button>
+                <a href="dashboard.html" class="btn-cancel">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<script src="assets/js/admin-edit.js"></script>
+
+</body>
+</html>

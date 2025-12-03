@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Category — India Daily Admin</title>
+
+  <link rel="stylesheet" href="assets/css/all-news.css">
+
+  <!-- 🔐 TOKEN CHECK -->
+  <script>
+    const token = localStorage.getItem("admin_token");
+    if (!token || token.trim() === "") {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <style>
+    .form-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #c80000;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #a30000;
+    }
+    #msg {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP RED BAR -->
+  <div class="topbar-red">
+    <div class="topbar-inner">
+      <div class="topbar-date">Add Category</div>
+    </div>
+  </div>
+
+ 
+
+  <div class="admin-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <img src="/frontend/admin/assets/images/india-daily-logo.jpg" class="side-logo">
+        <div class="side-title">India Daily Admin</div>
+      </div>
+
+      <nav class="side-menu">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add-news.html">Add News</a>
+        <a href="all-news.html">All News</a>
+
+        <a href="all-category.html" class="active">Categories</a>
+        <a href="all-subcategory.html">Subcategories</a>
+
+        <a href="#" id="logoutLink">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-header">
+        <h1>Add Category</h1>
+      </div>
+
+      <div class="form-box">
+        <label>Category Name (Hindi)</label>
+        <input type="text" id="catName" placeholder="जैसे: राजनीति, खेल, बॉलीवुड आदि">
+
+        <button id="saveBtn">Save Category</button>
+
+        <div id="msg"></div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- LOGOUT -->
+  <script>
+    document.getElementById("logoutLink").addEventListener("click", () => {
+      localStorage.removeItem("admin_token");
+      window.location.href = "login.html";
+    });
+  </script>
+
+   <!-- MAIN JS -->
+  <script>
+    const API = "http://localhost:8080/api";
+
+  
+
+    // ✅ NEW CODE (WITH AUTHORIZATION HEADER)
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const name = document.getElementById("catName").value.trim();
+      const msg = document.getElementById("msg");
+
+      if (name === "") {
+        msg.style.color = "red";
+        msg.textContent = "Category name required!";
+        return;
+      }
+
+      msg.style.color = "black";
+      msg.textContent = "Saving...";
+
+      try {
+        const res = await fetch(`${API}/admin/category/add?name=${encodeURIComponent(name)}`, {
+          method: "POST",
+          headers: {
+            // 🔐 yahi sabse important line
+            "Authorization": "Bearer " + token
+          }
+        });
+
+        if (res.ok) {
+          msg.style.color = "green";
+          msg.textContent = "Category added successfully!";
+
+          setTimeout(() => {
+            window.location.href = "all-category.html";
+          }, 800);
+        } else {
+          msg.style.color = "red";
+          msg.textContent = "Failed to save category!";
+        }
+      } catch (err) {
+        console.error(err);
+        msg.style.color = "red";
+        msg.textContent = "Network error!";
+      }
+    });
+  </script>
+
+
+</body>
+</html>

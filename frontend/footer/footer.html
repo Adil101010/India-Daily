@@ -1,0 +1,336 @@
+<!-- footer/footer.html -->
+<footer id="siteFooter" role="contentinfo" aria-label="Site footer">
+  <style>
+    /* ALL STYLES STRICTLY SCOPED TO #siteFooter */
+    #siteFooter{
+      --fd-brand:#ff0000;
+      --fd-dark:#c80000;
+      --fd-bg:#0b0b0b;
+      --fd-muted:#bdbdbd;
+      color:#fff;
+      font-family: "Roboto","Segoe UI", Arial, sans-serif;
+      display:block;
+      width:100%;
+      box-sizing:border-box;
+      overflow-x:hidden;
+      min-height:0;
+    }
+    #siteFooter *{ box-sizing:border-box; }
+
+    /* top links strip */
+    #siteFooter .ft-top{
+      background: linear-gradient(90deg,var(--fd-dark), #5a0606);
+      padding:10px 12px;
+      text-align:center;
+    }
+    #siteFooter .ft-top .inner{
+      max-width:1180px;
+      margin:0 auto;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      padding:0 8px;
+    }
+    #siteFooter .ft-top a{
+      color:#fff;
+      text-decoration:none;
+      padding:6px 8px;
+      font-weight:600;
+      font-size:15px;
+      white-space:normal;
+      word-break:break-word;
+    }
+    #siteFooter .ft-top a:hover{
+      text-decoration:underline;
+    }
+    #siteFooter .ft-top .spacer{
+      flex:1 1 auto;
+      min-width:12px;
+    }
+
+    /* main area */
+    #siteFooter .ft-main{
+      background: var(--fd-bg);
+      padding:28px 12px 18px;
+    }
+    #siteFooter .ft-inner{
+      max-width:1180px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 320px;
+      gap:20px;
+      align-items:flex-start;
+    }
+    @media (max-width:980px){
+      #siteFooter .ft-inner{
+        grid-template-columns:1fr 1fr;
+      }
+      #siteFooter .ft-news{
+        grid-column:1/-1;
+      }
+    }
+    @media (max-width:680px){
+      #siteFooter .ft-inner{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* brand */
+    #siteFooter .brand{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    #siteFooter .brand img{
+      width:86px;
+      height:auto;
+      display:block;
+      border-radius:6px;
+      background:#fff;
+      padding:6px;
+      max-width:100%;
+    }
+    #siteFooter .brand .txt{
+      color:var(--fd-muted);
+      font-size:14px;
+      line-height:1.45;
+      max-width:420px;
+    }
+
+    /* quick links */
+    #siteFooter .qlinks h4,
+    #siteFooter .ft-news h4{
+      color:#fff;
+      margin:0 0 8px;
+      font-size:18px;
+      text-align:center;
+    }
+    #siteFooter .qlinks ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    #siteFooter .qlinks a{
+      color:var(--fd-muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:15px;
+      white-space:normal;
+    }
+    #siteFooter .qlinks a:hover{
+      color:#fff;
+      text-decoration:underline;
+    }
+
+    /* newsletter */
+    #siteFooter .ft-news .form{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      width:100%;
+    }
+    #siteFooter .ft-news input[type="email"]{
+      flex:1;
+      padding:10px;
+      border-radius:6px;
+      border:1px solid #222;
+      background:#111;
+      color:#fff;
+      min-width:0;
+    }
+    #siteFooter .ft-news button{
+      background:var(--fd-brand);
+      color:#fff;
+      border:0;
+      padding:10px 14px;
+      border-radius:6px;
+      cursor:pointer;
+      white-space:nowrap;
+      font-weight:600;
+    }
+    #siteFooter .ft-news button:hover{
+      background:var(--fd-dark);
+    }
+
+    /* social */
+    #siteFooter .socials{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+    #siteFooter .socials a{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.12);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      background:transparent;
+    }
+    #siteFooter .socials a:hover{
+      background:rgba(255,255,255,0.06);
+    }
+
+    /* bottom bar */
+    #siteFooter .ft-bottom{
+      border-top:1px solid rgba(255,255,255,0.04);
+      padding:12px 12px;
+      text-align:left;
+      color:var(--fd-muted);
+      position:relative;
+      max-width:1180px;
+      margin:0 auto;
+      font-size:14px;
+    }
+    #siteFooter .ft-bottom .back-top{
+      position:absolute;
+      right:12px;
+      top:-10px;
+      background:var(--fd-brand);
+      color:#fff;
+      width:44px;
+      height:44px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow:0 6px 14px rgba(0,0,0,0.18);
+    }
+
+    /* mobile tweaks for bottom bar */
+    @media (max-width:600px){
+      #siteFooter .ft-bottom{
+        text-align:center;
+        padding-bottom:14px;
+      }
+      #siteFooter .ft-bottom .back-top{
+        position:static;
+        margin:10px auto 0;
+      }
+      #siteFooter .ft-news .form{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      #siteFooter .ft-news button{
+        width:100%;
+        text-align:center;
+      }
+    }
+
+    /* accessibility focus */
+    #siteFooter a:focus,
+    #siteFooter button:focus{
+      outline:3px solid rgba(255,0,0,0.4);
+      outline-offset:2px;
+    }
+  </style>
+  
+  <!-- TOP MENU STRIP -->
+  <div class="ft-top" aria-hidden="false">
+    <div class="inner">
+      <div class="spacer"></div>
+      <a href="footer/about.html">About Us</a>
+      <a href="footer/advertise.html">Advertise</a>
+      <a href="footer/disclaimer.html">Disclaimer</a>
+      <a href="footer/feedback.html">Feedback</a>
+      <a href="footer/privacy.html">Privacy &amp; Policy</a>
+      <a href="footer/terms.html">Terms</a>
+      <div class="spacer"></div>
+    </div>
+  </div>
+
+  <!-- MAIN FOOTER CONTENT -->
+  <div class="ft-main">
+    <div class="ft-inner">
+      <!-- BRAND BLOCK -->
+      <div class="brand" aria-hidden="false">
+        <img src="/images/logo/india-daily-logo.jpg" alt="India Daily logo">
+        <div class="txt">
+          <div style="font-weight:800;color:#fff;margin-bottom:5px">India Daily</div>
+          India Daily – भरोसेमंद खबरें, हर पल।
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="qlinks" aria-label="Quick links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">होम</a></li>
+          <li><a href="category.html?cat=राजनीति">राजनीति</a></li>
+          <li><a href="category.html?cat=खेल">खेल</a></li>
+          <li><a href="category.html?cat=मनोरंजन">मनोरंजन</a></li>
+        </ul>
+      </div>
+
+      <!-- NEWSLETTER + SOCIAL -->
+      <div class="ft-news" aria-label="Newsletter">
+        <h4>Newsletter</h4>
+        <form class="form" id="footerSubscribe" onsubmit="return false;" aria-label="Subscribe form">
+          <input type="email" id="footerEmail" placeholder="Email" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+
+        <div class="socials" aria-hidden="false">
+          <!-- yahan placeholder links, baad me apne real profile URLs daal dena -->
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">F</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="X">X</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM LINE -->
+    <div class="ft-bottom">
+      Copyright © All rights reserved. <span id="footerYear"></span> India Daily Live
+      <!-- <div class="back-top" id="footerBack" title="Back to top">↑</div> -->
+    </div>
+  </div>
+
+  <script>
+    // minimal JS scoped to footer only
+    (function(){
+      try {
+        var fy = document.getElementById('footerYear');
+        if(fy) fy.textContent = new Date().getFullYear();
+      } catch(e){}
+
+      // newsletter submit
+      var fsub = document.getElementById('footerSubscribe');
+      if(fsub){
+        fsub.addEventListener('submit', function(e){
+          e.preventDefault();
+          var emInput = document.getElementById('footerEmail');
+          var em = (emInput && emInput.value || '').trim();
+          if(!/^\S+@\S+\.\S+$/.test(em)){
+            alert('Enter a valid email address');
+            return;
+          }
+          alert('Subscribed (demo) — backend connect karne par yahan se save kar sakte ho.');
+          if(emInput) emInput.value = '';
+        });
+      }
+
+      // back to top
+      // var bt = document.getElementById('footerBack');
+      // if(bt){
+      //   bt.addEventListener('click', function(){
+      //     window.scrollTo({top:0, behavior:'smooth'});
+      //   });
+      // }
+    })();
+  </script>
+</footer>

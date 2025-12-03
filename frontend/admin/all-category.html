@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>All Categories — India Daily Admin</title>
+
+  <link rel="stylesheet" href="assets/css/all-news.css">
+
+  <style>
+    .btn {
+      background: #0084ff;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 5px;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #0066cc;
+    }
+    .btn-danger {
+      background: #d30000;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-danger:hover {
+      background: #b30000;
+    }
+    .add-btn {
+      background: #28a745;
+    }
+    .add-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP RED BAR -->
+  <div class="topbar-red">
+    <div class="topbar-inner">
+      <div id="currentDate" class="topbar-date"></div>
+    </div>
+  </div>
+
+ 
+ 
+  <div class="admin-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <img src="assets/images/india-daily-logo.jpg" class="side-logo" alt="Logo">
+        <div class="side-title">India Daily Admin</div>
+      </div>
+
+      <nav class="side-menu">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add-news.html">Add News</a>
+        <a href="all-news.html">All News</a>
+        <a href="all-category.html" class="active">Categories</a>
+        <a href="all-subcategory.html">Subcategories</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-header">
+        <h1>All Categories</h1>
+        <div class="controls">
+          <a class="btn add-btn" href="add-category.html">+ Add Category</a>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="news-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Slug</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="categoryTableBody">
+            <tr>
+              <td colspan="4" style="text-align:center; padding:20px;">Loading categories...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ✅ ONLY ONE SCRIPT TAG -->
+  <script src="assets/js/all-category.js"></script>
+
+</body>
+</html>

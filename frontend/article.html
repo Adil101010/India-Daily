@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">Article — India Daily</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/article.css" />
+
+  <meta name="description" id="metaDescription" content="India Daily" />
+</head>
+
+<body class="page-article">
+
+  <!-- HEADER -->
+  <div include-html="header/header.html"></div>
+
+  <!-- ARTICLE PAGE -->
+  <main class="article-container" aria-labelledby="articleTitle">
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a> › 
+      <a id="bcCategory" href="#">Category</a> › 
+      <span id="bcTitle">Article</span>
+    </nav>
+
+    <article id="articleCard" class="article-card">
+
+      <!-- HERO IMAGE -->
+      <div class="featured-img" id="featuredImgWrap"></div>
+
+      <!-- META -->
+      <header class="article-meta">
+        <div class="kicker" id="articleCategory"></div>
+        <h1 id="articleTitle"></h1>
+
+        <!-- sirf date + read time -->
+        <div class="meta-row">
+          <span id="articleDate"></span> • 
+          <span id="readTime"></span>
+        </div>
+
+        <!-- Published line (yahin author dikhےga) -->
+        <div class="publish-line">
+          Published By : <span id="publishAuthor" class="publish-name"></span>
+          <span id="publishDateTime" class="publish-datetime"></span>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <div class="article-body" id="articleBody"></div>
+
+      <!-- SHARE -->
+      <section class="share-row" aria-label="Share this article">
+        <button id="shareFb" type="button">Facebook</button>
+        <button id="shareX"  type="button">Twitter</button>
+        <button id="shareWa" type="button">WhatsApp</button>
+      </section>
+
+      <!-- RELATED -->
+      <section id="relatedList" class="related" aria-label="Related articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid" id="relatedGrid"></div>
+      </section>
+
+      <!-- COMMENTS -->
+      <section class="comments" aria-label="Comments">
+        <h3>Comments (<span id="commentCount">0</span>)</h3>
+        
+        <!-- ADD COMMENT FORM -->
+        <div class="comment-form">
+          <h4>Leave a Comment</h4>
+          <input type="text" id="userName" placeholder="Your Name *" required>
+          <input type="email" id="userEmail" placeholder="Your Email *" required>
+          <textarea id="commentText" placeholder="Write your comment (minimum 10 characters)..." rows="4" required></textarea>
+          <button id="submitComment" type="button">Post Comment</button>
+          <div id="commentMsg"></div>
+        </div>
+        
+        <!-- COMMENTS LIST -->
+        <div id="commentsList">
+          <p style="color:#666;text-align:center;padding:20px;">Loading comments...</p>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <script>
+    fetch("footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) footerEl.innerHTML = data;
+      });
+  </script>
+
+  <script src="js/article.js"></script>
+  <script src="include.js"></script>
+
+</body>
+</html>

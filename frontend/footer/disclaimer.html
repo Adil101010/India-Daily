@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Disclaimer | India Daily</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#ff0000;
+      --dark:#c80000;
+      --card:#fff7f7;
+      --muted:#666;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:"Roboto","Segoe UI",Roboto,Arial,sans-serif;
+      background:#fff;
+      color:#222;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* SIMPLE TOP RED HEADER */
+    .simple-header{
+      background:var(--brand);
+      color:#fff;
+      padding:8px 12px;
+    }
+    .simple-header-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .simple-date{
+      font-weight:900;
+      font-size:20px;
+      
+    }
+    .simple-logo{
+      height:38px;
+      width:auto;
+    }
+    @media(max-width:600px){
+      .simple-date{font-size:12px;}
+      .simple-logo{height:30px;}
+    }
+
+    /* MAIN CONTENT */
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:32px 18px 56px;
+    }
+
+    h1{
+      color:var(--dark);
+      margin-top:0;
+      margin-bottom:10px;
+      font-size:30px;
+    }
+
+    h2{
+      font-size:22px;
+      color:var(--dark);
+      margin-top:26px;
+      margin-bottom:8px;
+      border-left:6px solid var(--brand);
+      padding-left:10px;
+    }
+
+    p{
+      margin:10px 0;
+      font-size:16px;
+    }
+
+    .note{
+      background:var(--card);
+      padding:12px;
+      border-left:4px solid var(--brand);
+      border-radius:6px;
+      margin:14px 0;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    a{
+      color:var(--dark);
+      text-decoration:none;
+    }
+    a:hover{
+      text-decoration:underline;
+    }
+
+    /* SIMPLE FOOTER WITH BACK HOME */
+    .simple-footer{
+      border-top:1px solid #eee;
+      padding:16px 12px 20px;
+      background:#fafafa;
+    }
+    .simple-footer-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .back-home-btn{
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      border-radius:20px;
+      padding:8px 18px;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+      cursor:pointer;
+      transition:background 0.2s, transform 0.1s;
+    }
+    .back-home-btn:hover{
+      background:var(--dark);
+      transform:translateY(-1px);
+    }
+    @media(max-width:600px){
+      .simple-footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    /* BACK TO TOP */
+    .to-top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:46px;
+      height:46px;
+      background:var(--brand);
+      color:#fff;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+      z-index:90;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media(max-width:768px){
+      .wrap{
+        padding:28px 14px 50px;
+      }
+      h1{
+        font-size:24px;
+      }
+      h2{
+        font-size:19px;
+        border-left-width:4px;
+      }
+      p{
+        font-size:15px;
+      }
+    }
+
+    @media(max-width:480px){
+      .wrap{
+        padding:24px 12px 48px;
+      }
+      h1{
+        font-size:22px;
+      }
+      .to-top{
+        width:40px;
+        height:40px;
+        right:12px;
+        bottom:12px;
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMPLE RED HEADER -->
+  <header class="simple-header">
+    <div class="simple-header-inner">
+      <div class="simple-date" id="discDate"></div>
+      <img src="/images/logo/india-daily-logo.jpg" alt="India Daily" class="simple-logo">
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>Disclaimer</h1>
+
+    <p>
+      The information provided on <strong>India Daily</strong> is published in good faith and for general informational
+      purposes only. While efforts are made to keep the information accurate and up to date, no warranties are given
+      regarding completeness, reliability, or accuracy.
+    </p>
+
+    <h2>Content Responsibility</h2>
+    <p>
+      India Daily is not liable for any losses or damages in connection with the use of the content on this website.
+      Readers are encouraged to independently verify critical information before acting on it.
+    </p>
+
+    <h2>External Links</h2>
+    <p>
+      This website may contain links to external sites. Although care is taken to include quality and ethical links,
+      India Daily has no control over the content or changes on third‑party websites. Visiting external links is at
+      the user’s own risk.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong> External website content may change without notice; India Daily is not responsible for
+      such changes after a link has been added.
+    </div>
+
+    <h2>Opinions &amp; Views</h2>
+    <p>
+      Opinions expressed in articles, columns, and editorials are those of the respective authors and do not
+      necessarily reflect the official policy or position of India Daily.
+    </p>
+
+    <h2>Updates &amp; Amendments</h2>
+    <p>
+      India Daily reserves the right to update or modify this disclaimer at any time without prior notice. Users are
+      advised to review this page periodically for changes.
+    </p>
+
+    <p class="muted" style="margin-top:20px">
+      For any questions about this disclaimer, please contact:
+      <strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong>
+    </p>
+  </div>
+
+  <div class="to-top" id="toTop" title="Back to top">↑</div>
+
+  <!-- SIMPLE FOOTER -->
+  <footer class="simple-footer">
+    <div class="simple-footer-inner">
+      <span>Copyright © <span id="discYear"></span> India Daily. All rights reserved.</span>
+      <a href="../index.html" class="back-home-btn">← Back to Home</a>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var d = new Date();
+      var dateEl = document.getElementById('discDate');
+      if(dateEl){
+        var opt = { day:'numeric', month:'long', year:'numeric' };
+        dateEl.textContent = d.toLocaleDateString('en-IN', opt);
+      }
+      var y = document.getElementById('discYear');
+      if(y) y.textContent = d.getFullYear();
+
+      var t = document.getElementById('toTop');
+      if(t){
+        t.addEventListener('click', function(){
+          window.scrollTo({top:0, behavior:'smooth'});
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

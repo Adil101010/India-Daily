@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advertise | India Daily</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#ff0000;
+      --brand-dark:#c80000;
+      --bg:#fff;
+      --muted:#555;
+      --card:#fff7f7;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Roboto","Segoe UI",Arial,sans-serif;
+      background:var(--bg);
+      color:#222;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* SIMPLE TOP RED HEADER (same pattern as About page) */
+    .simple-header{
+      background:var(--brand);
+      color:#fff;
+      padding:8px 12px;
+    }
+    .simple-header-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .simple-date{
+      font-weight:900;
+      font-size:20px;
+    }
+    .simple-logo{
+      height:40px;
+      width:auto;
+    }
+    @media(max-width:600px){
+      .simple-date{font-size:12px;}
+      .simple-logo{height:32px;}
+    }
+
+    /* MAIN WRAP */
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px 18px 70px;
+    }
+
+    /* CARD */
+    .card{
+      background:#fff;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.06);
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 8px;
+      color:var(--brand-dark);
+      font-size:30px;
+    }
+    .tagline{
+      color:var(--brand);
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    p{
+      margin:8px 0;
+      color:#222;
+      font-size:15px;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* GRID */
+    .cols{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:20px;
+    }
+    @media(max-width:900px){
+      .cols{
+        grid-template-columns:1fr;
+      }
+      .sidebar{order:2}
+      .main{order:1}
+    }
+
+    .specs h3{
+      margin:12px 0 8px;
+      color:var(--brand-dark);
+      font-size:20px;
+    }
+    .specs ul{
+      padding-left:20px;
+    }
+    .specs li{
+      margin:6px 0;
+      font-size:15px;
+    }
+
+    table.spec-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+      font-size:15px;
+    }
+    table.spec-table th,
+    table.spec-table td{
+      padding:10px;
+      border:1px solid #eee;
+      text-align:left;
+    }
+    table.spec-table th{
+      background:#ffecec;
+      color:var(--brand-dark);
+      font-weight:700;
+    }
+    @media(max-width:600px){
+      .spec-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+      }
+    }
+
+    .note{
+      background:var(--card);
+      padding:12px;
+      border-left:4px solid var(--brand);
+      border-radius:6px;
+      margin-top:12px;
+    }
+
+    /* CONTACT BOX */
+    .contact{
+      background:#fff;
+      border-radius:8px;
+      padding:14px;
+      border:1px solid #f0dcdc;
+    }
+    .contact a.btn{
+      display:inline-block;
+      background:var(--brand);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .download-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .download-links a{
+      padding:8px 10px;
+      border-radius:6px;
+      background:#fff;
+      border:1px solid #f0dcdc;
+      text-decoration:none;
+      color:var(--brand-dark);
+      font-weight:700;
+    }
+    .footer-note{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* SIMPLE FOOTER WITH BACK HOME */
+    .simple-footer{
+      border-top:1px solid #eee;
+      padding:16px 12px 20px;
+      background:#fafafa;
+    }
+    .simple-footer-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .back-home-btn{
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      border-radius:20px;
+      padding:8px 18px;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+      cursor:pointer;
+      transition:background 0.2s, transform 0.1s;
+    }
+    .back-home-btn:hover{
+      background:var(--brand-dark);
+      transform:translateY(-1px);
+    }
+    @media(max-width:600px){
+      .simple-footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    /* BACK TO TOP */
+    .to-top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:48px;
+      height:48px;
+      background:var(--brand);
+      color:#fff;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      z-index:100;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMPLE RED HEADER (same style as About simple header) -->
+  <header class="simple-header">
+    <div class="simple-header-inner">
+      <div class="simple-date" id="advDate"></div>
+      <img src="/images/logo/india-daily-logo.jpg" alt="India Daily" class="simple-logo">
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="card">
+      <h1>Advertising with India Daily</h1>
+      <div class="tagline">Reach audiences with high-impact banner placements</div>
+      <p class="muted">For advertising inquiries or custom packages, contact our team below.</p>
+    </div>
+
+    <div class="cols">
+
+      <!-- LEFT SECTION -->
+      <div class="card main">
+        <h2 style="color:var(--brand-dark); margin-bottom:10px;">Banner Advertising Specifications</h2>
+
+        <div class="specs">
+          <h3>Leaderboard Banner</h3>
+          <ul>
+            <li><strong>Dimensions:</strong> 728 × 90 px</li>
+            <li><strong>File Size:</strong> Under 100KB</li>
+            <li><strong>Frame Rate:</strong> 12–16 fps</li>
+            <li><strong>Animation Limit:</strong> 15 seconds max</li>
+            <li><strong>Looping:</strong> Not allowed</li>
+            <li><strong>Backup Image:</strong> Required</li>
+          </ul>
+
+          <h3>Accepted Formats</h3>
+          <ul><li>PNG, JPG, GIF, HTML5</li></ul>
+
+          <h3>HTML5 Guidelines</h3>
+          <ul>
+            <li>Separate HTML, CSS, JS files</li>
+            <li>Images: PNG/JPG/GIF</li>
+            <li>Video Allowed: MP4, WEBM</li>
+          </ul>
+
+          <div class="note">
+            <strong>Important:</strong> Provide lightweight, optimized creatives and always attach a backup static image.
+          </div>
+
+          <h3>Standard Ad Sizes</h3>
+
+          <table class="spec-table">
+            <tr><th>Unit</th><th>Dimensions</th><th>Notes</th></tr>
+            <tr><td>Leaderboard</td><td>728×90</td><td>Top of page visibility</td></tr>
+            <tr><td>Banner</td><td>468×60</td><td>Legacy banner format</td></tr>
+            <tr><td>Medium Rectangle</td><td>300×250</td><td>Sidebar / article ads</td></tr>
+            <tr><td>Skyscraper</td><td>160×600</td><td>Right column ads</td></tr>
+            <tr><td>Mobile Banner</td><td>320×50</td><td>Mobile optimized</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- RIGHT SECTION -->
+      <aside class="card sidebar">
+        <h3 style="color:var(--brand-dark); margin-bottom:10px;">Book an Ad</h3>
+
+        <div class="contact">
+          <p>For advertising queries, email:</p>
+          <p><strong><a href="mailto:info.abstarnews@gmail.com">info.abstarnews@gmail.com</a></strong></p>
+
+          <a class="btn" href="mailto:info.abstarnews@gmail.com">Contact Sales</a>
+
+          <div class="footer-note">
+            <strong>Need creative help?</strong><br>
+            <span class="muted">We offer basic creative checks &amp; optimization guidance.</span>
+          </div>
+
+          <div style="margin-top:12px">
+            <span class="muted">Download files</span>
+            <div class="download-links">
+              <a href="#">Ad Specs (PDF)</a>
+              <a href="#">HTML5 Guide</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--brand-dark); margin:0 0 6px;">Final Notes</h3>
+      <p class="muted">All creatives go through editorial review. Non‑compliant creatives may be rejected.</p>
+    </div>
+
+  </div>
+
+  <!-- SIMPLE FOOTER WITH BACK TO HOME + BACK TO TOP -->
+  <footer class="simple-footer">
+    <div class="simple-footer-inner">
+      <span>Copyright © <span id="advYear"></span> India Daily. All rights reserved.</span>
+      <div>
+        <a href="../index.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="to-top" id="toTop">↑</div>
+
+  <script>
+    (function(){
+      var d = new Date();
+      var dateEl = document.getElementById('advDate');
+      if(dateEl){
+        var opt = { day:'numeric', month:'long', year:'numeric' };
+        dateEl.textContent = d.toLocaleDateString('en-IN', opt);
+      }
+      var y = document.getElementById('advYear');
+      if(y) y.textContent = d.getFullYear();
+
+      var t = document.getElementById('toTop');
+      if(t){
+        t.addEventListener('click', function(){
+          window.scrollTo({top:0, behavior:'smooth'});
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

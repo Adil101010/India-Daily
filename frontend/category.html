@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">Category — India Daily</title>
+
+  <!-- Fonts --->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Global ++++ Category CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/category.css" />
+
+  <meta name="description" content="India Daily पर चुनी हुई श्रेणी की ताजा खबरें, ट्रेंडिंग स्टोरीज़ और सबसे अधिक पढ़ी गई खबरें।" />
+</head>
+<body class="page-category">
+
+  <!-- -------------  HEADER / TOP BAR / NAV ------------- -->
+  <div include-html="header/header.html"></div>
+
+  <!-- -------------  CATEGORY HERO ------------- -->
+  <section class="category-hero" aria-labelledby="catTitle">
+    <div class="hero-inner container-lg">
+      <div class="hero-left">
+        <!-- Project ke images folder se banner (local /mnt path हटाया) -->
+        <img src="images/hero1.jpg" alt="Category banner" class="hero-img">
+      </div>
+      <div class="hero-right">
+        <h1 id="catTitle">Category</h1>
+        <p id="catDesc">इस श्रेणी से संबंधित ताज़ा अपडेट और चुनी हुई ख़बरें।</p>
+        <div class="hero-actions">
+          <span id="catCount" class="pill" aria-live="polite">0 stories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------  FILTERS BAR ------------- -->
+  <section class="category-controls" aria-label="Category filters">
+    <div class="container-sm">
+      <div class="controls-left">
+        <div class="filters" role="tablist" aria-label="Filters">
+          <button class="filter-btn active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="latest">Latest</button>
+          <button class="filter-btn" type="button" data-filter="trending">Trending</button>
+          <button class="filter-btn" type="button" data-filter="mostviewed">Most Viewed</button>
+        </div>
+      </div>
+
+      <div class="controls-right">
+        <label class="visually-hidden" for="catSearch">Search in category</label>
+        <input
+          id="catSearch"
+          type="search"
+          placeholder="Search in category..."
+          aria-label="Search in category"
+        />
+
+        <label class="visually-hidden" for="perPage">Items per page</label>
+        <select id="perPage" title="Items per page">
+          <option value="6">6 / page</option>
+          <option value="9" selected>9 / page</option>
+          <option value="12">12 / page</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+       <!-- -------------  SUBCATEGORY TABS ------------- -->
+  <section class="subcategory-tabs" id="subcategoryTabs" style="display:none;">
+    <div class="container-sm">
+      <div class="subtabs" id="subtabsList">
+        <!-- JS fills buttons here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------  MAIN CONTENT -+- SIDEBAR ------------- -->
+  <main class="category-main container-lg">
+    <div class="grid-main">
+      <!-- Cards grid -->
+      <section class="cards-grid" id="cardsGrid" aria-live="polite" aria-label="Category stories">
+        <!-- filled by js/category.js -->
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="widget">
+          <h4>Popular</h4>
+          <div id="popularList"><!-- filled by JS --></div>
+        </div>
+
+        <div class="widget">
+          <h4>Newsletter</h4>
+          <form id="sidebarNewsletter" class="newsletter" novalidate>
+            <label class="visually-hidden" for="sidebarEmail">Email</label>
+            <input id="sidebarEmail" type="email" placeholder="Your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Pagination / Load more -->
+    <div class="pagination-row">
+      <div id="pager" class="pager" aria-label="Pagination"></div>
+      <button id="loadMore" class="btn-outline" type="button">Load more</button>
+    </div>
+  </main>
+
+  <!-- -------------  FOOTER ------------- -->
+  <div id="footer"></div>
+
+  <script>
+    // Footer partial include
+    fetch("footer/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        const footerEl = document.getElementById("footer");
+        if (footerEl) {
+          footerEl.innerHTML = data;
+        }
+      })
+      .catch(err => console.error("Error loading footer:", err));
+  </script>
+
+  <!-- Header include handler -->
+  <script src="include.js"></script>
+
+  <!-- Global + category JS -->
+  <script src="js/main.js"></script>
+  <script src="js/category.js"></script>
+</body>
+</html>
